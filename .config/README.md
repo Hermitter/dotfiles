@@ -1,2 +1,2 @@
 # .Config
-Drag anything you want into your `~/config` folder.
+Drag anything you want into your `~/.config` folder.
