@@ -1,0 +1,9 @@
+add_newline = true
+
+[character]
+symbol = "❯"
+
+[hostname]
+ssh_only = false
+trim_at = "."
+disabled = false
