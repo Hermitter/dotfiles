@@ -12,6 +12,7 @@ plugins=(zsh-syntax-highlighting git zsh-autosuggestions history-substring-searc
 
 # User configuration
 git config --global pager.branch false
+alias git_RESET="git reset --hard origin/master && git pull origin master"
 alias docker="podman"
 alias clear="tput reset"
 alias mirrorup="sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syyu"
