@@ -12,12 +12,13 @@ plugins=(zsh-syntax-highlighting git zsh-autosuggestions history-substring-searc
 
 # User configuration
 git config --global pager.branch false
+# alias git_RESET_FORK="git remote add upstream /url/to/original/repo && git fetch upstream &&git checkout master &&git reset --hard upstream/master && git push origin master --force "
 alias git_RESET="git reset --hard origin/master && git pull origin master"
 alias docker="podman"
 alias clear="tput reset"
-alias mirrorup="sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syyu"
 alias volume="pavucontrol"
 alias sony="bluetoothctl connect CC:98:8B:D2:0C:8B"
+alias files="nautilus"
 
 # Imports
 source $ZSH/oh-my-zsh.sh
