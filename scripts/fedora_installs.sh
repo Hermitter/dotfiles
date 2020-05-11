@@ -10,7 +10,7 @@ sudo dnf update -y
 sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
 # install essentials
-sudo dnf install -y fira-code-fonts lutris gnome-tweaks zsh toolbox tilix go ffmpeg steam
+sudo dnf install -y fira-code-fonts lutris gnome-tweaks zsh toolbox tilix go ffmpeg steam SDL2-devel ssl-devel
 
 sudo groupinstall "Development Tools"
 
@@ -26,8 +26,8 @@ git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 # Install themes
-sudo dnf install deepin-icon-theme
+sudo dnf install -y deepin-icon-theme
 sudo dnf install -y materia-gtk-theme
-sudo dnf install gnome-shell-extension-material-shell
-sudo dnf install roboto-fontface-fonts
+sudo dnf install -y gnome-shell-extension-material-shell
+sudo dnf install -y roboto-fontface-fonts
 flatpak install org.gtk.Gtk3theme.Materia
