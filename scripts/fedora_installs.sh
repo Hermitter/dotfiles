@@ -27,6 +27,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 
 # Install themes
 sudo dnf install -y deepin-icon-theme
+sudo dnf install -y flat-remix-icon-theme
 sudo dnf install -y materia-gtk-theme
 sudo dnf install -y gnome-shell-extension-material-shell
 sudo dnf install -y roboto-fontface-fonts
