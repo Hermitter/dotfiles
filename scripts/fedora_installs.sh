@@ -11,8 +11,8 @@ sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-rele
 
 # install essentials
 sudo dnf install -y fira-code-fonts lutris gnome-tweaks zsh toolbox tilix go ffmpeg steam
-
-sudo groupinstall "Development Tools"
+sudo dnf install -y texlive-scheme-full
+sudo groupinstall -y "Development Tools"
 
 # change shell to zsh
 chsh -s /bin/zsh
@@ -25,7 +25,7 @@ git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh
 git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
-# Install themes
+# themes
 sudo dnf install deepin-icon-theme
 sudo dnf install -y materia-gtk-theme
 sudo dnf install gnome-shell-extension-material-shell
