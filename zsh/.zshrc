@@ -7,7 +7,6 @@ export ZSH="/home/carlos/.oh-my-zsh"
 # General Settings
 ZSH_THEME="dallas"
 COMPLETION_WAITING_DOTS="true"
-
 plugins=(zsh-syntax-highlighting git zsh-autosuggestions history-substring-search)
 
 # User configuration
@@ -17,8 +16,8 @@ alias git_RESET="git reset --hard origin/master && git pull origin master"
 alias docker="podman"
 alias clear="tput reset"
 alias volume="pavucontrol"
-alias sony="bluetoothctl connect CC:98:8B:D2:0C:8B"
 alias files="nautilus"
+export TRASH="$HOME/.local/share/Trash/files" 
 
 # Imports
 source $ZSH/oh-my-zsh.sh
