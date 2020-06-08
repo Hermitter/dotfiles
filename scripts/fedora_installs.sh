@@ -16,6 +16,10 @@ sudo dnf install -y texlive-scheme-full
 sudo usermod -a -G wireshark $USER
 sudo chmod +x /usr/bin/dumpcap # permissions fix
 
+# Qt dark theme fix (mainly wireshark)
+sudo dnf install -y qt5-qtstyleplugins
+echo -e "\n# qt dark theme fix\nexport QT_QPA_PLATFORMTHEME=gtk2" >> $HOME/.profile
+
 #############################################
 # SHELL
 #############################################
@@ -47,7 +51,3 @@ sudo dnf install -y fira-code-fonts roboto-fontface-fonts
 
 # Increase number of file watchers
 echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
-
-# qt dark theme fix (mainly wireshark)
-sudo dnf install -y qt5-qtstyleplugins
-echo -e "\n# qt dark theme fix\nexport QT_QPA_PLATFORMTHEME=gtk2" >> $HOME/.profile
