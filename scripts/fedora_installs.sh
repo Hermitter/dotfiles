@@ -9,7 +9,7 @@ sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-r
 
 # Install essentials
 sudo dnf install -y lutris gnome-tweaks zsh toolbox tilix go ffmpeg steam SDL2-devel ssl-devel openocd ncurses-compat-libs glib glib-devel gtk-devel wireshark mingw64-gcc
-sudo groupinstall -y "Development Tools"
+sudo dnf groupinstall -y "Development Tools"
 sudo dnf install -y texlive-scheme-full
 
 # Set up Wireshark
