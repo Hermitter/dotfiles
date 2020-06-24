@@ -45,6 +45,9 @@ sudo dnf install -y flat-remix-icon-theme materia-gtk-theme gnome-shell-extensio
 # Fonts
 sudo dnf install -y fira-code-fonts roboto-fontface-fonts
 
+# GNOME Desktop
+sudo dnf install -y gnome-shell-extension-dash-to-dock gnome-shell-extension-appindicator.noarch gnome-shell-extension-user-theme
+
 #############################################
 # MISC
 #############################################
