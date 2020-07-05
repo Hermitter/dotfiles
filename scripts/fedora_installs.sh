@@ -1,7 +1,7 @@
 sudo dnf update -y 
 
 #############################################
-# APPLICATIONS
+# APPLICATIONS / DEPENDENCIES 
 #############################################
 
 # Enable rpm fusion's free&non-free repos
@@ -19,6 +19,12 @@ sudo chmod +x /usr/bin/dumpcap # permissions fix
 # Qt dark theme fix (mainly wireshark)
 sudo dnf install -y qt5-qtstyleplugins
 echo -e "\n# qt dark theme fix\nexport QT_QPA_PLATFORMTHEME=gtk2" >> $HOME/.profile
+
+# Flutter
+git clone git@github.com:flutter/flutter.git $HOME/Documents/flutter
+$HOME/Documents/flutter/bin/flutter # set up sdk
+$HOME/Documents/flutter/bin/flutter config --no-analytics
+echo -e "\n# Flutter\nexport PATH=\"\$PATH:\$HOME/Documents/flutter/bin\"" >> $HOME/.profile
 
 #############################################
 # SHELL
