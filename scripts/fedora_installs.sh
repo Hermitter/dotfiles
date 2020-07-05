@@ -8,7 +8,7 @@ sudo dnf update -y
 sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
 # Install essentials
-sudo dnf install -y lutris gnome-tweaks zsh toolbox tilix go ffmpeg steam SDL2-devel openssl-devel openocd ncurses-compat-libs glib glib-devel gtk3-devel wireshark mingw64-gcc
+sudo dnf install -y lutris gnome-tweaks zsh toolbox tilix go ffmpeg steam SDL2-devel openssl-devel openocd ncurses-compat-libs glib glib-devel gtk3-devel wireshark mingw64-gcc java-latest-openjdk-devel java-1.8.0-openjdk-devel
 sudo dnf groupinstall -y "Development Tools"
 sudo dnf install -y texlive-scheme-full
 
