@@ -12,7 +12,7 @@ sudo dnf install -y zsh toolbox go ffmpeg SDL2-devel openssl-devel openocd ncurs
 sudo dnf groupinstall -y "Development Tools"
 sudo dnf install -y texlive-scheme-full
 
-# Install apps Apps
+# Install apps
 sudo dnf install -y geary lutris gnome-tweaks tilix steam wireshark
 
 # Set up Wireshark
