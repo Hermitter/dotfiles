@@ -20,6 +20,7 @@ sudo usermod -a -G wireshark $USER
 sudo chmod +x /usr/bin/dumpcap # permissions fix
 
 # Geary dark theme fix for header
+mkdir -p $HOME/.config/geary
 echo -e "hr {\n\tcolor: #eeeeec \!important;\n\tbackground-color: #eeeeec \!important;\n}" >> $HOME/.config/geary/user-style.css
 
 # Qt dark theme fix (mainly wireshark)
