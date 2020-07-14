@@ -7,14 +7,20 @@ sudo dnf update -y
 # Enable rpm fusion's free&non-free repos
 sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
-# Install essentials
-sudo dnf install -y lutris gnome-tweaks zsh toolbox tilix go ffmpeg steam SDL2-devel openssl-devel openocd ncurses-compat-libs glib glib-devel gtk3-devel wireshark java-latest-openjdk-devel java-1.8.0-openjdk-devel
+# Install essentials/dependencies
+sudo dnf install -y zsh toolbox go ffmpeg SDL2-devel openssl-devel openocd ncurses-compat-libs glib glib-devel gtk3-devel java-latest-openjdk-devel java-1.8.0-openjdk-devel
 sudo dnf groupinstall -y "Development Tools"
 sudo dnf install -y texlive-scheme-full
+
+# Install apps Apps
+sudo dnf install -y geary lutris gnome-tweaks tilix steam wireshark
 
 # Set up Wireshark
 sudo usermod -a -G wireshark $USER
 sudo chmod +x /usr/bin/dumpcap # permissions fix
+
+# Geary dark theme fix for header
+echo -e "hr {\n\tcolor: #eeeeec \!important;\n\tbackground-color: #eeeeec \!important;\n}" >> $HOME/.config/geary/user-style.css
 
 # Qt dark theme fix (mainly wireshark)
 sudo dnf install -y qt5-qtstyleplugins
@@ -45,13 +51,13 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 # THEME
 #############################################
 
-# Themes
+# Install GTK Themes
 sudo dnf install -y flat-remix-icon-theme materia-gtk-theme gnome-shell-extension-material-shell 
 
-# Fonts
+# Install Fonts
 sudo dnf install -y fira-code-fonts roboto-fontface-fonts
 
-# GNOME Desktop
+# Install GNOME extentions
 sudo dnf install -y gnome-shell-extension-dash-to-dock gnome-shell-extension-appindicator.noarch gnome-shell-extension-user-theme
 
 #############################################
