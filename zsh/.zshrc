@@ -2,7 +2,7 @@
 LS_COLORS=$LS_COLORS:'di=0;35:' ; export LS_COLORS
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/carlos/.oh-my-zsh"
+export ZSH="/home/$USER/.oh-my-zsh"
 
 # General Settings
 ZSH_THEME="dallas"
