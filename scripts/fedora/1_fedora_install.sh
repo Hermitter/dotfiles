@@ -5,7 +5,7 @@ sudo dnf update -y
 #############################################
 
 # Set config files
-cp ../../config/tilix $HOME/.config
+cp -r ../../config/tilix $HOME/.config
 cp ../../config/starship.toml $HOME/.config
 cp ../../zsh/*zshrc $HOME/.zshrc
 
