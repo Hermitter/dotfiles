@@ -4,8 +4,16 @@ sudo dnf update -y
 # APPLICATIONS / DEPENDENCIES 
 #############################################
 
+# Set config files
+cp ../../config/tilix $HOME/.config
+cp ../../config/starship.toml $HOME/.config
+cp ../../zsh/*zshrc $HOME/.zshrc
+
 # Enable rpm fusion's free&non-free repos
 sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
+# Enable flathub
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 # Install essentials/dependencies
 sudo dnf install -y zsh toolbox go ffmpeg SDL2-devel \
