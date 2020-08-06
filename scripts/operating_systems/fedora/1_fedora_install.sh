@@ -5,9 +5,9 @@ sudo dnf update -y
 #############################################
 
 # Set config files
-cp -r ../../config/tilix $HOME/.config
-cp ../../config/starship.toml $HOME/.config
-cp ../../zsh/*zshrc $HOME/.zshrc
+cp -r ../../../config/tilix $HOME/.config
+cp ../../../config/starship.toml $HOME/.config
+cp ../../../zsh/*zshrc $HOME/.zshrc
 
 # Enable rpm fusion's free&non-free repos
 sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
@@ -40,10 +40,10 @@ sudo dnf install -y qt5-qtstyleplugins
 echo -e "\n# qt dark theme fix\nexport QT_QPA_PLATFORMTHEME=gtk2" >> $HOME/.profile
 
 # Flutter
-git clone git@github.com:flutter/flutter.git -b stable --depth 1 $HOME/Documents/flutter
-$HOME/Documents/flutter/bin/flutter # set up sdk
-$HOME/Documents/flutter/bin/flutter config --no-analytics
-echo -e "\n# Flutter\nexport PATH=\"\$PATH:\$HOME/Documents/flutter/bin\"" >> $HOME/.profile
+# git clone git@github.com:flutter/flutter.git -b stable --depth 1 $HOME/Documents/flutter
+# $HOME/Documents/flutter/bin/flutter # set up sdk
+# $HOME/Documents/flutter/bin/flutter config --no-analytics
+# echo -e "\n# Flutter\nexport PATH=\"\$PATH:\$HOME/Documents/flutter/bin\"" >> $HOME/.profile
 
 #############################################
 # SHELL
