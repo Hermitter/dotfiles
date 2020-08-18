@@ -16,6 +16,10 @@ if ! [ -z "$giveSudo" ]; then
     usermod -aG sudo $username
 fi
 
+mkdir -p /home/$username/Desktop
+mkdir -p /home/$username/Downloads
+mkdir -p /home/$username/Documents
+
 # enable external access (ssh key)
 rsync --archive --chown=$username:$username ~/.ssh /home/$username
 
