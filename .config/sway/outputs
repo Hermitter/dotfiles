@@ -1,0 +1,21 @@
+############################
+### Input configuration ###
+# swaymsg -t get_inputs
+# man 5 sway-input
+
+# L390 Yoga TouchPad
+input "2:7:SynPS/2_Synaptics_TouchPad" {
+    dwt disabled
+    tap disabled
+    natural_scroll enabled
+    middle_emulation disabled
+    click_method clickfinger
+}
+
+############################
+### Output configuration ###
+# swaymsg -t get_outputs
+# man 5 sway-outpt
+
+# Example
+#   output HDMI-A-1 resolution 1920x1080 position 1920,0

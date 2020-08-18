@@ -1,5 +1,3 @@
-### Variables
-#
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Home row direction keys, like vim
@@ -7,66 +5,49 @@ set $left j
 set $down k
 set $up i
 set $right l
-# Your preferred terminal emulator
+# Terminal
 set $term kitty
-# Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
+# Application launcher
 set $menu ulauncher | xargs swaymsg exec --
-# Lock screen application
+# Lock screen
 set $lock ~/.config/sway/lock.sh
+# Screeonshot tool
+set $screenshot grim ~/Images/screenshots/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png
 
-### Output configuration
-#
 # Desktop Background
 output * bg $HOME/Pictures/Wallpapers/default.jpg fill
 
-#
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
-
 ### Idle configuration
 exec swayidle -w \
-         timeout 600 'swaylock -f -c 000000' \
-         timeout 300 'swaymsg "output * dpms off"' \
-              resume 'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock -f -c 000000'
+    timeout 500 'exec $lock' \
+    timeout 400 'swaymsg "output * dpms off"' \
+    after-resume 'swaymsg "output * dpms on"' \
+    before-sleep 'exec $lock'
 
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
+# This will lock your screen after x seconds of inactivity, then turn off
+# your displays after another y seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
-
-### Input configuration
-# L390 Yoga TouchPad
-input "2:7:SynPS/2_Synaptics_TouchPad" {
-    dwt disabled
-    tap disabled
-    natural_scroll enabled
-    middle_emulation disabled
-    click_method clickfinger
-}
-#
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for more information about this section.
 
 ### Key bindings
 #
 # Basics:
 #
     # Volume controls
-    bindsym XF86AudioMute exec amixer set Master toggle
-    bindsym XF86AudioLowerVolume exec amixer set Master 10%-
-    bindsym XF86AudioRaiseVolume exec amixer set Master 10%+
+    bindsym --locked XF86AudioMute exec amixer set Master toggle
+    bindsym --locked XF86AudioLowerVolume exec amixer set Master 10%-
+    bindsym --locked XF86AudioRaiseVolume exec amixer set Master 10%+
 
     # Brightness controls
-    bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
-    bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+    bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+    bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+
+    # Music controls
+    bindsym --locked XF86AudioPlay exec playerctl play-pause
+    bindsym --locked XF86AudioNext exec playerctl next
+    bindsym --locked XF86AudioPrev exec playerctl previous  
 
     # Lock screen
-    bindsym $mod+shift+return exec swaylock -c 000000
+    bindsym $mod+shift+return exec $lock
 
     # Start a terminal
     bindsym $mod+Return exec $term
@@ -113,6 +94,7 @@ input "2:7:SynPS/2_Synaptics_TouchPad" {
     bindsym $mod+Shift+Down move down
     bindsym $mod+Shift+Up move up
     bindsym $mod+Shift+Right move right
+
 #
 # Workspaces:
 #
@@ -140,6 +122,7 @@ input "2:7:SynPS/2_Synaptics_TouchPad" {
     bindsym $mod+Shift+8 move container to workspace 8
     bindsym $mod+Shift+9 move container to workspace 9
     bindsym $mod+Shift+0 move container to workspace 10
+
 #
 # Layout stuff:
 #
@@ -165,6 +148,7 @@ input "2:7:SynPS/2_Synaptics_TouchPad" {
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
+
 #
 # Scratchpad:
 #
@@ -177,6 +161,7 @@ input "2:7:SynPS/2_Synaptics_TouchPad" {
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
+
 #
 # Resizing containers:
 #
@@ -248,12 +233,27 @@ exec_always {
 # Cursor Theme
 seat seat0 xcursor_theme Adwaita 32
 
-# Temp exit shortcut
-bindsym $mod+Shift+m exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+# Temp exit shortcuts
+set $mode_system System: (l) lock, (e) logout, (s) suspend, (r) reboot, (S) shutdown, (R) UEFI
+mode "$mode_system" {
+    bindsym l exec $lock, mode "default"
+    bindsym e exit
+    bindsym s exec --no-startup-id systemctl suspend, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
+    bindsym Shift+r exec --no-startup-id systemctl reboot --firmware-setup, mode "default"
+
+    # return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Shift+m mode "$mode_system"
 
 #
 # Custom application rules
 #
 for_window [app_id="ulauncher"] border none
 
+# Import configs
+include outputs
 include /etc/sway/config.d/*
