@@ -242,11 +242,10 @@ exec_always {
     gsettings set $gnome-schema gtk-theme 'Materia-dark'
     gsettings set $gnome-schema icon-theme 'Flat-Remix-Blue-Dark'
     gsettings set $gnome-schema cursor-theme 'Adwaita'
-    gsettings set org.gnome.desktop.interface cursor-size 24
+    gsettings set org.gnome.desktop.interface cursor-size 32
 }
 
-
-# seat seat0 xcursor_theme Adwaita 24
+# Cursor Theme
 seat seat0 xcursor_theme Adwaita 32
 
 # Temp exit shortcut
