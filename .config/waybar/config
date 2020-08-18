@@ -1,0 +1,104 @@
+// vim:ft=json
+{
+	"layer": "top",
+	"position": "top",
+	"modules-left": [
+		"sway/workspaces",
+		"tray"
+	],
+	"modules-center": [
+		"clock#1",
+		"clock#2",
+		"clock#3"
+	],
+	"modules-right": [
+		"network",
+		"pulseaudio",
+		// "memory",
+		"cpu",
+		"battery",
+		"disk"
+	],
+	"sway/workspaces": {
+		"disable-scroll": true,
+		"format": "{name}"
+	},
+	"clock#1": {
+		"format": "{:%a}",
+		"tooltip": false
+	},
+	"clock#2": {
+		"format": "{:%H:%M}",
+		"tooltip": false
+	},
+	"clock#3": {
+		"format": "{:%m-%d}",
+		"tooltip": false
+	},
+	"pulseaudio": {
+		"format": "{icon} {volume:2}%",
+		"format-bluetooth": "{icon} {volume}%",
+		"format-muted": "MUTE",
+		"format-icons": {
+			"headphones": "",
+			"default": [
+				"",
+				""
+			]
+		},
+		"scroll-step": 5,
+		"on-click": "pavucontrol"
+		// "on-click-right": "pavucontrol"
+	},
+	"memory": {
+		"interval": 5,
+		"format": "Mem {}%"
+	},
+	"cpu": {
+		"interval": 5,
+		"format": "CPU {usage}%",
+		"on-click": "kitty -e htop"
+	},
+	"battery": {
+		// change BAT number if battery is not detected
+		"bat": "BAT0",
+		"format": "{icon} {capacity}%",
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			""
+		],
+		"format-charging": " {icon} {capacity}%",
+		"format-full": " {icon} Charged",
+		"interval": 30,
+		"states": {
+			"warning": 25,
+			"critical": 10
+		},
+		"tooltip": true,
+		"on-click": "gnome-power-statistics"
+	},
+	"disk": {
+		"interval": 5,
+		"format": "🖿 {percentage_used:2}% ",
+		"path": "/home/carlos",
+		"on-click": "kitty -e nnn"
+	},
+	"network": {
+		"format-wifi": " {essid}",
+		"format-ethernet": " {ifname}",
+		"format-disconnected": "NO NETWORK",
+		"format-disabled": "",
+		"on-click": "kitty -e nmtui"
+	},
+	"tray": {
+		"icon-size": 20
+	},
+	"custom/power": {
+		"format": "",
+		"on-click": "echo REPLACE WITH COMMAND",
+		"tooltip": false
+	}
+}

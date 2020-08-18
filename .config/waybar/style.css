@@ -1,0 +1,75 @@
+* {
+    font: 18px Roboto Regular;
+    text-shadow: 0em 0.08em black;
+    min-height: 30px;
+    color: #FDF0ED;
+}
+
+window#waybar {
+    background: rgba(16,16,28, 0.95);
+    border-bottom: 1px solid #E9436F
+}
+
+#clock, #temperature, #battery, #backlight, #network, #pulseaudio {
+    margin: 0px 10px 1.5px 10px;
+    /* border-radius: 90px; */
+}
+
+#clock, #temperature, #battery, #backlight, #network, #pulseaudio {
+    min-width: 49px;
+}
+
+#workspaces {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0px;
+}
+
+#workspaces button {
+    padding: 0px 7px 0px 7px;
+}
+
+#workspaces button.focused {
+    border-radius: 0;
+    background: #E9436F;
+    padding: 0px 7px 0px 7px;
+}
+
+#network {
+    font-size: 16.5px;
+}
+
+#backlight {
+    min-width: 53px;
+}
+
+#pulseaudio {
+    min-width: 55px;
+}
+
+#custom-power {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 90px;
+    padding: 0px 7.5px 0px 7.5px;
+    margin: 0px 10px 1.5px 20px;
+    font-size: 16.5px;
+    text-shadow: 0px 2px 4px black;
+}
+
+#clock {
+    margin-right: 4px;
+    margin-left: 4px;
+}
+
+#tray {
+    margin-right: 10px;
+    padding: 0px 10px 0px 10px;
+    border-bottom-color: #E9436F;
+    border-left-color: #E9436F;
+    border-style: solid;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+}
+
+#disk {
+    margin-right: 10px;
+}

@@ -1,0 +1,9 @@
+anchor=bottom-right
+border-radius=5
+default-timeout=5000
+height=500
+width=400
+background-color=#16161C
+text-color=#FDF0ED
+border-color=#E9436F
+font=Fira Code
