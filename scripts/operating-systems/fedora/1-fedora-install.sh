@@ -3,11 +3,14 @@ sudo dnf update -y
 #############################################
 # APPLICATIONS / DEPENDENCIES 
 #############################################
+DOTFILES=../../..
 
-# Set config files
-cp -r ../../../config/tilix $HOME/.config
-cp ../../../config/starship.toml $HOME/.config
-cp ../../../zsh/*zshrc $HOME/.zshrc
+# Get config files
+cp $DOTFILES/zsh/*zshrc $HOME/.zshrc
+cp -r $DOTFILES/.config/ $HOME/.config
+
+# Get wallpapers
+cp $DOTFILES/images/Wallpapers $HOME/Pictures/Wallpapers
 
 # Enable rpm fusion's free&non-free repos
 sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
@@ -16,7 +19,7 @@ sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-r
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 # Install essentials/dependencies
-sudo dnf install -y zsh toolbox go ffmpeg SDL2-devel \
+sudo dnf install -y zsh toolbox go ffmpeg SDL2-devel pavucontrol bat \
 openssl-devel openocd ncurses-compat-libs glib glib-devel gtk3-devel \
 java-latest-openjdk-devel java-1.8.0-openjdk-devel \
 arm-none-eabi-gdb minicom openocd
@@ -30,10 +33,6 @@ sudo dnf install -y geary lutris gnome-tweaks tilix steam wireshark
 # Set up Wireshark
 sudo usermod -a -G wireshark $USER
 sudo chmod +x /usr/bin/dumpcap # permissions fix
-
-# Geary dark theme fix for header
-mkdir -p $HOME/.config/geary
-echo -e "hr {\n\tcolor: #eeeeec \!important;\n\tbackground-color: #eeeeec \!important;\n}" >> $HOME/.config/geary/user-style.css
 
 # Qt dark theme fix (mainly wireshark)
 sudo dnf install -y qt5-qtstyleplugins
