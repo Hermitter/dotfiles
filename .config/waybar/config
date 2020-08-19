@@ -4,7 +4,8 @@
 	"position": "top",
 	"modules-left": [
 		"sway/workspaces",
-		"tray"
+		"tray",
+		"custom/spotify"
 	],
 	"modules-center": [
 		"clock#1",
@@ -100,5 +101,12 @@
 		"format": "",
 		"on-click": "echo REPLACE WITH COMMAND",
 		"tooltip": false
+	},
+	"custom/spotify": {
+		"interval": 1,
+		"return-type": "json",
+		"exec": "~/.config/waybar/modules/spotify.sh",
+		"exec-if": "pgrep spotify",
+		"escape": true
 	}
 }
