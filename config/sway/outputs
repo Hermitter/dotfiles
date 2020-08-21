@@ -21,7 +21,10 @@ input type:pointer {
 ############################
 ### Output configuration ###
 # swaymsg -t get_outputs
-# man 5 sway-outpt
+# man 5 sway-output
 
-# Example
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
+# Home Office Screens
+output "Goldstar Company Ltd LG ULTRAWIDE 0x0000E4C3" mode 2560x1080@74.990997Hz position 0,0
+output "Dell Inc. DELL U2417H XVNNT874156W" mode 1920x1080@60Hz transform 270 position -1080,-430
+workspace 2 output "Goldstar Company Ltd LG ULTRAWIDE 0x0000E4C3"
+workspace 1 output "Dell Inc. DELL U2417H XVNNT874156W"
