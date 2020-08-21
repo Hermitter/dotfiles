@@ -7,7 +7,7 @@ DOTFILES=../../..
 
 # Get config files
 cp $DOTFILES/zsh/*zshrc $HOME/.zshrc
-cp -r $DOTFILES/.config/ $HOME/.config
+cp -r $DOTFILES/config/ $HOME/.config
 
 # Get wallpapers
 cp $DOTFILES/images/Wallpapers $HOME/Pictures/Wallpapers
@@ -19,7 +19,8 @@ sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-r
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 # Install essentials/dependencies
-sudo dnf install -y zsh toolbox go ffmpeg SDL2-devel pavucontrol bat \
+sudo dnf install -y zsh toolbox go ffmpeg SDL2-devel pavucontrol \
+bat exa \
 openssl-devel openocd ncurses-compat-libs glib glib-devel gtk3-devel \
 java-latest-openjdk-devel java-1.8.0-openjdk-devel \
 arm-none-eabi-gdb minicom openocd

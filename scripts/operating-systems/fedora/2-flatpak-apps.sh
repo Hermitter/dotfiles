@@ -16,5 +16,5 @@ com.dropbox.Client
 # CONFIGS 
 #############################################
 
-# Set Signal Messanger to use system tray
+# Tell Signal to use system tray
 sudo sed -i -e '/Exec=/s/$/ --use-tray-icon/' /var/lib/flatpak/app/org.signal.Signal/current/active/export/share/applications/org.signal.Signal.desktop

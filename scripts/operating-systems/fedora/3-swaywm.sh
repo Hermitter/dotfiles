@@ -1,6 +1,6 @@
 # Setting up Sway Window Manager
 sudo dnf installl -y \
-    sway swaylock swayidle waybar mako \
+    sway swaylock swayidle wlogout waybar mako \
     nnn \
     ulauncher \
     brightnessctl \
@@ -10,5 +10,3 @@ sudo dnf installl -y \
     gnome-power-manager \
     wf-recorder \
     htop
-
-# Import config files
