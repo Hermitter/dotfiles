@@ -17,7 +17,7 @@ set $term kitty -o allow_remote_control=yes
 set $menu ulauncher | xargs swaymsg exec --
 
 # Lock screen
-set $lock $HOME/.config/sway/scripts/lock.sh
+set $lock swaylock -e -f
 
 # Logout screen
 set $logout wlogout -p layer-shell
