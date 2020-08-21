@@ -1,5 +1,5 @@
 # Setting up Sway Window Manager
-sudo dnf installl -y \
+sudo dnf install -y \
     sway swaylock swayidle wlogout waybar mako \
     nnn \
     ulauncher \
