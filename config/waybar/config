@@ -39,7 +39,7 @@
 	},
 	"pulseaudio": {
 		"format": "{icon} {volume}%",
-		"format-bluetooth": "{icon} {volume}%",
+		"format-bluetooth": "{icon} {volume}%",
 		"format-muted": "MUTE",
 		"format-icons": {
 			"headphones": "",
@@ -57,7 +57,7 @@
 	},
 	"cpu": {
 		"interval": 5,
-		"format": "CPU {usage}%",
+		"format": "CPU {usage}% ",
 		"on-click": "kitty -e htop"
 	},
 	"battery": {
@@ -83,13 +83,13 @@
 	},
 	"disk": {
 		"interval": 5,
-		"format": "🖿 {percentage_used:2}% ",
+		"format": "🖿 {percentage_used:2}%",
 		"path": "/home/carlos",
 		"on-click": "kitty -e nnn"
 	},
 	"network": {
 		"format-wifi": " {essid}",
-		"format-ethernet": " {ifname}",
+		"format-ethernet": " WIRED",
 		"format-disconnected": "NO NETWORK",
 		"format-disabled": "",
 		"on-click": "kitty -e nmtui"

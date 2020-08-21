@@ -9,10 +9,8 @@ for pair in "$@"; do
 
     # Edit existing config
     if grep -q "$1=" $GTK_CONF_FILE; then
-        # Avoid editing if config already exists
-        echo setting found
+        # Avoid editing, if there's nothing to change
         if ! grep -q -x "$1=$2" $GTK_CONF_FILE; then
-            echo editing settings
             # 1. Match line with $1 if it's at the beggining
             # 2. Replace with new setting ($1=$2).
             sed -i "s/^$1.*/$1=$2/gm" $GTK_CONF_FILE
