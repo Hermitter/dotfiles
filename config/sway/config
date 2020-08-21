@@ -277,5 +277,5 @@ for_window [app_id="ulauncher"] border none
 #-------------------------------------------------------------------------------
 # ~~~~~ Imported Configs ~~~~~
 #-------------------------------------------------------------------------------
-include outputs
+include devices
 include /etc/sway/config.d/*
