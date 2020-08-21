@@ -23,7 +23,7 @@ sudo dnf install -y zsh toolbox go ffmpeg SDL2-devel pavucontrol \
 openssl-devel openocd ncurses-compat-libs glib glib-devel gtk3-devel \
 java-latest-openjdk-devel java-1.8.0-openjdk-devel \
 arm-none-eabi-gdb minicom openocd \
-bat exa NetworkManager-tui
+bat exa NetworkManager-tui pavucontrol
 
 sudo dnf groupinstall -y "Development Tools"
 sudo dnf install -y texlive-scheme-full
