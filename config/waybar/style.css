@@ -10,8 +10,12 @@ window#waybar {
     border-bottom: 1px solid #E9436F;
 }
 
-#clock, #temperature, #battery, #backlight, #network, #pulseaudio {
+#clock, #temperature, #backlight, #network, #pulseaudio {
     margin: 0px 10px 1.5px 10px;
+}
+
+#battery {
+    margin-left: 1px;
 }
 
 #clock, #temperature, #battery, #backlight, #network, #pulseaudio {
