@@ -1,41 +1,48 @@
+#-------------------------------------------------------------------------------
+# ~~~~~ Global Vars ~~~~~
+#-------------------------------------------------------------------------------
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
+
 # Home row direction keys, like vim
 set $left j
 set $down k
 set $up i
 set $right l
+
 # Terminal
-set $term kitty
+set $term kitty -o allow_remote_control=yes
+
 # Application launcher
 set $menu ulauncher | xargs swaymsg exec --
+
 # Lock screen
-set $lock ~/.config/sway/lock.sh
+set $lock $HOME/.config/sway/scripts/lock.sh
+
+# Logout screen
+set $logout wlogout -p layer-shell
+
 # Screeonshot tool
-set $screenshot grim ~/Images/screenshots/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png
+set $screenshot grim $HOME/Pictures/screenshot-$(date +"%Y-%m-%d-%H-%M-%S").png && notify-send 'Screenshot Taken' "$(date)"
 
-# Desktop Background
-output * bg $HOME/Pictures/Wallpapers/default.jpg fill
-
-### Idle configuration
+#-------------------------------------------------------------------------------
+# ~~~~~ Lock Screen ~~~~~
+#-------------------------------------------------------------------------------
 exec swayidle -w \
-    timeout 500 'exec $lock' \
-    timeout 400 'swaymsg "output * dpms off"' \
-    after-resume 'swaymsg "output * dpms on"' \
+    timeout 300 'exec $lock' \
+    timeout 600 'exec systemctl suspend' \
     before-sleep 'exec $lock'
 
-# This will lock your screen after x seconds of inactivity, then turn off
-# your displays after another y seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
+# Lock screen
+bindsym $mod+shift+return exec $lock
 
-### Key bindings
-#
-# Basics:
-#
+#-------------------------------------------------------------------------------
+# ~~~~~ General Keybindings ~~~~~
+#-------------------------------------------------------------------------------
     # Volume controls
     bindsym --locked XF86AudioMute exec amixer set Master toggle
-    bindsym --locked XF86AudioLowerVolume exec amixer set Master 10%-
-    bindsym --locked XF86AudioRaiseVolume exec amixer set Master 10%+
+    bindsym --locked XF86AudioLowerVolume exec amixer set Master unmute && amixer set Master 10%-
+    bindsym --locked XF86AudioRaiseVolume exec amixer set Master unmute && amixer set Master 10%+
 
     # Brightness controls
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
@@ -46,8 +53,11 @@ exec swayidle -w \
     bindsym --locked XF86AudioNext exec playerctl next
     bindsym --locked XF86AudioPrev exec playerctl previous  
 
-    # Lock screen
-    bindsym $mod+shift+return exec $lock
+    # Screenshot
+    bindsym $mod+p exec $screenshot
+
+    # Logout screen
+    bindsym $mod+control+shift+return exec $logout
 
     # Start a terminal
     bindsym $mod+Return exec $term
@@ -70,9 +80,26 @@ exec swayidle -w \
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
-#
-# Moving around:
-#
+
+    # Hidden exit menu
+    set $mode_system System: (l) lock, (e) logout, (s) suspend, (r) reboot, (S) shutdown, (R) UEFI
+    mode "$mode_system" {
+        bindsym l exec $lock, mode "default"
+        bindsym e exit
+        bindsym s exec --no-startup-id systemctl suspend, mode "default"
+        bindsym r exec --no-startup-id systemctl reboot, mode "default"
+        bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
+        bindsym Shift+r exec --no-startup-id systemctl reboot --firmware-setup, mode "default"
+
+        # return to default mode
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+    }
+    bindsym $mod+Shift+m mode "$mode_system"
+
+#-------------------------------------------------------------------------------
+# ~~~~~ Navigation Settings ~~~~~
+#-------------------------------------------------------------------------------
     # Move your focus around
     bindsym $mod+$left focus left
     bindsym $mod+$down focus down
@@ -95,9 +122,9 @@ exec swayidle -w \
     bindsym $mod+Shift+Up move up
     bindsym $mod+Shift+Right move right
 
-#
-# Workspaces:
-#
+#-------------------------------------------------------------------------------
+# ~~~~~ Workspace Settings ~~~~~
+#-------------------------------------------------------------------------------
     # Switch workspaces
     bindsym $mod+tab workspace next
     bindsym $mod+shift+tab workspace prev
@@ -123,9 +150,9 @@ exec swayidle -w \
     bindsym $mod+Shift+9 move container to workspace 9
     bindsym $mod+Shift+0 move container to workspace 10
 
-#
-# Layout stuff:
-#
+#-------------------------------------------------------------------------------
+# ~~~~~ Layout Settings ~~~~~
+#-------------------------------------------------------------------------------
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
@@ -149,9 +176,9 @@ exec swayidle -w \
     # Move focus to the parent container
     bindsym $mod+a focus parent
 
-#
-# Scratchpad:
-#
+#-------------------------------------------------------------------------------
+# ~~~~~ Scratchpad ~~~~~
+#-------------------------------------------------------------------------------
     # Sway has a "scratchpad", which is a bag of holding for windows.
     # You can send windows there and get them back later.
 
@@ -162,20 +189,16 @@ exec swayidle -w \
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
 
-#
-# Resizing containers:
-#
+#-------------------------------------------------------------------------------
+# ~~~~~ Resize Containers Settings ~~~~~
+#-------------------------------------------------------------------------------
 mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
+    # resize with variable keys
     bindsym $left resize shrink width 10px
     bindsym $down resize grow height 10px
     bindsym $up resize shrink height 10px
     bindsym $right resize grow width 10px
-
-    # Ditto, with arrow keys
+    # resize with arrow keys
     bindsym Left resize shrink width 10px
     bindsym Down resize grow height 10px
     bindsym Up resize shrink height 10px
@@ -187,18 +210,19 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-#
-# Status Bar:
-#
+#-------------------------------------------------------------------------------
+# ~~~~~ Sway Theming ~~~~~
+#-------------------------------------------------------------------------------
+# Desktop Background
+output * bg $HOME/.config/sway/background.jpg fill
+
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    # Alternative notification bar
+    # Alternative top bar
     swaybar_command waybar
 }
 
-#
-# Window Styling
-#
+# Container costylinhlors
 set $bg #16161C
 set $fg #FDF0ED
 set $br #E9436F
@@ -216,44 +240,42 @@ default_border pixel 1
 default_floating_border pixel 1
 titlebar_padding 6 6
 
-#
-# Commands
-#
-set $gnome-schema org.gnome.desktop.interface
+#-------------------------------------------------------------------------------
+# ~~~~~ GTK Theming ~~~~~
+#-------------------------------------------------------------------------------
+set $app_theme Materia-dark
+set $icon_theme Flat-Remix-Blue-Dark
+set $cursor_theme Adwaita
+set $cusor_size 32
+
+set $gnome_schema org.gnome.desktop.interface
 exec_always {
     # notifications
     mako
-    # GTK theming
-    gsettings set $gnome-schema gtk-theme 'Materia-dark'
-    gsettings set $gnome-schema icon-theme 'Flat-Remix-Blue-Dark'
-    gsettings set $gnome-schema cursor-theme 'Adwaita'
-    gsettings set org.gnome.desktop.interface cursor-size 32
+    # Set GTK theming
+    gsettings set $gnome_schema gtk-theme '$app_theme'
+    gsettings set $gnome_schema icon-theme '$icon_theme'
+    gsettings set $gnome_schema cursor-theme '$cursor_theme'
+    gsettings set org.gnome.desktop.interface cursor-size $cusor_size
+
+    # Set GTK theming workaround (required by certain apps)
+    $HOME/.config/sway/scripts/set_gtk_conf.sh \
+    gtk-theme-name:$app_theme \
+    icon-theme-name:$icon_theme \
+    cursor-theme-name:$cursor_theme \
+    gtk-application-prefer-dark-theme:1
 }
 
 # Cursor Theme
-seat seat0 xcursor_theme Adwaita 32
+seat seat0 xcursor_theme $cursor_theme $cusor_size
 
-# Temp exit shortcuts
-set $mode_system System: (l) lock, (e) logout, (s) suspend, (r) reboot, (S) shutdown, (R) UEFI
-mode "$mode_system" {
-    bindsym l exec $lock, mode "default"
-    bindsym e exit
-    bindsym s exec --no-startup-id systemctl suspend, mode "default"
-    bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
-    bindsym Shift+r exec --no-startup-id systemctl reboot --firmware-setup, mode "default"
-
-    # return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+Shift+m mode "$mode_system"
-
-#
-# Custom application rules
-#
+#-------------------------------------------------------------------------------
+# ~~~~~ Cusotom Application Rules ~~~~~
+#-------------------------------------------------------------------------------
 for_window [app_id="ulauncher"] border none
 
-# Import configs
+#-------------------------------------------------------------------------------
+# ~~~~~ Imported Configs ~~~~~
+#-------------------------------------------------------------------------------
 include outputs
 include /etc/sway/config.d/*

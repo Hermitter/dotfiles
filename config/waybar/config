@@ -18,7 +18,8 @@
 		// "memory",
 		"cpu",
 		"battery",
-		"disk"
+		"disk",
+		"custom/power"
 	],
 	"sway/workspaces": {
 		"disable-scroll": true,
@@ -37,7 +38,7 @@
 		"tooltip": false
 	},
 	"pulseaudio": {
-		"format": "{icon} {volume:2}%",
+		"format": "{icon} {volume}%",
 		"format-bluetooth": "{icon} {volume}%",
 		"format-muted": "MUTE",
 		"format-icons": {
@@ -49,11 +50,10 @@
 		},
 		"scroll-step": 5,
 		"on-click": "pavucontrol"
-		// "on-click-right": "pavucontrol"
 	},
 	"memory": {
 		"interval": 5,
-		"format": "Mem {}%"
+		"format": "RAM {}%"
 	},
 	"cpu": {
 		"interval": 5,
@@ -99,7 +99,7 @@
 	},
 	"custom/power": {
 		"format": "",
-		"on-click": "echo REPLACE WITH COMMAND",
+		"on-click": "wlogout -p layer-shell",
 		"tooltip": false
 	},
 	"custom/spotify": {
@@ -107,6 +107,9 @@
 		"return-type": "json",
 		"exec": "~/.config/waybar/modules/spotify.sh",
 		"exec-if": "pgrep spotify",
-		"escape": true
+		"escape": true,
+		"on-click": "playerctl play-pause",
+		"on-click-right": "playerctl next",
+		"on-click-middle": "playerctl previous"
 	}
 }

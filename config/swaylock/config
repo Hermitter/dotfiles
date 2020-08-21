@@ -1,3 +1,4 @@
+image=$HOME/.config/sway/background.jpg
 indicator-caps-lock
 ignore-empty-password
 show-failed-attempts

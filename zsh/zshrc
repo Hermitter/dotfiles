@@ -1,21 +1,57 @@
+#-------------------------------------------------------------------------------
+# ~~~~~ ZSH Config ~~~~~
+#-------------------------------------------------------------------------------
 # Path to your oh-my-zsh installation.
-export ZSH="/home/$USER/.oh-my-zsh"
-
-# General Settings
+export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="dallas"
 COMPLETION_WAITING_DOTS="true"
 plugins=(zsh-syntax-highlighting git zsh-autosuggestions history-substring-search)
 
-# User configuration
+#-------------------------------------------------------------------------------
+# ~~~~~ Functions ~~~~~
+#-------------------------------------------------------------------------------
+function exists() {
+    hash "$1" &> /dev/null
+}
+
+#-------------------------------------------------------------------------------
+# ~~~~~ Configs ~~~~~
+#-------------------------------------------------------------------------------
 git config --global pager.branch false
 # alias git_RESET_FORK="git remote add upstream /url/to/original/repo && git fetch upstream &&git checkout master &&git reset --hard upstream/master && git push origin master --force "
+
+#-------------------------------------------------------------------------------
+# ~~~~~ Aliases ~~~~~
+#-------------------------------------------------------------------------------
 alias git_RESET="git reset --hard origin/master && git pull origin master"
-alias docker="podman"
 alias clear="tput reset"
 alias volume="pavucontrol"
 alias files="nautilus"
 alias open="xdg-open"
+alias emacs="emacs --no-window-system"
+
+# Pick CLI list command
+if exists exa; then
+    alias a='exa --header --git'
+else
+    alias a='ls'
+fi
+
+# Terminal file viewer (kitty terminal only)
+# if [[ $TERM == xterm-kitty ]] && exists nnn; then
+#     export NNN_PLUG='f:finder;o:fzopen;p:preview-tui;d:diffs;t:nmount;'
+#     export NNN_FIFO=/tmp/nnn.fifo
+#     alias nnn='nnn -a -P p'
+# fi
+
+#-------------------------------------------------------------------------------
+# ~~~~~ Variables ~~~~~
+#-------------------------------------------------------------------------------
 export TRASH="$HOME/.local/share/Trash/files" 
+
+#-------------------------------------------------------------------------------
+# ~~~~~ Misc ~~~~~
+#-------------------------------------------------------------------------------
 
 # Imports
 source $ZSH/oh-my-zsh.sh
