@@ -28,7 +28,7 @@ set $screenshot grim $HOME/Pictures/screenshot-$(date +"%Y-%m-%d-%H-%M-%S").png 
 #-------------------------------------------------------------------------------
 # ~~~~~ Lock Screen ~~~~~
 #-------------------------------------------------------------------------------
-# Note: logout/login to see changes
+# Idle behavior (logout/login to see changes)
 exec swayidle -w \
     timeout 300 'exec $lock' \
     timeout 600 'exec systemctl suspend' \
