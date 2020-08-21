@@ -214,7 +214,7 @@ bindsym $mod+r mode "resize"
 # ~~~~~ Sway Theming ~~~~~
 #-------------------------------------------------------------------------------
 # Desktop Background
-output * bg $HOME/.config/sway/background.jpg fit "#120300"
+output * bg $HOME/.config/sway/background.jpg fit "#140202"
 
 # Read `man 5 sway-bar` for more information about this section.
 bar {
