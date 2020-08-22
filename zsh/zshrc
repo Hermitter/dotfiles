@@ -29,6 +29,7 @@ alias volume="pavucontrol"
 alias files="nautilus"
 alias open="xdg-open"
 alias emacs="emacs --no-window-system"
+alias copy="wl-copy"
 
 # Pick CLI list command
 if exists exa; then
