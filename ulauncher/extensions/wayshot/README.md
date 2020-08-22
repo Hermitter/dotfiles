@@ -27,5 +27,8 @@ Start Ulauncher
 ulauncher
 ```
 
+# Issues
+- Notifications are sent even if the screenshot is cancelled
+
 # Credits
 - color picker icon: [freepick](https://www.flaticon.com/free-icon/color-picker_2547487?term=color%20picker&page=1&position=1)
