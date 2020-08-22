@@ -9,4 +9,7 @@ sudo dnf install -y \
     cava \
     gnome-power-manager \
     wf-recorder \
-    htop
+    htop \
+    swappy \
+    slurp \
+    grim
