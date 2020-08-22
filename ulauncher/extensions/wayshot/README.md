@@ -6,7 +6,7 @@ A [Ulauncher](https://github.com/Ulauncher/Ulauncher) extension to take screensh
 It also includes a color picker! 
 
 # Requirements
-- `notify-send`: screenshot notifications
+- `notify-send`: Screenshot notifications
 - [`grim`](https://github.com/emersion/grim): Wayland screenshots
 - [`slurp`](https://github.com/emersion/slurp): Region selector
 
