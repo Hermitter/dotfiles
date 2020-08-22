@@ -11,7 +11,7 @@ set $up i
 set $right l
 
 # Terminal
-set $term kitty -o allow_remote_control=yes
+set $term kitty
 
 # Application launcher
 set $menu ulauncher | xargs swaymsg exec --
@@ -22,8 +22,13 @@ set $lock swaylock -e -f
 # Logout screen
 set $logout wlogout -p layer-shell
 
-# Screeonshot tool
-set $screenshot grim $HOME/Pictures/screenshot-$(date +"%Y-%m-%d-%H-%M-%S").png && notify-send 'Screenshot Taken' "$(date)"
+# Screeonshot tools
+set $screenshot_name $HOME/Pictures/screenshot-$(date +"%Y-%m-%d-%H-%M-%S").png
+set $notify_screenshot notify-send 'Screenshot Taken' "$(date)"
+
+set $screenshot_monitor grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') $screenshot_name && $notify_screenshot
+set $screenshot_window grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.focused?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"')" $screenshot_name && $notify_screenshot
+set $screenshot_selection grim -g "$(slurp)" - | wl-copy && $notify_screenshot
 
 #-------------------------------------------------------------------------------
 # ~~~~~ Lock Screen ~~~~~
@@ -55,7 +60,7 @@ bindsym $mod+shift+return exec $lock
     bindsym --locked XF86AudioPrev exec playerctl previous  
 
     # Screenshot
-    bindsym $mod+p exec $screenshot
+    bindsym $mod+p exec $screenshot_monitor
 
     # Logout screen
     bindsym $mod+control+shift+return exec $logout
@@ -184,11 +189,11 @@ bindsym $mod+shift+return exec $lock
     # You can send windows there and get them back later.
 
     # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+minus move scratchpad
+    bindsym $mod+Shift+grave move scratchpad
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+minus scratchpad show
+    bindsym $mod+grave scratchpad show
 
 #-------------------------------------------------------------------------------
 # ~~~~~ Resize Containers Settings ~~~~~
@@ -257,13 +262,14 @@ exec_always {
     gsettings set $gnome_schema gtk-theme '$app_theme'
     gsettings set $gnome_schema icon-theme '$icon_theme'
     gsettings set $gnome_schema cursor-theme '$cursor_theme'
-    gsettings set org.gnome.desktop.interface cursor-size $cusor_size
+    gsettings set $gnome_schema cursor-size '$cusor_size'
 
     # Set GTK theming workaround (required by certain apps)
     $HOME/.config/sway/scripts/set_gtk_conf.sh \
     gtk-theme-name:$app_theme \
-    icon-theme-name:$icon_theme \
-    cursor-theme-name:$cursor_theme \
+    gtk-icon-theme-name:$icon_theme \
+    gtk-cursor-theme-name:$cursor_theme \
+    gtk-cursor-theme-size:$cusor_size \
     gtk-application-prefer-dark-theme:1
 }
 
