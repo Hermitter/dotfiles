@@ -49,7 +49,7 @@
 			]
 		},
 		"scroll-step": 5,
-		"on-click": "pavucontrol"
+		"on-click": "~/.config/sway/scripts/open_floating.sh  pavucontrol"
 	},
 	"memory": {
 		"interval": 5,
@@ -58,7 +58,7 @@
 	"cpu": {
 		"interval": 5,
 		"format": "CPU {usage}% ",
-		"on-click": "kitty -e htop"
+		"on-click": "~/.config/sway/scripts/open_floating.sh  kitty -e htop"
 	},
 	"battery": {
 		// change BAT number if battery is not detected
@@ -79,7 +79,7 @@
 			"critical": 10
 		},
 		"tooltip": true,
-		"on-click": "gnome-power-statistics"
+		"on-click": "~/.config/sway/scripts/open_floating.sh gnome-power-statistics"
 	},
 	"disk": {
 		"interval": 5,
@@ -92,7 +92,7 @@
 		"format-ethernet": " WIRED",
 		"format-disconnected": "NO NETWORK",
 		"format-disabled": "",
-		"on-click": "kitty -e nmtui"
+		"on-click": "~/.config/sway/scripts/open_floating.sh  kitty -e nmtui"
 	},
 	"tray": {
 		"icon-size": 20
@@ -111,7 +111,7 @@
 	}
 }
 
-# Issue: commands make custom modules disappear
+# Issue: commands make custom module disappear
 # Below are the removed spotify commans:
 # "on-click": "playerctl play-pause",
 # "on-click-right": "playerctl next",
