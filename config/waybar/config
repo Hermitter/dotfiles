@@ -107,9 +107,12 @@
 		"return-type": "json",
 		"exec": "~/.config/waybar/modules/spotify.sh",
 		"exec-if": "pgrep spotify",
-		"escape": true,
-		"on-click": "playerctl play-pause",
-		"on-click-right": "playerctl next",
-		"on-click-middle": "playerctl previous"
+		"escape": true
 	}
 }
+
+# Issue: commands make custom modules disappear
+# Below are the removed spotify commans:
+# "on-click": "playerctl play-pause",
+# "on-click-right": "playerctl next",
+# "on-click-middle": "playerctl previous"
