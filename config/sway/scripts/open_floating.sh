@@ -1,4 +1,6 @@
-# I love you: https://github.com/Synthetica9/sway-floating
+#!/bin/sh
+# I love you: https://github.com/Synthetica9/sway-floating.
+# Description: opens an application in a floating window (above tiled windows).
 
 $@ &
 pid=$!
