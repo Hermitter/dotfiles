@@ -25,6 +25,9 @@ input type:pointer {
 # swaymsg -t get_outputs
 # man 5 sway-output
 
+# Set workspace for display 1
+workspace 1 output eDP-1 
+
 # Home Office Screens
 # Note: Do not use negative values for position. XWayland apps won't read mouse inputs.
 output "Goldstar Company Ltd LG ULTRAWIDE 0x0000E4C3" mode 2560x1080@74.990997Hz position 2560,430
