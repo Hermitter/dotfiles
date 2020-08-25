@@ -1,6 +1,6 @@
 #!/bin/sh
-# Description: Edits/adds to the gtk config file.
-# Some apps require this to apply the proper theme.
+# This script edits/adds to the gtk config file.
+# Some apps require this to apply the proper theme
 GTK_CONF_FILE=$HOME/.config/gtk-3.0/settings.ini
 
 for pair in "$@"; do

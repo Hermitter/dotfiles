@@ -1,6 +1,4 @@
-#!/bin/sh
-# I love you: https://github.com/Synthetica9/sway-floating.
-# Description: opens an application in a floating window (above tiled windows).
+# I love you: https://github.com/Synthetica9/sway-floating
 
 $@ &
 pid=$!
@@ -11,10 +9,10 @@ swaymsg -t subscribe -m '[ "window" ]' \
 
 subscription=$!
 
-echo Going into wait state
+# echo Going into wait state
 
 # Wait for our process to close
 tail --pid=$pid -f /dev/null
 
-echo Killing subscription
+# echo Killing subscription
 kill $subscription
