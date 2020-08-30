@@ -231,7 +231,7 @@ bar {
 # Container costylinhlors
 set $bg #16161C
 set $fg #FDF0ED
-set $br #E9436F
+set $br #FF1B6A
 
 # class                 border  backgr. text    indicator child_border
 client.focused          $br     $br     $fg     $br       $br

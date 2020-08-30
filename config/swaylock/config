@@ -7,7 +7,7 @@ show-failed-attempts
 indicator-thickness=5
 font-size=1
 ring-ver-color=21BFC2ff
-ring-wrong-color=DA103Fff
+ring-wrong-color=FF1B6AFF
 ring-clear-color=2E303Eff
 inside-color=00000095
 inside-ver-color=00000095

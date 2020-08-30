@@ -83,7 +83,7 @@
 	"disk": {
 		"interval": 5,
 		"format": "🖿 {percentage_used:2}%",
-		"path": "/home/carlos",
+		"path": "/home",
 		"on-click": "kitty -e nnn"
 	},
 	"network": {
