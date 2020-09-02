@@ -19,17 +19,17 @@ sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-r
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 # Install essentials/dependencies
-sudo dnf install -y zsh toolbox go ffmpeg SDL2-devel pavucontrol \
+sudo dnf install -y zsh fish toolbox go ffmpeg SDL2-devel \
 openssl-devel openocd ncurses-compat-libs glib glib-devel gtk3-devel \
 java-latest-openjdk-devel \
 arm-none-eabi-gdb minicom openocd \
-bat exa NetworkManager-tui pavucontrol
+bat exa
 
 sudo dnf groupinstall -y "Development Tools"
 sudo dnf install -y texlive-scheme-full
 
 # Install apps
-sudo dnf install -y geary lutris gnome-tweaks tilix steam wireshark
+sudo dnf install -y geary lutris gnome-tweaks tilix steam wireshark pavucontrol
 
 # Set up Wireshark
 sudo usermod -a -G wireshark $USER

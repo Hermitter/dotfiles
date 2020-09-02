@@ -12,4 +12,5 @@ sudo dnf install -y \
     htop \
     swappy \
     slurp \
-    grim
+    grim \
+    NetworkManager-tui
