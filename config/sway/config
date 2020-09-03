@@ -282,6 +282,8 @@ seat seat0 xcursor_theme $cursor_theme $cusor_size
 #-------------------------------------------------------------------------------
 for_window [app_id="ulauncher"] border none
 
+for_window [app_id="firefox-trunk"] inhibit_idle fullscreen
+
 #-------------------------------------------------------------------------------
 # ~~~~~ Imported Configs ~~~~~
 #-------------------------------------------------------------------------------

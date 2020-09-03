@@ -1,3 +1,5 @@
+#!/bin/sh
+# Start an app in floating mode, instead of tiling.
 # I love you: https://github.com/Synthetica9/sway-floating
 
 $@ &
