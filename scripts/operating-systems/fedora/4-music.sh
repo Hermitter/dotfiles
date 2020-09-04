@@ -5,7 +5,7 @@
 #############################################
 sudo dnf install -y \
 qsynth amsynth \
-ardour5
+ardour5 
 
 flatpak install -y net.sourceforge.VMPK
 
@@ -14,6 +14,7 @@ flatpak install -y net.sourceforge.VMPK
 #############################################
 sudo dnf install -y \
 jack-audio-connection-kit-dbus \
+jack-audio-connection-kit-example-clients \
 qjackctl
 
 # Enable permissions for user (logout/login to apply changes)
