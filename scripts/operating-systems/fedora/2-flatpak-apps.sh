@@ -4,7 +4,7 @@
 # APPLICATIONS 
 #############################################
 
-flatpak install flathub \
+flatpak install -y flathub \
 com.spotify.Client \
 org.telegram.desktop \
 org.signal.Signal \
