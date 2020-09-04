@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+DOTFILES=../../..
+
 # Setting up Sway Window Manager
 sudo dnf install -y \
     sway swaylock swayidle wlogout waybar mako \
