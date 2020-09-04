@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-DOTFILES=../../..
 
 # Setting up Sway Window Manager
 sudo dnf install -y \
