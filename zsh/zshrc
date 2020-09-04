@@ -25,6 +25,7 @@ git config --global pager.branch false
 #-------------------------------------------------------------------------------
 alias git_RESET="git reset --hard origin/master && git pull origin master"
 alias clear="tput reset"
+alias c="tput reset"
 alias volume="pavucontrol"
 alias files="nautilus"
 alias open="xdg-open"
