@@ -57,7 +57,7 @@
 	"cpu": {
 		"interval": 5,
 		"format": "CPU {usage}% ",
-		"on-click": "~/.config/sway/scripts/open_floating.sh kitty -e htop"
+		"on-click": "~/.config/sway/scripts/open_floating.sh kitty -e bashtop"
 	},
 	"battery": {
 		// change BAT number if battery is not detected
