@@ -23,8 +23,8 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 sudo dnf install -y zsh fish toolbox go ffmpeg SDL2-devel \
 openssl-devel openocd ncurses-compat-libs glib glib-devel gtk3-devel \
 java-latest-openjdk-devel \
-arm-none-eabi-gdb minicom openocd \
-bat exa
+minicom openocd \
+bat exa bashtop
 
 sudo dnf groupinstall -y "Development Tools"
 sudo dnf install -y texlive-scheme-full
