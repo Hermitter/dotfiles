@@ -10,6 +10,9 @@ DOTFILES=../../..
 cp $DOTFILES/zsh/*zshrc $HOME/.zshrc
 cp -r $DOTFILES/config/ $HOME/.config
 
+# Get personal scripts
+cp -r $DOTFILES/bin/ $HOME/.bin
+
 # Get wallpapers
 cp $DOTFILES/images/Wallpapers $HOME/Pictures/Wallpapers
 
