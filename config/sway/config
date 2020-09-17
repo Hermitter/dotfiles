@@ -46,9 +46,15 @@ bindsym $mod+shift+return exec $lock
 # ~~~~~ General Keybindings ~~~~~
 #-------------------------------------------------------------------------------
     # Volume controls
+    #-- Media keys
     bindsym --locked XF86AudioMute exec amixer set Master toggle
     bindsym --locked XF86AudioLowerVolume exec amixer set Master unmute && amixer set Master 5%-
     bindsym --locked XF86AudioRaiseVolume exec amixer set Master unmute && amixer set Master 5%+
+    #-- Arrow keys
+    bindsym --locked $mod+control+alt+Up exec amixer set Master unmute && amixer set Master 5%+
+    bindsym --locked $mod+control+alt+Down exec amixer set Master unmute && amixer set Master 5%-
+    bindsym --locked $mod+control+alt+Left exec amixer set Master toggle
+    bindsym --locked $mod+control+alt+Right exec amixer set Master toggle
 
     # Brightness controls
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
@@ -275,7 +281,6 @@ exec_always {
 
 # Cursor Theme
 seat seat0 xcursor_theme $cursor_theme $cusor_size
-
 
 #-------------------------------------------------------------------------------
 # ~~~~~ Cusotom Application Rules ~~~~~
