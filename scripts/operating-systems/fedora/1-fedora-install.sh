@@ -33,7 +33,15 @@ sudo dnf groupinstall -y "Development Tools"
 sudo dnf install -y texlive-scheme-full
 
 # Install apps
-sudo dnf install -y geary lutris gnome-tweaks tilix steam wireshark pavucontrol
+sudo dnf install -y \
+geary \
+lutris \
+gnome-tweaks \
+tilix \
+steam \
+wireshark \
+pavucontrol \
+transmission-gtk
 
 # Set up Wireshark
 sudo usermod -a -G wireshark $USER
