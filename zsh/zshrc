@@ -14,6 +14,16 @@ function exists() {
     hash "$1" &> /dev/null
 }
 
+# Scan a path for viruses
+function virus_scan() {
+    if [ $1 ]
+    then
+        clamscan --bell -r -i $1
+    else
+        echo "Error: missing path"
+    fi
+}
+
 #-------------------------------------------------------------------------------
 # ~~~~~ Configs ~~~~~
 #-------------------------------------------------------------------------------
@@ -31,6 +41,7 @@ alias files="nautilus"
 alias open="xdg-open"
 alias emacs="emacs --no-window-system"
 alias copy="wl-copy"
+alias scanvirus="virus_scan"
 
 # Pick CLI list command
 if exists exa; then
