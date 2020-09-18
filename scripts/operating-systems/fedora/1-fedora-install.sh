@@ -41,7 +41,11 @@ tilix \
 steam \
 wireshark \
 pavucontrol \
-transmission-gtk
+transmission-gtk \
+clamtk
+
+# Update virus database for ClamAV antivirus
+sudo freshclam
 
 # Set up Wireshark
 sudo usermod -a -G wireshark $USER
