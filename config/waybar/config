@@ -17,7 +17,7 @@
 		"pulseaudio",
 		// "backlight",
 		"cpu",
-		"memory",
+		// "memory",
 		"battery",
 		"disk",
 		"custom/power"
