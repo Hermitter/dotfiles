@@ -12,17 +12,41 @@
 		"clock#3"
 	],
 	"modules-right": [
+		"idle_inhibitor",
 		"network",
 		"pulseaudio",
-		// "memory",
+		// "backlight",
 		"cpu",
+		"memory",
 		"battery",
 		"disk",
 		"custom/power"
 	],
+	// Modules configuration
 	"sway/workspaces": {
-		"disable-scroll": true,
-		"format": "{name}"
+		"disable-scroll": false,
+		"all-outputs": true,
+		"format": "{icon}",
+		"icon-size": 15
+	},
+	"sway/mode": {
+		"format": "<span style=\"italic\">{}</span>"
+	},
+	"sway/window": {
+		"format": {}
+		// "max-length": 40,
+	},
+	"tray": {
+		"icon-size": 15,
+		"spacing": 15
+	},
+	"idle_inhibitor": {
+		"tooltip": false,
+		"format": "{icon}",
+		"format-icons": {
+			"activated": "",
+			"deactivated": ""
+		}
 	},
 	"clock#1": {
 		"format": "{:%a}",
@@ -36,29 +60,27 @@
 		"format": "{:%m-%d}",
 		"tooltip": false
 	},
-	"pulseaudio": {
-		"format": "{icon} {volume}%",
-		"format-bluetooth": "{icon} {volume}%",
-		"format-bluetooth-muted": "MUTE",
-		"format-muted": "MUTE",
-		"format-icons": {
-			"headphones": "",
-			"default": [
-				"",
-				""
-			]
-		},
-		"scroll-step": 5,
-		"on-click": "~/.config/sway/scripts/open_floating.sh pavucontrol"
+	"cpu": {
+		"format": " {usage}%",
+		"on-click": "~/.config/sway/scripts/open_floating.sh kitty -e bashtop"
 	},
 	"memory": {
-		"interval": 5,
-		"format": "RAM {}%"
+		"format": " {}%"
 	},
-	"cpu": {
+	"backlight": {
 		"interval": 5,
-		"format": "CPU {usage}% ",
-		"on-click": "~/.config/sway/scripts/open_floating.sh kitty -e bashtop"
+		"format": "{icon}",
+		"format-alt": "{percent}% {icon}",
+		"format-alt-click": "click-right",
+		"format-icons": [
+			"🌕",
+			"🌔",
+			"🌓",
+			"🌒",
+			"🌑"
+		],
+		"on-scroll-down": "brightnessctl -c backlight set 5%-",
+		"on-scroll-up": "brightnessctl -c backlight set +5%"
 	},
 	"battery": {
 		// change BAT number if battery is not detected
@@ -81,12 +103,6 @@
 		"tooltip": true,
 		"on-click": "~/.config/sway/scripts/open_floating.sh gnome-power-statistics"
 	},
-	"disk": {
-		"interval": 5,
-		"format": "🖿 {percentage_used:2}%",
-		"path": "/home",
-		"on-click": "kitty -e nnn"
-	},
 	"network": {
 		"format-wifi": " {essid}",
 		"format-ethernet": " WIRED",
@@ -94,12 +110,31 @@
 		"format-disabled": "",
 		"on-click": "~/.config/sway/scripts/open_floating.sh kitty -e nmtui"
 	},
-	"tray": {
-		"icon-size": 20
+	"pulseaudio": {
+		"format": "{icon} {volume}%",
+		"format-bluetooth": "{icon} {volume}%",
+		"format-bluetooth-muted": "MUTE",
+		"format-muted": "MUTE",
+		"format-icons": {
+			"headphones": "",
+			"default": [
+				"",
+				""
+			]
+		},
+		"scroll-step": 5,
+		"on-click": "~/.config/sway/scripts/open_floating.sh pavucontrol"
+	},
+	"disk": {
+		"interval": 5,
+		"format": "🖿 {percentage_used:2}%",
+		"path": "/home",
+		"on-click": "kitty -e nnn"
 	},
 	"custom/power": {
-		"format": "",
+		"format": "⏻",
 		"on-click": "wlogout -p layer-shell",
+		"escape": true,
 		"tooltip": false
 	},
 	"custom/spotify": {

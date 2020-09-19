@@ -1,36 +1,112 @@
 * {
-    font: 17px Roboto Regular;
-    text-shadow: 0em 0.08em black;
-    min-height: 30px;
-    color: #FDF0ED;
+    border: none;
+    font-weight: 500;
+    font: 15px Roboto Regular;
 }
 
 window#waybar {
     background: rgba(16,16,28, 0.95);
+    /* border-bottom: 1px solid #FF1B6A; */
+    color: #ffffff;
+    transition-property: background-color;
+    transition-duration: .5s;
+    box-shadow: 0px 0px 8px 10px #0d0d0d;
+}transition
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+/* UNIFORM STYLES */
+#custom-power,
+#clock,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#backlight,
+#network,
+#tray,
+#mode,
+#idle_inhibitor,
+#custom-spotify,
+#pulseaudio,
+#workspaces,
+#disk {
+    padding: 0 10px;
+    margin: 0 2px;
+    color: #ffffff;
     border-bottom: 1px solid #FF1B6A;
 }
 
-#clock, #temperature, #backlight, #network, #pulseaudio {
-    margin: 0px 10px 1.5px 10px;
+/* WIDGETS */
+#idle_inhibitor {
+    padding: 0px 8px 0px 8px;
+    
+}
+
+#clock {
+    margin: 0;
+}
+
+#cpu {
+	padding: 0px 8px 0px 8px;
+}
+
+#memory {
+	padding: 0px 8px 0px 8px;
+}
+
+#backlight {
+	padding: 0px 8px 0px 8px;
+	margin-right: 0;
+}
+
+#network {
+	padding: 0px 8px 0px 8px;
+}
+
+#pulseaudio {
+	padding: 0px 10px 0px 10px;
+}
+
+#pulseaudio.muted {
+    background-color: #FF1B6A;
+}
+
+#tray {
+    background-color: transparent;
+	padding: 0px 8px 0px 8px;
 }
 
 #battery {
-    margin-left: 1px;
+	padding: 0px 8px 0px 8px;
 }
 
-#clock, #temperature, #battery, #backlight, #network, #pulseaudio {
-    min-width: 49px;
+#disk {
+    background-color: transparent;
 }
 
+#custom-power {
+    background: #FF1B6A;
+    font-weight: normal;
+	font-size: 16px;
+	padding: 0px 13px 0px 13px;
+    margin-right: 0px;
+}
+
+/* #workspaces, */
 #workspaces {
-    background: rgba(0, 0, 0, 0.5);
+    background-color: transparent;
+    padding: 0;
+    font-size: 15px;
     padding: 0px;
-    border-bottom: 1px solid #FF1B6A;
-    border-right: 1px solid #FF1B6A;
+    margin-left: 0;
 }
 
 #workspaces button {
-    padding: 0px 7px 0px 7px;
+    color: #ffffff;
+    padding: 0px 1px 0px 1px;
 }
 
 #workspaces button:hover {
@@ -39,40 +115,6 @@ window#waybar {
 
 #workspaces button.focused {
     border-radius: 0;
-    background: #FF1B6A;
-    padding: 0px 7px 0px 7px;
-}
-
-#network {
-    font-size: 16.5px;
-    margin-right: 0;
-}
-
-#pulseaudio, #disk, #battery{
-    /* min-width: 55px; */
-    margin-right: 7px;
-}
-
-#cpu {
-    margin-right: 4px;
-}
-
-#custom-power {
-    margin: 0px 10px 0 5px;
-}
-
-#custom-spotify {
-    margin-left: 10px;
-}
-
-#clock {
-    margin-right: 4px;
-    margin-left: 4px;
-}
-
-#tray {
-    padding: 0px 10px 0px 10px;
-    border-bottom-color: #FF1B6A;
-    border-style: solid;
-    border-bottom-width: 1px;
+    background: #ff1b6a;
+    padding: 0px 1px 0px 1px;
 }
