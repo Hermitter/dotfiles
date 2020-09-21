@@ -24,17 +24,10 @@
 	],
 	// Modules configuration
 	"sway/workspaces": {
-		"disable-scroll": false,
-		"all-outputs": true,
-		"format": "{icon}",
+		"disable-scroll": true,
+		"all-outputs": false,
+		"format": "{name}",
 		"icon-size": 15
-	},
-	"sway/mode": {
-		"format": "<span style=\"italic\">{}</span>"
-	},
-	"sway/window": {
-		"format": {}
-		// "max-length": 40,
 	},
 	"tray": {
 		"icon-size": 15,
