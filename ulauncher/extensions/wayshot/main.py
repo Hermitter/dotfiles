@@ -54,11 +54,11 @@ class KeywordQueryEventListener(EventListener):
     def on_event(self, event, extension):
         menu = [
             ExtensionResultItem(
-                name='Capture Monitor',
-                description='Screenshot an active display',
+                name='Capture Area',
+                description='Screenshot a custom area',
                 icon='images/icon.svg',
                 on_enter=ExtensionCustomAction(
-                    ({'action': 'screenshot_monitor'}), True),
+                    ({'action': 'screenshot_area'}), True),
             ),
             ExtensionResultItem(
                 name='Capture Window',
@@ -68,13 +68,12 @@ class KeywordQueryEventListener(EventListener):
                     ({'action': 'screenshot_window'}), True),
             ),
             ExtensionResultItem(
-                name='Capture Area',
-                description='Screenshot a custom area',
+                name='Capture Monitor',
+                description='Screenshot an active display',
                 icon='images/icon.svg',
                 on_enter=ExtensionCustomAction(
-                    ({'action': 'screenshot_area'}), True),
+                    ({'action': 'screenshot_monitor'}), True),
             ),
-
             ExtensionResultItem(
                 name='Color Picker',
                 description='Copy the hex color of a pixel',
