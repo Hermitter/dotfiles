@@ -1,143 +1,143 @@
 {
-	"layer": "top",
-	"position": "top",
-	"modules-left": [
-		"sway/workspaces",
-		"tray",
-		"custom/spotify"
-	],
-	"modules-center": [
-		"clock#1",
-		"clock#2",
-		"clock#3"
-	],
-	"modules-right": [
-		"idle_inhibitor",
-		"network",
-		"pulseaudio",
-		// "backlight",
-		"cpu",
-		// "memory",
-		"battery",
-		"disk",
-		"custom/power"
-	],
-	// Modules configuration
-	"sway/workspaces": {
-		"disable-scroll": true,
-		"all-outputs": false,
-		"format": "{name}",
-		"icon-size": 15
-	},
-	"tray": {
-		"icon-size": 15,
-		"spacing": 15
-	},
-	"idle_inhibitor": {
-		"tooltip": false,
-		"format": "{icon}",
-		"format-icons": {
-			"activated": "",
-			"deactivated": ""
-		}
-	},
-	"clock#1": {
-		"format": "{:%a}",
-		"tooltip": false
-	},
-	"clock#2": {
-		"format": "{:%H:%M}",
-		"tooltip": false
-	},
-	"clock#3": {
-		"format": "{:%m-%d}",
-		"tooltip": false
-	},
-	"cpu": {
-		"format": " {usage}%",
-		"on-click": "~/.config/sway/scripts/open_floating.sh kitty -e bashtop"
-	},
-	"memory": {
-		"format": " {}%"
-	},
-	"backlight": {
-		"interval": 5,
-		"format": "{icon}",
-		"format-alt": "{percent}% {icon}",
-		"format-alt-click": "click-right",
-		"format-icons": [
-			"🌕",
-			"🌔",
-			"🌓",
-			"🌒",
-			"🌑"
-		],
-		"on-scroll-down": "brightnessctl -c backlight set 5%-",
-		"on-scroll-up": "brightnessctl -c backlight set +5%"
-	},
-	"battery": {
-		// change BAT number if battery is not detected
-		"bat": "BAT0",
-		"format": "{icon} {capacity}%",
-		"format-icons": [
-			"",
-			"",
-			"",
-			"",
-			""
-		],
-		"format-charging": " {icon} {capacity}%",
-		"format-full": " {icon} Charged",
-		"interval": 30,
-		"states": {
-			"warning": 25,
-			"critical": 10
-		},
-		"tooltip": true,
-		"on-click": "~/.config/sway/scripts/open_floating.sh gnome-power-statistics"
-	},
-	"network": {
-		"format-wifi": " {essid}",
-		"format-ethernet": " WIRED",
-		"format-disconnected": "NO NETWORK",
-		"format-disabled": "",
-		"on-click": "~/.config/sway/scripts/open_floating.sh kitty -e nmtui"
-	},
-	"pulseaudio": {
-		"format": "{icon} {volume}%",
-		"format-bluetooth": "{icon} {volume}%",
-		"format-bluetooth-muted": "MUTE",
-		"format-muted": "MUTE",
-		"format-icons": {
-			"headphones": "",
-			"default": [
-				"",
-				""
-			]
-		},
-		"scroll-step": 5,
-		"on-click": "~/.config/sway/scripts/open_floating.sh pavucontrol"
-	},
-	"disk": {
-		"interval": 5,
-		"format": "🖿 {percentage_used:2}%",
-		"path": "/home",
-		"on-click": "kitty -e nnn"
-	},
-	"custom/power": {
-		"format": "⏻",
-		"on-click": "wlogout -p layer-shell",
-		"escape": true,
-		"tooltip": false
-	},
-	"custom/spotify": {
-		"interval": 1,
-		"return-type": "json",
-		"exec": "~/.config/waybar/modules/spotify.sh",
-		"exec-if": "pgrep spotify",
-		"escape": true,
-		"on-click": "playerctl play-pause",
-		"on-click-right": "playerctl next",
-		"on-click-middle": "playerctl previous"
-	}
+    "layer": "top",
+    "position": "top",
+    "modules-left": [
+        "sway/workspaces",
+        "tray",
+        "custom/spotify"
+    ],
+    "modules-center": [
+        "clock#1",
+        "clock#2",
+        "clock#3"
+    ],
+    "modules-right": [
+        "idle_inhibitor",
+        "network",
+        "pulseaudio",
+        // "backlight",
+        "cpu",
+        // "memory",
+        "battery",
+        "disk",
+        "custom/power"
+    ],
+    // Modules configuration
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": false,
+        "format": "{name}",
+        "icon-size": 15
+    },
+    "tray": {
+        "icon-size": 15,
+        "spacing": 15
+    },
+    "idle_inhibitor": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "clock#1": {
+        "format": "{:%a}",
+        "tooltip": false
+    },
+    "clock#2": {
+        "format": "{:%H:%M}",
+        "tooltip": false
+    },
+    "clock#3": {
+        "format": "{:%m-%d}",
+        "tooltip": false
+    },
+    "cpu": {
+        "format": " {usage}%",
+        "on-click": "~/.config/sway/scripts/open_floating.sh kitty -e bashtop"
+    },
+    "memory": {
+        "format": " {}%"
+    },
+    "backlight": {
+        "interval": 5,
+        "format": "{icon}",
+        "format-alt": "{percent}% {icon}",
+        "format-alt-click": "click-right",
+        "format-icons": [
+            "🌕",
+            "🌔",
+            "🌓",
+            "🌒",
+            "🌑"
+        ],
+        "on-scroll-down": "brightnessctl -c backlight set 5%-",
+        "on-scroll-up": "brightnessctl -c backlight set +5%"
+    },
+    "battery": {
+        // change BAT number if battery is not detected
+        "bat": "BAT0",
+        "format": "{icon} {capacity}%",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "format-charging": " {icon} {capacity}%",
+        "format-full": " {icon} Charged",
+        "interval": 30,
+        "states": {
+            "warning": 25,
+            "critical": 10
+        },
+        "tooltip": true,
+        "on-click": "~/.config/sway/scripts/open_floating.sh gnome-power-statistics"
+    },
+    "network": {
+        "format-wifi": " {essid}",
+        "format-ethernet": " WIRED",
+        "format-disconnected": "NO NETWORK",
+        "format-disabled": "",
+        "on-click": "~/.config/sway/scripts/open_floating.sh kitty -e nmtui"
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{icon} {volume}%",
+        "format-bluetooth-muted": "MUTE",
+        "format-muted": "MUTE",
+        "format-icons": {
+            "headphones": "",
+            "default": [
+                "",
+                ""
+            ]
+        },
+        "scroll-step": 5,
+        "on-click": "~/.config/sway/scripts/open_floating.sh pavucontrol"
+    },
+    "disk": {
+        "interval": 5,
+        "format": "🖿 {percentage_used:2}%",
+        "path": "/home",
+        "on-click": "~/.config/sway/scripts/open_floating.sh baobab"
+    },
+    "custom/power": {
+        "format": "⏻",
+        "on-click": "wlogout -p layer-shell",
+        "escape": true,
+        "tooltip": false
+    },
+    "custom/spotify": {
+        "interval": 1,
+        "return-type": "json",
+        "exec": "~/.config/waybar/modules/spotify.sh",
+        "exec-if": "pgrep spotify",
+        "escape": true,
+        "on-click": "playerctl play-pause",
+        "on-click-right": "playerctl next",
+        "on-click-middle": "playerctl previous"
+    }
 }
