@@ -23,3 +23,5 @@ sudo dnf install -y \
 # CONFIGS
 #############################################
 # todo clone hermitter/wayshot
+mkdir -p $HOME/.local/share/ulauncher/extensions
+git clone https://github.com/Hermitter/ulauncher-wayshot $HOME/.local/share/ulauncher/extensions/wayshot
