@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-# Setting up Sway Window Manager
+#############################################
+# APPLICATIONS / DEPENDENCIES 
+#############################################
 sudo dnf install -y \
     sway swaylock swayidle wlogout waybar mako \
     nnn \
@@ -16,3 +18,8 @@ sudo dnf install -y \
     slurp \
     grim \
     NetworkManager-tui
+
+#############################################
+# CONFIGS
+#############################################
+# todo clone hermitter/wayshot
