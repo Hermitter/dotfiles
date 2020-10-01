@@ -87,7 +87,7 @@
             ""
         ],
         "format-charging": " {icon} {capacity}%",
-        "format-full": " {icon} Charged",
+        "format-full": "{icon} FULL",
         "interval": 30,
         "states": {
             "warning": 25,

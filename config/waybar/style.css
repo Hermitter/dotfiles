@@ -79,8 +79,8 @@ window#waybar.hidden {
 	padding: 0px 8px 0px 8px;
 }
 
-#battery {
-	padding: 0px 8px 0px 8px;
+#battery.full {
+    background: #ff1b6a;
 }
 
 #disk {
