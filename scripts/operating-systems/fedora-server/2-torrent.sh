@@ -19,7 +19,6 @@ sudo systemctl start transmission-daemon
 
 # Notes on using transmission daemon: (https://cli-ck.io/transmission-cli-user-guide/)
 # Remember to allow port 51413 on firewall
-# Start daemon:              transmission-daemon
 # Add new torrent:           transmission-remote -a "Add URL here"
 # Download status:           transmission-remote -l
 # Remove all torrents:       transmission-remote -t -all -r
