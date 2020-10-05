@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 sudo dnf update -y 
+DOTFILES=../../..
 
 #############################################
 # APPLICATIONS / DEPENDENCIES 
 #############################################
-DOTFILES=../../..
 
 # Get config files
 cp $DOTFILES/zsh/*zshrc $HOME/.zshrc
@@ -64,6 +64,10 @@ echo -e "\n# qt dark theme fix\nexport QT_QPA_PLATFORMTHEME=gtk2" >> $HOME/.prof
 #############################################
 # SHELL
 #############################################
+
+# Create config files
+touch $HOME/.profile
+touch $HOME/.secrets
 
 # Change shell to zsh
 chsh -s /bin/zsh

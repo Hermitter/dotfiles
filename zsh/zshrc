@@ -68,6 +68,7 @@ export TRASH="$HOME/.local/share/Trash/files"
 # Imports
 source $ZSH/oh-my-zsh.sh
 source ~/.profile
+source ~/.secrets
 
 # Executables
 export PATH="$HOME/.bin:$PATH"
