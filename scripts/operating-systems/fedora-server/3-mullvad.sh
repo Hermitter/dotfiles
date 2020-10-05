@@ -6,6 +6,12 @@
 # rpm --checksig MullvadVPN-XXXX_x86_64.rpm
 # sudo dnf -y install ./MullvadVPN-XXXX_x86_64.rpm
 
+if ! hash mullvad &> /dev/null; then
+  echo "Mullvad is not installed!"
+  echo -e "Get it here: https://mullvad.net/en/download/rpm/latest#linux\n"
+  exit 1
+fi
+
 #############################################
 # ACCOUNT/CONFIG SETUP
 #############################################
