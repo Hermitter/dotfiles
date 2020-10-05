@@ -1,9 +1,20 @@
 #############################################
 # APPLICATIONS / DEPENDENCIES 
 #############################################
-sudo dnf install -y \
-transmission-cli \
-transmission-daemon
+sudo dnf install -y transmission-daemon
+
+# Add user to transmission group
+sudo usermod -a -G transmission $USER
+
+# Run transmission-daemon on boot
+sudo systemctl enable transmission-daemon
+sudo systemctl start transmission-daemon
+
+# Whitelist LAN IPs for Transmission Web GUI (http://localhost:9091)
+TRANSMISSION_CONFIG=/var/lib/transmission/.config/transmission-daemon/settings.json
+sudo systemctl stop transmission-daemon
+sudo echo "$( sudo jq '.["rpc-whitelist"] = "127.0.0.1,192.168.*,::1"' $TRANSMISSION_CONFIG )" | sudo tee -a $TRANSMISSION_CONFIG
+sudo systemctl start transmission-daemon
 
 # Notes on using transmission daemon: (https://cli-ck.io/transmission-cli-user-guide/)
 # Remember to allow port 51413 on firewall
@@ -13,12 +24,6 @@ transmission-daemon
 # Remove all torrents:       transmission-remote -t -all -r
 # Remove specific torrent:   transmission-remote -t 3 -r
 # Specify a download folder: transmission-daemon --download-dir "your-download-directory-path"
-
-# TODO: Start systemctl service under user
-# Run transmission-daemon on boot
-# sudo systemctl enable transmission-daemon
-# sudo systemctl start transmission-daemon
-# sudo usermod -a -G transmission $USER
 
 #############################################
 # FIREWALL SERVICES

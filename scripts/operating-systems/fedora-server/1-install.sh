@@ -12,7 +12,8 @@ podman \
 toolbox \
 bat \
 exa \
-bashtop
+bashtop \
+jq
 
 #############################################
 # SHELL
