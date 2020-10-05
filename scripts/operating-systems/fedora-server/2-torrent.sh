@@ -14,7 +14,7 @@ sudo systemctl start transmission-daemon
 # Whitelist LAN IPs for Transmission Web GUI (http://localhost:9091)
 TRANSMISSION_CONFIG=/var/lib/transmission/.config/transmission-daemon/settings.json
 sudo systemctl stop transmission-daemon
-sudo echo "$( sudo jq '.["rpc-whitelist"] = "127.0.0.1,192.168.*,::1"' $TRANSMISSION_CONFIG )" | sudo tee -a $TRANSMISSION_CONFIG
+echo "$( sudo jq '.["rpc-whitelist"] = "127.0.0.1,192.168.*,::1"' $TRANSMISSION_CONFIG )" | sudo tee -a $TRANSMISSION_CONFIG
 sudo systemctl start transmission-daemon
 
 # Notes on using transmission daemon: (https://cli-ck.io/transmission-cli-user-guide/)
