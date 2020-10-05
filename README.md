@@ -1,5 +1,5 @@
 # dotfiles
-Notes/Files I use to set up my Linux machines
+Stuff I use in my Linux machines
 
 ![Sway desktop preview](images/sway-desktop.png)
 
