@@ -1,20 +1,31 @@
 #!/usr/bin/env bash
 #############################################
-# APPLICATIONS / DEPENDENCIES 
+# APPLICATION / SETUP 
 #############################################
 sudo dnf install -y transmission-daemon
 
 # Add user to transmission group
 sudo usermod -a -G transmission $USER
 
+# Symbolic link to torrent downloads folder
+# This is shared by anyone in the `transmission` group
+sudo ln -s /var/lib/transmission/Downloads/ $HOME/Torrents
+
+# Add write access to download folder for anyone in the `transmission` group
+sudo chmod 771 /var/lib/transmission/Downloads
+
 # Run transmission-daemon on boot
 sudo systemctl enable transmission-daemon
 sudo systemctl start transmission-daemon
 
-# Whitelist LAN IPs for Transmission Web GUI (http://localhost:9091)
-TRANSMISSION_CONFIG=/var/lib/transmission/.config/transmission-daemon/settings.json
+# Adjust the settings (TODO: just make a copy of the config file)
 sudo systemctl stop transmission-daemon
-echo "$( sudo jq '.["rpc-whitelist"] = "127.0.0.1,192.168.*,::1"' $TRANSMISSION_CONFIG )" | sudo tee -a $TRANSMISSION_CONFIG
+TRANSMISSION_CONFIG=/var/lib/transmission/.config/transmission-daemon/settings.json
+# Whitelist LAN IPs for Transmission Web GUI (http://localhost:9091)
+sudo jq '.["rpc-whitelist"] = "127.0.0.1,192.168.*,::1"' $TRANSMISSION_CONFIG > tmp.$$.json && cat tmp.$$.json | sudo tee $TRANSMISSION_CONFIG
+# Allow `transmission` group to write to newly created files
+sudo jq '.["umask"] = 2' $TRANSMISSION_CONFIG > tmp.$$.json && cat tmp.$$.json | sudo tee $TRANSMISSION_CONFIG
+rm tmp.$$.json
 sudo systemctl start transmission-daemon
 
 # Notes on using transmission daemon: (https://cli-ck.io/transmission-cli-user-guide/)
