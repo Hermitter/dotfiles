@@ -2,6 +2,7 @@
 #############################################
 # INSTALLATION (NOT AUTOMATED)
 #############################################
+
 # Download RPM and GPG signature https://mullvad.net/en/download/#linux
 # rpm --checksig MullvadVPN-XXXX_x86_64.rpm
 # sudo dnf -y install ./MullvadVPN-XXXX_x86_64.rpm
@@ -22,3 +23,10 @@ mullvad auto-connect set on
 mullvad always-require-vpn set on
 mullvad connect
 mullvad status
+
+#############################################
+# SHELL CONFIG
+#############################################
+
+# print connection status for each session
+echo 'mullvad status' >> $HOME/.profile
