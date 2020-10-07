@@ -7,7 +7,7 @@ DOTFILES=../../..
 #############################################
 
 # Get config files
-cp $DOTFILES/zsh/*zshrc $HOME/.zshrc
+cp $DOTFILES/zsh/zshrc $HOME/.zshrc
 cp -r $DOTFILES/config/ $HOME/.config
 
 # Get personal scripts

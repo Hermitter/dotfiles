@@ -31,7 +31,7 @@ ssh-keygen
 #############################################
 
 # Get config
-cp $DOTFILES/zsh/*zshrc $HOME/.zshrc
+cp $DOTFILES/zsh/zshrc $HOME/.zshrc
 
 # Change shell to zsh
 chsh -s /bin/zsh
