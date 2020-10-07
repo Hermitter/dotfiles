@@ -1,6 +1,7 @@
 # dotfiles
-Stuff I use in my Linux machines
+Configs and scripts for my Linux machines.
 
+## Current Workstation Setup
 ![Sway desktop preview](images/sway-desktop.png)
 
 # Folders
