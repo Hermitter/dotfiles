@@ -6,6 +6,12 @@ DOTFILES=../../..
 # APPLICATIONS / DEPENDENCIES 
 #############################################
 
+# Get config files
+cp $DOTFILES/zsh/*zshrc $HOME/.zshrc
+
+# Get personal scripts
+cp -r $DOTFILES/bin/ $HOME/.bin
+
 # Install essentials/dependencies
 sudo dnf install -y \
 podman \
