@@ -14,13 +14,13 @@ cp -r $DOTFILES/bin/ $HOME/.bin
 
 # Install essentials/dependencies
 sudo dnf install -y \
+git \
 podman \
 zsh \
 toolbox \
 bat \
 exa \
 bashtop \
-chsh \
 jq
 
 # Generate ssh keys
