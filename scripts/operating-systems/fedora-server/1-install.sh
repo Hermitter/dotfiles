@@ -32,8 +32,7 @@ ssh-keygen
 chsh -s /bin/zsh
 
 # Download oh-my-zsh
-# We need pipe in exit because the installer starts a zsh session. This halts the installation script
-echo exit | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 # Download zsh fish-like plugins
 git clone git://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -47,5 +46,6 @@ cp $DOTFILES/zsh/zshrc $HOME/.zshrc
 touch $HOME/.profile
 touch $HOME/.secrets
 
-# Change session shell to zsh
-exec zsh -l -c "echo '\nFINISHED INSTALLING: 1-install.sh\n~~~~~~~~~~ Please reboot ~~~~~~~~~~'"
+# Start zsh session
+echo '\nFINISHED INSTALLING: 1-install.sh\n~~~~~~~~~~ Please reboot ~~~~~~~~~~'
+exec zsh -l
