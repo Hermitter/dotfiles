@@ -9,6 +9,7 @@ sudo usermod -a -G transmission $USER
 
 # Symbolic link to torrent downloads folder
 # This is shared by anyone in the `transmission` group
+sudo mkdir -p /var/lib/transmission/Downloads/
 sudo ln -s /var/lib/transmission/Downloads/ $HOME/Torrents
 
 # Add write access to download folder for anyone in the `transmission` group
