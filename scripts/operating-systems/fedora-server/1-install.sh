@@ -20,6 +20,7 @@ toolbox \
 bat \
 exa \
 bashtop \
+chsh \
 jq
 
 # Generate ssh keys
