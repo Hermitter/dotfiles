@@ -27,7 +27,7 @@ sudo dnf install -y zsh fish toolbox go ffmpeg SDL2-devel \
 openssl-devel openocd ncurses-compat-libs glib glib-devel gtk3-devel \
 java-latest-openjdk-devel \
 minicom openocd \
-bat exa bashtop
+bat exa bashtop starship
 
 sudo dnf groupinstall -y "Development Tools"
 sudo dnf install -y texlive-scheme-full

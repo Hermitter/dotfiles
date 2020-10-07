@@ -11,6 +11,7 @@ cp -r $DOTFILES/bin/ $HOME/.bin
 
 # Install essentials/dependencies
 sudo dnf install -y \
+starship \
 git \
 podman \
 zsh \
