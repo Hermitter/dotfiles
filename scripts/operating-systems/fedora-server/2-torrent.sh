@@ -61,4 +61,7 @@ sudo firewall-cmd --reload
 #############################################
 echo 'alias tsm=transmission-remote' >> $HOME/.profile
 
-echo "Restart to apply being added to the transmission group"
+echo "
+Start a torrent download to fix link from ~/Torrents to /var/lib/transmission/Downloads\n
+Web interface is available at: localhost:9091\n
+Restart session to apply being added to the transmission group"
