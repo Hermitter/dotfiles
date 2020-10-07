@@ -46,3 +46,6 @@ cp $DOTFILES/zsh/zshrc $HOME/.zshrc
 # Create config files
 touch $HOME/.profile
 touch $HOME/.secrets
+
+# Change session shell to zsh
+exec zsh -l -c "echo '**FINISHED INSTALLING: 1-install.sh**\n**Please reboot**'"
