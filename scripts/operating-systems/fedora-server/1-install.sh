@@ -32,10 +32,8 @@ ssh-keygen
 chsh -s /bin/zsh
 
 # Download oh-my-zsh
-echo "***************************"
-echo "CONTINUE THE INSTALLATION BY TYPING $ exit"
-echo "***************************"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# We need pipe in exit because the installer starts a zsh session. This halts the installation script
+echo exit | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Download zsh fish-like plugins
 git clone git://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
