@@ -48,4 +48,4 @@ touch $HOME/.profile
 touch $HOME/.secrets
 
 # Change session shell to zsh
-exec zsh -l -c "echo '**FINISHED INSTALLING: 1-install.sh**\n**Please reboot**'"
+zsh -l -c "echo 'FINISHED INSTALLING: 1-install.sh\n~~~~~~~~~~ Please reboot ~~~~~~~~~~'"
