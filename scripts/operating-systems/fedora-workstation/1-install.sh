@@ -61,6 +61,9 @@ echo -e "\n# qt dark theme fix\nexport QT_QPA_PLATFORMTHEME=gtk2" >> $HOME/.prof
 # $HOME/Documents/flutter/bin/flutter config --no-analytics
 # echo -e "\n# Flutter\nexport PATH=\"\$PATH:\$HOME/Documents/flutter/bin\"" >> $HOME/.profile
 
+# Generate ssh keys
+ssh-keygen
+
 #############################################
 # SHELL
 #############################################

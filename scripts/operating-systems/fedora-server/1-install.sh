@@ -22,9 +22,13 @@ exa \
 bashtop \
 jq
 
+# Generate ssh keys
+ssh-keygen
+
 #############################################
 # SHELL
 #############################################
+
 # Get config
 cp $DOTFILES/zsh/*zshrc $HOME/.zshrc
 
