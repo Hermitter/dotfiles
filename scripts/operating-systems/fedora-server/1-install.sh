@@ -9,6 +9,7 @@ DOTFILES=../../..
 # Install essentials/dependencies
 sudo dnf install -y \
 podman \
+zsh \
 toolbox \
 bat \
 exa \
