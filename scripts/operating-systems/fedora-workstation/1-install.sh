@@ -106,3 +106,14 @@ gsettings set org.gnome.desktop.interface icon-theme "Flat-Remix-Blue-Dark"
 
 # Increase number of file watchers
 echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+
+
+#############################################
+# WRAPPING UP
+#############################################
+
+# Warn user to reboot
+echo -e '\nFINISHED INSTALLING: 1-install.sh\n~~~~~~~~~~ Please Reboot ~~~~~~~~~~\n'
+
+# Start zsh session
+exec zsh -l

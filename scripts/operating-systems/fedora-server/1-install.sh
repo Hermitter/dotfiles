@@ -47,5 +47,5 @@ touch $HOME/.profile
 touch $HOME/.secrets
 
 # Start zsh session
-echo -e '\nFINISHED INSTALLING: 1-install.sh\n~~~~~~~~~~ Please reboot ~~~~~~~~~~\n'
+echo -e '\nFINISHED INSTALLING: 1-install.sh\n~~~~~~~~~~ Please Reboot ~~~~~~~~~~\n'
 exec zsh -l
