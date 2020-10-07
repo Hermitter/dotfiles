@@ -9,11 +9,10 @@ sudo usermod -a -G transmission $USER
 
 # Symbolic link to torrent downloads folder
 # This is shared by anyone in the `transmission` group
-sudo mkdir -p /var/lib/transmission/Downloads/
 sudo ln -s /var/lib/transmission/Downloads/ $HOME/Torrents
 
-# Add write access to download folder for anyone in the `transmission` group
-sudo chmod 771 /var/lib/transmission/Downloads
+# Add write access to download folder for anyone in the `transmission` group (not sure if needed)
+# sudo chmod 771 /var/lib/transmission/Downloads
 
 # Run transmission-daemon on boot
 sudo systemctl enable transmission-daemon
@@ -61,3 +60,5 @@ sudo firewall-cmd --reload
 # SHELL CONFIG
 #############################################
 echo 'alias tsm=transmission-remote' >> $HOME/.profile
+
+echo "Restart to apply being added to the transmission group"
