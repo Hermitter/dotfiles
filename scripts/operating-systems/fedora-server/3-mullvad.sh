@@ -24,6 +24,13 @@ mullvad always-require-vpn set on
 mullvad connect
 mullvad status
 
+
+# Mention port forwarding tutorials
+echo -e "Need to port forward? Here are some helpful guides:\n
+https://mullvad.net/en/help/port-forwarding-and-mullvad/
+https://mullvad.net/nl/help/plex-mullvad/
+"
+
 #############################################
 # SHELL CONFIG
 #############################################
