@@ -136,8 +136,8 @@
         "exec": "~/.config/waybar/modules/spotify.sh",
         "exec-if": "pgrep spotify",
         "escape": true,
-        "on-click": "playerctl play-pause",
-        "on-click-right": "playerctl next",
-        "on-click-middle": "playerctl previous"
+        "on-click": "playerctl play-pause -p spotify",
+        "on-click-right": "playerctl next -p spotify",
+        "on-click-middle": "playerctl previous -p spotify"
     }
 }
