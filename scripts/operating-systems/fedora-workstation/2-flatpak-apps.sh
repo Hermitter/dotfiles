@@ -12,7 +12,8 @@ com.discordapp.Discord \
 com.slack.Slack \
 org.gabmus.hydrapaper \
 com.uploadedlobster.peek \
-com.dropbox.Client
+com.dropbox.Client \
+md.obsidian.Obsidian
 
 #############################################
 # CONFIGS 
