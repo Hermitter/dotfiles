@@ -42,7 +42,8 @@ steam \
 wireshark \
 pavucontrol \
 transmission-gtk \
-clamtk
+clamtk \
+pulseeffects
 
 # Update virus database for ClamAV antivirus
 sudo freshclam
