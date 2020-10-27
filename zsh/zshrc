@@ -42,6 +42,7 @@ alias open="xdg-open"
 alias emacs="emacs --no-window-system"
 alias copy="wl-copy"
 alias scanvirus="virus_scan"
+alias sizeof="du -h -s"
 
 # Pick CLI list command
 if exists exa; then
