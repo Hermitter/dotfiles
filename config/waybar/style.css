@@ -1,7 +1,7 @@
 * {
     border: none;
     font-weight: 500;
-    font: 15px Roboto Regular;
+    font: 15px Roboto Regular, Monospace;
 }
 
 window#waybar {
@@ -82,6 +82,10 @@ window#waybar.hidden {
 #battery.full {
     background: #ff1b6a;
 }
+
+/* #battery.critical {
+    background: #ff5100;
+} */
 
 #disk {
     background-color: transparent;
