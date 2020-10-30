@@ -3,7 +3,7 @@ configuration {
  modi: "drun";
  combi-modi: "drun,run";
  show-icons: true;
- lines: 8;
+ lines: 7;
  cycle: false;
  disable-history: false;
  hide-scrollbar: true;
@@ -52,8 +52,9 @@ configuration {
 }
 
 #window {
+    width: 600px;
     location: center;
-    // anchor:   center;
+    anchor:   north;
     // padding: 10px;
     border:  1px;
     border-color: @bordercolor;
