@@ -104,10 +104,11 @@ gsettings set org.gnome.desktop.interface icon-theme "Flat-Remix-Blue-Dark"
 #############################################
 # MISC
 #############################################
+# git configs
+git config pull.ff only
 
 # Increase number of file watchers
 echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
-
 
 #############################################
 # WRAPPING UP
