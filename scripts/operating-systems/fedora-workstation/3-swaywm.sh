@@ -7,6 +7,7 @@ sudo dnf install -y \
     sway swaylock swayidle wlogout waybar mako \
     nnn \
     ulauncher \
+    rofi \
     brightnessctl \
     playerctl \
     kitty \
