@@ -28,7 +28,7 @@ configuration {
     bordercolor:                 rgb( 255, 27, 106);
     separatorcolor:              @bordercolor;
     
-    // untouched
+    // haven't tweaked yet
     alternate-normal-background: rgba ( 0, 0, 0, 0 % );
     red:                         rgba ( 220, 50, 47, 100 % );
     selected-urgent-foreground:  rgba ( 2, 20, 63, 100 % );
@@ -70,6 +70,7 @@ configuration {
     spacing: 0;
     border: 0;
     padding: 0;
+    // children: [ mode-switcher, inputbar, message, listview ];
     children: [ inputbar, message, listview ];
 }
 
