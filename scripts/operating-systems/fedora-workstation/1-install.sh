@@ -14,7 +14,7 @@ cp -r $DOTFILES/config/ $HOME/.config
 cp -r $DOTFILES/bin/ $HOME/.bin
 
 # Get wallpapers
-cp $DOTFILES/images/Wallpapers $HOME/Pictures/Wallpapers
+cp -r $DOTFILES/images/Wallpapers $HOME/Pictures/Wallpapers
 
 # Enable rpm fusion's free&non-free repos
 sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
