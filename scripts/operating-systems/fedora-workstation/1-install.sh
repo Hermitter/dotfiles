@@ -7,7 +7,7 @@ DOTFILES=../../..
 #############################################
 
 # Get config files
-cp -r $DOTFILES/* $HOME/.config
+cp -r $DOTFILES/config/* $HOME/.config
 
 # Get personal scripts
 cp -r $DOTFILES/bin/ $HOME/.bin
