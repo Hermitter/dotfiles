@@ -7,7 +7,6 @@ DOTFILES=../../..
 #############################################
 
 # Get config files
-cp $DOTFILES/zsh/zshrc $HOME/.zshrc
 cp -r $DOTFILES/config/ $HOME/.config
 
 # Get personal scripts
@@ -23,7 +22,7 @@ sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-r
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 # Install essentials/dependencies
-sudo dnf install -y zsh fish toolbox go ffmpeg SDL2-devel \
+sudo dnf install -y zsh fish toolbox go ffmpeg util-linux-user SDL2-devel \
 openssl-devel openocd ncurses-compat-libs glib glib-devel gtk3-devel \
 java-latest-openjdk-devel \
 minicom openocd \
@@ -83,6 +82,9 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 git clone git://github.com/hermitter/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/hermitter/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
 git clone https://github.com/hermitter/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+# Get zsh config
+cp $DOTFILES/zsh/zshrc $HOME/.zshrc
 
 #############################################
 # THEME
