@@ -41,11 +41,7 @@ steam \
 wireshark \
 pavucontrol \
 transmission-gtk \
-clamtk \
 pulseeffects
-
-# Update virus database for ClamAV antivirus
-sudo freshclam
 
 # Set up Wireshark
 sudo usermod -a -G wireshark $USER
@@ -54,12 +50,6 @@ sudo chmod +x /usr/bin/dumpcap # permissions fix
 # Qt dark theme fix (mainly wireshark)
 sudo dnf install -y qt5-qtstyleplugins
 echo -e "\n# qt dark theme fix\nexport QT_QPA_PLATFORMTHEME=gtk2" >> $HOME/.profile
-
-# Flutter
-# git clone git@github.com:flutter/flutter.git -b stable --depth 1 $HOME/Documents/flutter
-# $HOME/Documents/flutter/bin/flutter # set up sdk
-# $HOME/Documents/flutter/bin/flutter config --no-analytics
-# echo -e "\n# Flutter\nexport PATH=\"\$PATH:\$HOME/Documents/flutter/bin\"" >> $HOME/.profile
 
 # Generate ssh keys
 ssh-keygen
@@ -121,3 +111,17 @@ echo -e '\nFINISHED INSTALLING: 1-install.sh\n~~~~~~~~~~ Please Reboot ~~~~~~~~~
 
 # Start zsh session
 exec zsh -l
+
+
+#############################################
+# UNUSED AREA
+#############################################
+# Flutter
+# git clone git@github.com:flutter/flutter.git -b stable --depth 1 $HOME/Documents/flutter
+# $HOME/Documents/flutter/bin/flutter # set up sdk
+# $HOME/Documents/flutter/bin/flutter config --no-analytics
+# echo -e "\n# Flutter\nexport PATH=\"\$PATH:\$HOME/Documents/flutter/bin\"" >> $HOME/.profile
+
+# Install ClamAV antivirus & update datavase
+# sudo dnf install -y clamtk
+# sudo freshclam

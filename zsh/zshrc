@@ -24,6 +24,11 @@ function virus_scan() {
     fi
 }
 
+# Remove virus scan if not available 
+if ! exists clamscan; then
+    unset -f virus_scan
+fi
+
 #-------------------------------------------------------------------------------
 # ~~~~~ Configs ~~~~~
 #-------------------------------------------------------------------------------
@@ -44,7 +49,7 @@ alias copy="wl-copy"
 alias scanvirus="virus_scan"
 alias sizeof="du -h -s"
 
-# Pick CLI list command
+# Pick ls command
 if exists exa; then
     alias a='exa --header --git'
 else
