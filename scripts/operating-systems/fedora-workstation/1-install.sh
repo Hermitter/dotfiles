@@ -80,8 +80,9 @@ cp $DOTFILES/zsh/zshrc $HOME/.zshrc
 # THEME
 #############################################
 
-# Install GTK Themes
+# Install GTK theme and Flatpak theme
 sudo dnf install -y flat-remix-icon-theme materia-gtk-theme gnome-shell-extension-material-shell 
+flatpak install -y flathub org.gtk.Gtk3theme.Materia{,-dark,-light}{,-compact}
 
 # Install Fonts
 sudo dnf install -y fira-code-fonts roboto-fontface-fonts
