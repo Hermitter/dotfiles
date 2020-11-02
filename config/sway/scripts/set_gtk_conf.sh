@@ -11,8 +11,7 @@ for pair in "$@"; do
     if grep -q "$1=" $GTK_CONF_FILE; then
         # Avoid editing, if there's nothing to change
         if ! grep -q -x "$1=$2" $GTK_CONF_FILE; then
-            # 1. Match line with $1 if it's at the beggining
-            # 2. Replace with new setting ($1=$2).
+            # Match any line with $1 at the beginning and Replace with $1=$2
             sed -i "s/^$1.*/$1=$2/gm" $GTK_CONF_FILE
         fi
     # Add new config
@@ -20,3 +19,8 @@ for pair in "$@"; do
         echo $1=$2 >> $GTK_CONF_FILE
     fi
 done
+
+# Add Settings group, if missing
+if ! grep "\[Settings\]" $GTK_CONF_FILE; then
+    sed -i '1s/^/[Settings]\n/' $GTK_CONF_FILE
+fi
