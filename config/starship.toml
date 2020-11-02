@@ -6,6 +6,6 @@ add_newline = true
 symbol = "❯"
 
 [hostname]
-ssh_only = false
+ssh_only = true
 trim_at = "."
 disabled = false
