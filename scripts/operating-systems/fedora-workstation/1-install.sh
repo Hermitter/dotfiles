@@ -116,6 +116,7 @@ exec zsh -l
 #############################################
 # UNUSED AREA
 #############################################
+
 # Flutter
 # git clone git@github.com:flutter/flutter.git -b stable --depth 1 $HOME/Documents/flutter
 # $HOME/Documents/flutter/bin/flutter # set up sdk
