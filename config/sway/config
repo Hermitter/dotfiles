@@ -14,8 +14,8 @@ set $right l
 set $term kitty
 
 # Application launcher
-# set $menu ulauncher | xargs swaymsg exec --
-set $menu "rofi -show drun -config '~/.config/rofi/red_horizon.rasi'"
+set $menu ulauncher | xargs swaymsg exec --
+# set $menu "rofi -show drun -config '~/.config/rofi/red_horizon.rasi'"
 
 # Lock screen
 set $lock swaylock -e -f
