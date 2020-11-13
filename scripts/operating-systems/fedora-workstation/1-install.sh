@@ -11,6 +11,7 @@ cp -r $DOTFILES/config/* $HOME/.config
 
 # Get personal scripts
 cp -r $DOTFILES/bin/ $HOME/.bin
+wget -P $HOME/.bin https://github.com/Hermitter/tepe/releases/latest/download/tepe && chmod +x $HOME/.bin/tepe
 
 # Get wallpapers
 cp -r $DOTFILES/images/Wallpapers $HOME/Pictures/Wallpapers
