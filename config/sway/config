@@ -260,7 +260,7 @@ titlebar_padding 6 6
 #-------------------------------------------------------------------------------
 # ~~~~~ GTK Theming ~~~~~
 #-------------------------------------------------------------------------------
-set $app_theme Materia-dark
+set $app_theme Materia-dark-compact
 set $icon_theme Flat-Remix-Blue-Dark
 set $cursor_theme Adwaita
 set $cusor_size 32
