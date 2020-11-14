@@ -4,7 +4,13 @@
 # APPLICATIONS / DEPENDENCIES 
 #############################################
 sudo dnf install -y \
-    sway swaylock swayidle wlogout waybar mako \
+    sway \
+    nwg-launchers \
+    swaylock \
+    swayidle \
+    wlogout \
+    waybar \
+    mako \
     nnn \
     ulauncher \
     rofi \
