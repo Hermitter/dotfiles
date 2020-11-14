@@ -109,6 +109,7 @@ window#waybar.hidden {
 }
 
 #workspaces button {
+    min-width: 50px;
     color: #ffffff;
     padding: 0px 1px 0px 1px;
 }
