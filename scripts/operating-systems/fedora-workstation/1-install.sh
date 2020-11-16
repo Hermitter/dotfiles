@@ -10,8 +10,9 @@ DOTFILES=../../..
 cp -r $DOTFILES/config/* $HOME/.config
 
 # Get personal scripts
-cp -r $DOTFILES/bin/ $HOME/.bin
-curl -L https://github.com/Hermitter/tepe/releases/latest/download/tepe-linux-amd64 -o tepe && chmod +x ./tepe
+BIN=$HOME/.bin
+cp -r $DOTFILES/bin/ $BIN
+curl -L https://github.com/Hermitter/tepe/releases/latest/download/tepe-linux-amd64 -o $BIN/tepe && chmod +x $BIN/tepe
 
 # Get wallpapers
 cp -r $DOTFILES/images/Wallpapers $HOME/Pictures/Wallpapers
