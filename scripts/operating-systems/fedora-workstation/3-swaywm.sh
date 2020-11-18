@@ -24,6 +24,7 @@ sudo dnf install -y \
     swappy \
     slurp \
     grim \
+    ImageMagick \
     NetworkManager-tui
 
 #############################################
