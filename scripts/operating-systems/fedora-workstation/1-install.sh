@@ -64,9 +64,6 @@ ssh-keygen
 touch $HOME/.profile
 touch $HOME/.secrets
 
-# Change shell to zsh
-chsh -s /bin/zsh
-
 # Download oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
@@ -115,6 +112,8 @@ echo -e '\nFINISHED INSTALLING: 1-install.sh\n~~~~~~~~~~ Please Reboot ~~~~~~~~~
 # Start zsh session
 exec zsh -l
 
+# Change shell to zsh
+chsh -s /bin/zsh
 
 #############################################
 # UNUSED AREA
