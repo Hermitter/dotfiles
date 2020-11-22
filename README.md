@@ -2,7 +2,7 @@
 Configs and scripts for my Linux machines.
 
 ## Current Workstation Setup
-![Sway desktop preview](images/sway-desktop.png)
+![personal desktop preview](images/sway-desktop.png)
 
 # Folders
 - **bin**: binaries/scripts I want in my path
