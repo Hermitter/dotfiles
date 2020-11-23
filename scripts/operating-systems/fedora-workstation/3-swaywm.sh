@@ -11,7 +11,7 @@ sudo dnf install -y \
     wlogout \
     waybar \
     mako \
-    nnn \
+    ranger \
     ulauncher \
     rofi \
     brightnessctl \
