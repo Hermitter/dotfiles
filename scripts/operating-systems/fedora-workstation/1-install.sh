@@ -51,6 +51,9 @@ pavucontrol \
 transmission-gtk \
 pulseeffects
 
+# Install Wine dependancies (for windows games, apps, etc.)
+# sudo dnf install wine dxvk-winelib
+
 # Set up Wireshark
 sudo usermod -a -G wireshark $USER
 sudo chmod +x /usr/bin/dumpcap # permissions fix
