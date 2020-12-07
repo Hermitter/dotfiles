@@ -68,6 +68,10 @@ window#waybar.hidden {
 	padding: 0px 8px 0px 8px;
 }
 
+#network.disabled, #network.disconnected {
+    background-color: #FF1B6A;
+}
+
 #pulseaudio {
 	padding: 0px 10px 0px 10px;
 }

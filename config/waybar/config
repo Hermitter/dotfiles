@@ -100,7 +100,7 @@
         "format-wifi": " {essid}",
         "format-ethernet": " WIRED",
         "format-disconnected": "NO NETWORK",
-        "format-disabled": "",
+        "format-disabled": "NO NETWORK",
         "on-click": "~/.config/sway/scripts/open_floating.sh kitty -e nmtui"
     },
     "pulseaudio": {
