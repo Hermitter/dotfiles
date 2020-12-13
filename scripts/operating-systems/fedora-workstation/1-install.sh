@@ -103,12 +103,14 @@ sudo dnf install -y gnome-shell-extension-dash-to-dock gnome-shell-extension-app
 # Change theme settings
 gsettings set org.gnome.desktop.interface gtk-theme "Materia-dark-compact"
 gsettings set org.gnome.desktop.interface icon-theme "Flat-Remix-Blue-Dark"
+gsettings set org.gnome.desktop.interface cursor-theme "Adwaita"
+gsettings set org.gnome.desktop.interface cursor-size 32
 
 #############################################
 # MISC
 #############################################
 # git configs
-# git config --global pull.ff only
+git config pull.rebase false --global
 
 # Increase number of file watchers
 echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
