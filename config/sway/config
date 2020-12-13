@@ -298,6 +298,13 @@ for_window [app_id="^.*"] inhibit_idle fullscreen
 # for_window [app_id="firefox"] inhibit_idle fullscreen
 # for_window [app_id="firefox-wayland"] inhibit_idle fullscreen
 
+# Apps to start on boot
+exec_always {
+    $HOME/.config/sway/scripts/start_on_boot.sh \
+    "dropbox":"flatpak run com.dropbox.Client" \
+    "telegram-deskto":"flatpak run org.telegram.desktop -startintray"
+}
+
 #-------------------------------------------------------------------------------
 # ~~~~~ Imported Configs ~~~~~
 #-------------------------------------------------------------------------------
