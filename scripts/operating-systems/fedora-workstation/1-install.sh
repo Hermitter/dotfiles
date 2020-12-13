@@ -24,17 +24,19 @@ sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-r
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 # Install essentials/dependencies
-sudo dnf install -y toolbox go ffmpeg \
+sudo dnf install -y 
+toolbox \
+ffmpeg \
 util-linux-user \
+trash-cli zsh fish bat exa bashtop starship \
 openssl-devel \
-ncurses-compat-libs \
-java-latest-openjdk-devel \
-zsh fish bat exa bashtop starship
+java-latest-openjdk-devel
 
 # unused dnf dependencies (TODO: remove after test)
 # SDL2-devel
 # glib glib-devel gtk3-devel
 # minicom openocd
+# ncurses-compat-libs
 
 sudo dnf groupinstall -y "Development Tools"
 sudo dnf install -y texlive-scheme-full

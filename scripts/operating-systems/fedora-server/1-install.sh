@@ -19,7 +19,8 @@ toolbox \
 bat \
 exa \
 bashtop \
-jq
+jq \
+trash-cli
 
 # Generate ssh keys
 ssh-keygen
