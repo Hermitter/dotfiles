@@ -46,6 +46,7 @@ alias files="nautilus"
 alias open="xdg-open"
 alias emacs="emacs --no-window-system"
 alias copy="wl-copy"
+alias paste="wl-paste"
 alias scanvirus="virus_scan"
 alias sizeof="du -h -s"
 
