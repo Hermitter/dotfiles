@@ -1,6 +1,5 @@
 # Overview
-Each folder contains scripts that are meant to quickly set up a
-Linux distribution the way I like it.
+Each folder contains scripts that are meant to quickly set up an OS the way I like it.
 
 # Organization
 > Scripts need to run in the same directory with user permissions
