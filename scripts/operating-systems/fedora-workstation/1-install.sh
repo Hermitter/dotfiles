@@ -28,6 +28,7 @@ sudo dnf install -y
 toolbox \
 ffmpeg \
 util-linux-user \
+wl-clipboard xclip \
 trash-cli zsh fish bat exa bashtop starship \
 openssl-devel \
 java-latest-openjdk-devel

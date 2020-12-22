@@ -45,8 +45,6 @@ alias volume="pavucontrol"
 alias files="nautilus"
 alias open="xdg-open"
 alias emacs="emacs --no-window-system"
-alias copy="wl-copy"
-alias paste="wl-paste"
 alias scanvirus="virus_scan"
 alias sizeof="du -h -s"
 
@@ -55,6 +53,15 @@ if exists exa; then
     alias a='exa --header --git'
 else
     alias a='ls'
+fi
+
+# Pick clipboard commands for Wayland and X11
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    alias copy="wl-copy"
+    alias paste="wl-paste"
+else
+    alias copy="xclip -selection c"
+    alias paste="xclip -selection c -o"
 fi
 
 # Terminal file explorer
