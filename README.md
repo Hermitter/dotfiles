@@ -8,5 +8,6 @@ Configs and scripts for my Linux machines.
 - **bin**: binaries/scripts I want in my path
 - **config**: files that go in `~/.config`
 - **images**: it's the plural of image
-- **scripts**: installation scripts
+- **scripts**: installation/setup scripts
 - **zsh**: shell config
+- **fish**: a fishy shell config
