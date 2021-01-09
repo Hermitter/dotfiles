@@ -13,7 +13,8 @@ com.slack.Slack \
 org.gabmus.hydrapaper \
 com.uploadedlobster.peek \
 com.dropbox.Client \
-md.obsidian.Obsidian
+md.obsidian.Obsidian \
+com.github.alainm23.planner
 
 #############################################
 # CONFIGS 
