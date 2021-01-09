@@ -3,7 +3,8 @@
 # The app name used should the same as the process name.
 
 for pair in "$@"; do
-    # split app name and command ($1, $2)
+
+    # split arg into seperate variables
     IFS=:; set -- $pair
     NAME=$1
     CMD=$2
@@ -15,3 +16,7 @@ for pair in "$@"; do
         eval $CMD &
     fi
 done
+
+# Kill each child process. The disown command was not used because an empty process was
+# left behind for each app that was disowned.
+pkill -P $$
