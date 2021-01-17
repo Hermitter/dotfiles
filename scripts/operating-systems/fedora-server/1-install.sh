@@ -14,6 +14,7 @@ sudo dnf install -y \
 starship \
 git \
 podman \
+podman-compose \
 cockpit-podman \
 cockpit-machines \
 zsh \

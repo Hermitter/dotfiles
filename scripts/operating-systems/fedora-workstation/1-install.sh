@@ -26,6 +26,7 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 # Install essentials/dependencies
 sudo dnf install -y 
 toolbox \
+podman-compose \
 ffmpeg \
 util-linux-user \
 wl-clipboard xclip \
