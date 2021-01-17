@@ -14,6 +14,7 @@ sudo dnf install -y \
 starship \
 git \
 podman \
+cockpit-podman \
 zsh \
 toolbox \
 bat \
