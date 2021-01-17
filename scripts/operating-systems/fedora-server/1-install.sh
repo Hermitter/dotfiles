@@ -15,6 +15,7 @@ starship \
 git \
 podman \
 cockpit-podman \
+cockpit-machines \
 zsh \
 toolbox \
 bat \
