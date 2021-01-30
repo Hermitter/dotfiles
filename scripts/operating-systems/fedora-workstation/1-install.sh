@@ -53,7 +53,8 @@ steam \
 wireshark \
 pavucontrol \
 transmission-gtk \
-pulseeffects
+pulseeffects \
+blueman
 
 # Install Wine dependancies (for windows games, apps, etc.)
 # sudo dnf install wine dxvk-winelib
