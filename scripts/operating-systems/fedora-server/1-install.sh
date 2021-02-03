@@ -16,7 +16,6 @@ git \
 podman \
 podman-compose \
 cockpit-podman \
-cockpit-machines \
 zsh \
 toolbox \
 bat \

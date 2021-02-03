@@ -4,6 +4,7 @@
 # APPLICATIONS / DEPENDENCIES 
 #############################################
 sudo dnf install -y \
+cockpit-machines \
 qemu-kvm \
 libvirt \
 libguestfs-tools \
