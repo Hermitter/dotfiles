@@ -129,6 +129,7 @@ echo -e '\nFINISHED INSTALLING: 1-install.sh\n~~~~~~~~~~ Please Reboot ~~~~~~~~~
 exec zsh -l
 
 # Change shell to zsh
+echo "Changing shell to zsh..."
 chsh -s /bin/zsh
 
 #############################################

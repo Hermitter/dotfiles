@@ -33,6 +33,7 @@ ssh-keygen
 #############################################
 
 # Change shell to zsh
+echo "Changing shell to zsh..."
 chsh -s /bin/zsh
 
 # Download oh-my-zsh
