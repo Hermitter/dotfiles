@@ -39,9 +39,9 @@ java-latest-openjdk-devel
 # glib glib-devel gtk3-devel
 # minicom openocd
 # ncurses-compat-libs
+# sudo dnf install -y texlive-scheme-full
 
 sudo dnf groupinstall -y "Development Tools"
-sudo dnf install -y texlive-scheme-full
 
 # Install apps
 sudo dnf install -y \
