@@ -48,12 +48,12 @@ sudo firewall-cmd --permanent --new-service=$SERVICE_NAME
 sudo firewall-cmd --permanent --service=$SERVICE_NAME --add-port=9091/udp
 sudo firewall-cmd --permanent --service=$SERVICE_NAME --add-port=9091/tcp
 sudo firewall-cmd --reload
-sudo firewall-cmd --permanent --zone=FedoraServer --add-service=$SERVICE_NAME
+sudo firewall-cmd --permanent --zone=$ZONE_NAME --add-service=$SERVICE_NAME
 sudo firewall-cmd --reload
 
 # Transmission Client
 SERVICE_NAME=transmission-client
-sudo firewall-cmd --permanent --zone=FedoraServer --add-service=$SERVICE_NAME
+sudo firewall-cmd --permanent --zone=$ZONE_NAME --add-service=$SERVICE_NAME
 sudo firewall-cmd --reload
 
 #############################################
