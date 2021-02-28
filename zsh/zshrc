@@ -56,7 +56,8 @@ else
 fi
 
 # Pick clipboard commands for Wayland and X11
-if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+DISPLAY_SERVER=$(cut -d "=" -f2- <<< $(loginctl show-session 2 -p Type))
+if [ "$DISPLAY_SERVER" = "wayland" ]; then
     alias copy="wl-copy"
     alias paste="wl-paste"
 else
