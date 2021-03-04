@@ -14,6 +14,7 @@ org.gabmus.hydrapaper \
 com.uploadedlobster.peek \
 com.dropbox.Client \
 md.obsidian.Obsidian \
+io.github.Soundux \
 com.github.alainm23.planner
 
 #############################################
