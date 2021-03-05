@@ -25,6 +25,7 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 
 # Install essentials/dependencies
 sudo dnf install -y 
+ascii \
 toolbox \
 podman-compose \
 ffmpeg \
