@@ -30,11 +30,11 @@ set $notify_screenshot_copy notify-send 'Screenshot Taken' "Saved To Clipboard"
 
 # set $screenshot_monitor grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') $screenshot_name && $notify_screenshot
 # set $screenshot_window grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.focused?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"')" $screenshot_name && $notify_screenshot
-# set $screenshot_selection_copy grim -g "$(slurp)" - | wl-copy && $notify_screenshot_copy
-# set $screenshot_selection_file grim -g "$(slurp)" $screenshot_name && $notify_screenshot_file
+set $screenshot_selection_copy grim -g "$(slurp)" - | wl-copy && $notify_screenshot_copy
+set $screenshot_selection_file grim -g "$(slurp)" $screenshot_name && $notify_screenshot_file
 
-set $screenshot_selection grim -g "$(slurp)" - | swappy -f -
-set $screenshot_window grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | slurp)" - | swappy -f -
+# set $screenshot_selection grim -g "$(slurp)" - | swappy -f -
+# set $screenshot_window grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | slurp)" - | swappy -f -
 
 #-------------------------------------------------------------------------------
 # ~~~~~ Lock Screen ~~~~~
@@ -72,8 +72,8 @@ bindsym $mod+shift+return exec $lock
     bindsym --locked XF86AudioPrev exec playerctl previous  
 
     # Screenshot
-    bindsym $mod+p exec $screenshot_selection
-    bindsym $mod+shift+p exec $screenshot_window
+    bindsym $mod+p exec $screenshot_selection_copy
+    bindsym $mod+shift+p exec $screenshot_selection_file
 
     # Logout screen
     bindsym $mod+control+shift+return exec $logout
