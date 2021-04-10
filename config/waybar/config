@@ -43,15 +43,18 @@
     },
     "clock#1": {
         "format": "{:%a}",
-        "tooltip": false
+        "tooltip": false,
+        "on-click": "~/.config/sway/scripts/open_floating.sh gnome-calendar"
     },
     "clock#2": {
         "format": "{:%H:%M}",
-        "tooltip": false
+        "tooltip": false,
+        "on-click": "~/.config/sway/scripts/open_floating.sh gnome-calendar"
     },
     "clock#3": {
         "format": "{:%m-%d}",
-        "tooltip": false
+        "tooltip": false,
+        "on-click": "~/.config/sway/scripts/open_floating.sh gnome-calendar"
     },
     "cpu": {
         "format": " {usage}%",
