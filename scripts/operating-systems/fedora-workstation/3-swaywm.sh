@@ -5,7 +5,6 @@
 #############################################
 sudo dnf install -y \
     sway \
-    nwg-launchers \
     swaylock \
     swayidle \
     wlogout \
