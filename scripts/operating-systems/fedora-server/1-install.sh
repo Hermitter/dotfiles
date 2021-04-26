@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 sudo dnf update -y 
-DOTFILES=../../..
+DOTFILES="$(dirname $(dirname $(dirname $(dirname "$( realpath "${BASH_SOURCE[0]}")"))))"
 
 #############################################
 # APPLICATIONS / DEPENDENCIES 
