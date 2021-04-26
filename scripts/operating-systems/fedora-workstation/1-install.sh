@@ -29,7 +29,7 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 sudo dnf install 'dnf-command(system-upgrade)' -y
 
 # Install essentials/dependencies
-sudo dnf install -y 
+sudo dnf install -y \
 ascii \
 toolbox \
 podman-compose \
