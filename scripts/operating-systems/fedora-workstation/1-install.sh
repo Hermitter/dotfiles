@@ -53,7 +53,6 @@ sudo dnf groupinstall -y "Development Tools"
 sudo dnf install -y \
 geary \
 lutris \
-gnome-tweaks \
 tilix \
 steam \
 wireshark \
