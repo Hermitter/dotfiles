@@ -20,7 +20,7 @@ zsh \
 toolbox \
 bat \
 exa \
-bashtop \
+bpytop \
 jq \
 nghttp2 \
 trash-cli

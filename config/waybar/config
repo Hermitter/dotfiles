@@ -58,7 +58,7 @@
     },
     "cpu": {
         "format": " {usage}%",
-        "on-click": "~/.config/sway/scripts/open_floating.sh kitty -e bashtop"
+        "on-click": "~/.config/sway/scripts/open_floating.sh kitty -e bpytop"
     },
     "memory": {
         "format": " {}%"

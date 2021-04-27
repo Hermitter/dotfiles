@@ -36,7 +36,7 @@ podman-compose \
 ffmpeg \
 util-linux-user \
 wl-clipboard xclip \
-trash-cli zsh fish bat exa bashtop starship \
+trash-cli zsh fish bat exa bpytop starship \
 openssl-devel \
 nghttp2 \
 java-latest-openjdk-devel
