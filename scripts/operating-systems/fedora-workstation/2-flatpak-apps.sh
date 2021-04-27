@@ -5,6 +5,7 @@
 #############################################
 
 flatpak install -y flathub \
+org.gnome.Extensions \
 com.spotify.Client \
 org.telegram.desktop \
 org.signal.Signal \
