@@ -55,8 +55,15 @@ else
     alias a='ls'
 fi
 
+# Bashtop alias
+if exists exa; then
+    alias bashtop='bpytop'
+fi
+
 # Pick clipboard commands for Wayland and X11
-DISPLAY_SERVER=$(cut -d "=" -f2- <<< $(loginctl show-session 2 -p Type))
+# TODO: Determine session type
+# DISPLAY_SERVER=$(cut -d "=" -f2- <<< $(loginctl show-session 2 -p Type))
+DISPLAY_SERVER="wayland"
 if [ "$DISPLAY_SERVER" = "wayland" ]; then
     alias copy="wl-copy"
     alias paste="wl-paste"
