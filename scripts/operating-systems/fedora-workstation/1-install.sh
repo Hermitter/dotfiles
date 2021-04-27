@@ -90,6 +90,7 @@ cp $DOTFILES/zsh/zshrc $HOME/.zshrc
 # GNOME Keyboard & Mouse
 #############################################
 gsettings set org.gnome.desktop.peripherals.touchpad click-method 'fingers'
+gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true 
 gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll true
 gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing false
 
