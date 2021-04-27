@@ -87,6 +87,13 @@ git clone https://github.com/hermitter/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 cp $DOTFILES/zsh/zshrc $HOME/.zshrc
 
 #############################################
+# GNOME Keyboard & Mouse
+#############################################
+gsettings set org.gnome.desktop.peripherals.touchpad click-method 'fingers'
+gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll true
+gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing false
+
+#############################################
 # THEME
 #############################################
 
@@ -105,6 +112,10 @@ gsettings set org.gnome.desktop.interface gtk-theme "Materia-dark-compact"
 gsettings set org.gnome.desktop.interface icon-theme "Flat-Remix-Blue-Dark"
 gsettings set org.gnome.desktop.interface cursor-theme "Adwaita"
 gsettings set org.gnome.desktop.interface cursor-size 32
+gsettings set org.gnome.desktop.interface font-name 'Roboto 11'
+gsettings set org.gnome.desktop.interface document-font-name 'Roboto 11'
+gsettings set org.gnome.desktop.interface monospace-font-name 'Source Code Pro Regular 10'
+gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Roboto Bold 11'
 
 #############################################
 # MISC
