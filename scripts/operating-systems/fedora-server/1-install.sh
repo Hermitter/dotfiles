@@ -22,6 +22,7 @@ bat \
 exa \
 bashtop \
 jq \
+nghttp2 \
 trash-cli
 
 # Generate ssh keys

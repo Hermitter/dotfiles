@@ -38,14 +38,8 @@ util-linux-user \
 wl-clipboard xclip \
 trash-cli zsh fish bat exa bashtop starship \
 openssl-devel \
+nghttp2 \
 java-latest-openjdk-devel
-
-# unused dnf dependencies (TODO: remove after test)
-# SDL2-devel
-# glib glib-devel gtk3-devel
-# minicom openocd
-# ncurses-compat-libs
-# sudo dnf install -y texlive-scheme-full
 
 sudo dnf groupinstall -y "Development Tools"
 
@@ -61,9 +55,6 @@ pavucontrol \
 transmission-gtk \
 pulseeffects \
 blueman
-
-# Install Wine dependancies (for windows games, apps, etc.)
-# sudo dnf install wine dxvk-winelib
 
 # Set up Wireshark
 sudo usermod -a -G wireshark $USER
@@ -161,3 +152,13 @@ chsh -s /bin/zsh
 # Firefox (about:config) these settings can't be automated >:(
 # gfx.webrender.all
 # layers.acceleration.force-enabled
+
+# Install Wine dependancies (for windows games, apps, etc.)
+# sudo dnf install wine dxvk-winelib
+
+# unused dnf dependencies (TODO: remove after test)
+# SDL2-devel
+# glib glib-devel gtk3-devel
+# minicom openocd
+# ncurses-compat-libs
+# sudo dnf install -y texlive-scheme-full
