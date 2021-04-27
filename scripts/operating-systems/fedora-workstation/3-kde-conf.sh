@@ -1,2 +1,3 @@
 sudo dnf install -y \
-latte-dock
+latte-dock \
+materia-kde
