@@ -1,3 +1,8 @@
+# SSH-Agent: https://wiki.archlinux.org/index.php/SSH_keys#Keychain
+export SHELL=fish
+eval (keychain --quiet --eval --agents ssh $argv)
+export SHELL=dash
+
 # https://starship.rs
 if exists starship
     starship init fish | source
