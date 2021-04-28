@@ -15,7 +15,6 @@ sudo dnf install -y \
     rofi \
     brightnessctl \
     playerctl \
-    kitty \
     alacritty \
     cava \
     gnome-power-manager \

@@ -58,7 +58,7 @@
     },
     "cpu": {
         "format": " {usage}%",
-        "on-click": "~/.config/sway/scripts/open_floating.sh kitty -e bpytop"
+        "on-click": "~/.config/sway/scripts/open_floating.sh alacritty -e bpytop"
     },
     "memory": {
         "format": " {}%"
@@ -104,7 +104,7 @@
         "format-ethernet": " WIRED",
         "format-disconnected": "NO NETWORK",
         "format-disabled": "NO NETWORK",
-        "on-click": "~/.config/sway/scripts/open_floating.sh kitty -e nmtui"
+        "on-click": "~/.config/sway/scripts/open_floating.sh alacritty -e nmtui"
     },
     "pulseaudio": {
         "format": "{icon} {volume}%",

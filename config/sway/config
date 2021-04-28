@@ -11,7 +11,7 @@ set $up i
 set $right l
 
 # Terminal
-set $term kitty
+set $term alacritty
 
 # Application launcher
 set $menu ulauncher | xargs swaymsg exec --

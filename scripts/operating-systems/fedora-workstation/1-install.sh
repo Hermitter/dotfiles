@@ -131,11 +131,11 @@ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo s
 echo -e '\nFINISHED INSTALLING: 1-install.sh\n~~~~~~~~~~ Please Reboot ~~~~~~~~~~\n'
 
 # Start zsh session
-exec zsh -l
+exec fish -l
 
 # Change shell to zsh
-echo "Changing shell to zsh..."
-chsh -s /bin/zsh
+echo "Changing shell to fish..."
+chsh -s /bin/fish
 
 #############################################
 # UNUSED AREA

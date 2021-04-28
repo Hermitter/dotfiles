@@ -77,13 +77,6 @@ if exists ranger; then
     alias f='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 fi
 
-# Terminal file viewer (kitty terminal only)
-# if [[ $TERM == xterm-kitty ]] && exists nnn; then
-#     export NNN_PLUG='f:finder;o:fzopen;p:preview-tui;d:diffs;t:nmount;'
-#     export NNN_FIFO=/tmp/nnn.fifo
-#     alias nnn='nnn -a -P p'
-# fi
-
 #-------------------------------------------------------------------------------
 # ~~~~~ Variables ~~~~~
 #-------------------------------------------------------------------------------
