@@ -1,5 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export EDITOR:code
 SETUVAR __fish_initialized:3100
 SETUVAR fish_color_autosuggestion:676767
 SETUVAR fish_color_cancel:normal
@@ -16,17 +17,17 @@ SETUVAR fish_color_host_remote:yellow
 SETUVAR fish_color_match:normal
 SETUVAR fish_color_normal:normal
 SETUVAR fish_color_operator:26BBD9
-SETUVAR fish_color_param:FFFFFF
+SETUVAR fish_color_param:00afff
 SETUVAR fish_color_quote:F77D26
 SETUVAR fish_color_redirection:70c0b1
-SETUVAR fish_color_search_match:\x2d\x2dbackground\x3d122269
+SETUVAR fish_color_search_match:\x2d\x2dbackground\x3d47626b
 SETUVAR fish_color_selection:white\x1e\x2d\x2dbold\x1e\x2d\x2dbackground\x3dbrblack
 SETUVAR fish_color_status:red
 SETUVAR fish_color_user:00ff00
 SETUVAR fish_color_valid_path:normal
 SETUVAR fish_greeting:
 SETUVAR fish_key_bindings:fish_default_key_bindings
-SETUVAR fish_pager_color_completion:26BBD9\x1e\x2d\x2dbold
+SETUVAR fish_pager_color_completion:normal
 SETUVAR fish_pager_color_description:e7c547
-SETUVAR fish_pager_color_prefix:F77D26\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
+SETUVAR fish_pager_color_prefix:B3A06D\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:FFFFFF
