@@ -83,15 +83,7 @@ git clone https://github.com/hermitter/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 cp $DOTFILES/zsh/zshrc $HOME/.zshrc
 
 #############################################
-# GNOME Keyboard & Mouse
-#############################################
-gsettings set org.gnome.desktop.peripherals.touchpad click-method 'fingers'
-gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true 
-gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll true
-gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing false
-
-#############################################
-# THEME
+# THEME PACKAGES
 #############################################
 
 # Install GTK theme and Flatpak theme
@@ -104,7 +96,49 @@ sudo dnf install -y fira-code-fonts roboto-fontface-fonts
 # Install GNOME extentions
 sudo dnf install -y gnome-shell-extension-dash-to-dock gnome-shell-extension-appindicator.noarch gnome-shell-extension-user-theme
 
-# Change theme settings
+#############################################
+# GNOME SETTINGS
+#############################################
+# Behavior 
+gsettings set org.gnome.desktop.peripherals.touchpad click-method 'fingers'
+gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true 
+gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll true
+gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing false
+gsettings set org.gnome.desktop.wm.preferences focus-mode 'click'
+
+# Key Bindings
+gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['<Super>F']"
+gsettings set org.gnome.desktop.wm.keybindings close "['<Alt>F4', '<Super><Shift>Q']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys screensaver "['<Super>l','<Super><Shift>Return']"
+for i in {1..9}; do
+    gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-$i "['<Super>$i']"
+    gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-$i "['<Shift><Super>$i']"
+done
+
+# TODO: clean this up
+# Custom Key Bindings: (id, name, keybind, command)
+keybind () {
+    gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$1/ name "'$2'"
+    gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$1/ binding  "'$3'"
+    gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$1/ command  "'$4'"
+}
+
+bind_paths="["
+bind_paths+="'/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', "
+bind_paths+="'/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', "
+bind_paths+="'/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', "
+bind_paths+="'/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', "
+bind_paths+="'/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/'"
+bind_paths+="]"
+gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings $bind_paths
+
+keybind 0 'Volume Up'          '<Ctrl><Super><Alt>Up'   'bash -c "amixer set Master unmute && amixer set Master 5%+"'
+keybind 1 'Volume Down'        '<Ctrl><Super><Alt>Down'  'bash -c "amixer set Master unmute && amixer set Master 5%-"'
+keybind 2 'Volume Mute LArrow' '<Ctrl><Super><Alt>Left'  'bash -c "amixer set Master toggle"'
+keybind 3 'Volume Mute RArrow' '<Ctrl><Super><Alt>Right' 'bash -c "amixer set Master toggle"'
+keybind 4 'Open Terminal'      '<Super>Return'           'bash -c "kitty"'
+
+# Theme
 gsettings set org.gnome.desktop.interface gtk-theme "Materia-dark-compact"
 gsettings set org.gnome.desktop.interface icon-theme "Flat-Remix-Blue-Dark"
 gsettings set org.gnome.desktop.interface cursor-theme "Adwaita"
