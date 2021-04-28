@@ -16,7 +16,6 @@ sudo dnf install -y \
     brightnessctl \
     playerctl \
     kitty \
-    alacritty \
     cava \
     gnome-power-manager \
     wf-recorder \
@@ -26,6 +25,9 @@ sudo dnf install -y \
     grim \
     ImageMagick \
     NetworkManager-tui
+
+# remove alacritty in facor of kitty
+sudo dnf remove alacritty -y
 
 #############################################
 # CONFIGS
