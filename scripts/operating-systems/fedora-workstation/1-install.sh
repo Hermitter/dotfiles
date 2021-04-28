@@ -60,10 +60,6 @@ blueman
 sudo usermod -a -G wireshark $USER
 sudo chmod +x /usr/bin/dumpcap # permissions fix
 
-# Qt dark theme fix (mainly wireshark)
-sudo dnf install -y qt5-qtstyleplugins
-echo -e "\n# qt dark theme fix\nexport QT_QPA_PLATFORMTHEME=gtk2" >> $HOME/.profile
-
 # Generate ssh keys
 ssh-keygen
 
@@ -174,3 +170,7 @@ chsh -s /bin/zsh
 # minicom openocd
 # ncurses-compat-libs
 # sudo dnf install -y texlive-scheme-full
+
+# Qt dark theme fix (mainly wireshark)
+# sudo dnf install -y qt5-qtstyleplugins
+# echo -e "\n# qt dark theme fix\nexport QT_QPA_PLATFORMTHEME=gtk2" >> $HOME/.profile
