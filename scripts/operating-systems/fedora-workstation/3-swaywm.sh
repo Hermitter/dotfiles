@@ -16,6 +16,7 @@ sudo dnf install -y \
     brightnessctl \
     playerctl \
     kitty \
+    alacritty \
     cava \
     gnome-power-manager \
     wf-recorder \
