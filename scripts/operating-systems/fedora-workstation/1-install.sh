@@ -139,15 +139,14 @@ keybind 'Volume Up'          '<Ctrl><Super><Alt>Up'    'bash -c "amixer set Mast
 keybind 'Volume Down'        '<Ctrl><Super><Alt>Down'  'bash -c "amixer set Master unmute && amixer set Master 5%-"'
 keybind 'Volume Mute LArrow' '<Ctrl><Super><Alt>Left'  'amixer set Master toggle'
 keybind 'Volume Mute RArrow' '<Ctrl><Super><Alt>Right' 'amixer set Master toggle'
+keybind 'Screenshot Tool'    '<Super><Shift>P'         'gnome-screenshot -i'
 
 # - Create storage path for each keybind
 for ((i=0; i<${#keybinds[@]}; ++i)); do
-    echo $i
     keybind_paths+=("'/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$(($i+1))/'")
 done
 printf -v joined '%s, ' "${keybind_paths[@]}"
 keybind_paths="\"[$(echo "${joined%, }")]\""
-echo $keybind_paths
 
 # - Apply each keybind
 bash -c "gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings $keybind_paths"
