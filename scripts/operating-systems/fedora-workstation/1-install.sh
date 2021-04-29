@@ -130,7 +130,7 @@ keybind 'Volume Up'          '<Ctrl><Super><Alt>Up'    'bash -c "amixer set Mast
 keybind 'Volume Down'        '<Ctrl><Super><Alt>Down'  'bash -c "amixer set Master unmute && amixer set Master 5%-"'
 keybind 'Volume Mute LArrow' '<Ctrl><Super><Alt>Left'  'amixer set Master toggle'
 keybind 'Volume Mute RArrow' '<Ctrl><Super><Alt>Right' 'amixer set Master toggle'
-keybind 'Open Terminal'      '<Super>Return'           'kitty'
+keybind 'Open Terminal'      '<Super>Return'           'tilix'
 
 # - Create storage path for each keybind
 for ((i=0; i<${#keybinds[@]}; ++i)); do
