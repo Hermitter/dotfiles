@@ -32,5 +32,6 @@ sudo dnf remove alacritty -y
 #############################################
 # CONFIGS
 #############################################
-mkdir -p $HOME/.local/share/ulauncher/extensions
-git clone https://github.com/Hermitter/ulauncher-wayshot $HOME/.local/share/ulauncher/extensions/wayshot
+# Wayshot is broken on the latest version of Ulauncher
+# mkdir -p $HOME/.local/share/ulauncher/extensions
+# git clone https://github.com/Hermitter/ulauncher-wayshot $HOME/.local/share/ulauncher/extensions/wayshot
