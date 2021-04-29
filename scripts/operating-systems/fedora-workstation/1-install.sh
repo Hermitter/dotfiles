@@ -114,7 +114,6 @@ gsettings set org.gnome.shell.keybindings toggle-overview "['<Super>D']"
 # TODO: figure out why super+p doesn't work
 # gsettings set org.gnome.settings-daemon.plugins.media-keys area-screenshot-clip "['<Super>P']"
 
-
 for i in {1..9}; do
     gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-$i "['<Super>$i']"
     gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-$i "['<Shift><Super>$i']"
@@ -131,25 +130,28 @@ keybind () {
     cmds+=("'$3'")
 }
 
+keybind 'Open Terminal'      '<Super>Return'           'tilix'
 keybind 'Volume Up'          '<Ctrl><Super><Alt>Up'    'bash -c "amixer set Master unmute && amixer set Master 5%+"'
 keybind 'Volume Down'        '<Ctrl><Super><Alt>Down'  'bash -c "amixer set Master unmute && amixer set Master 5%-"'
 keybind 'Volume Mute LArrow' '<Ctrl><Super><Alt>Left'  'amixer set Master toggle'
 keybind 'Volume Mute RArrow' '<Ctrl><Super><Alt>Right' 'amixer set Master toggle'
-keybind 'Open Terminal'      '<Super>Return'           'tilix'
 
 # - Create storage path for each keybind
 for ((i=0; i<${#keybinds[@]}; ++i)); do
-    keybind_paths+=("'/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$i/'")
+    echo $i
+    keybind_paths+=("'/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$(($i+1))/'")
 done
 printf -v joined '%s, ' "${keybind_paths[@]}"
 keybind_paths="\"[$(echo "${joined%, }")]\""
+echo $keybind_paths
 
 # - Apply each keybind
 bash -c "gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings $keybind_paths"
 for ((i=0; i<${#keybinds[@]}; ++i)); do
-    bash -c "gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$i/ name ${names[$i]}"
-    bash -c "gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$i/ binding  ${keybinds[$i]}"
-    bash -c "gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$i/ command  ${cmds[$i]}"
+    offset=$(($i+1))
+    bash -c "gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$offset/ name ${names[$i]}"
+    bash -c "gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$offset/ binding  ${keybinds[$i]}"
+    bash -c "gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$offset/ command  ${cmds[$i]}"
 done
 
 # Theme
