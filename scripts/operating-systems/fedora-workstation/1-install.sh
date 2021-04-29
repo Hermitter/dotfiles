@@ -110,6 +110,11 @@ gsettings set org.gnome.desktop.wm.preferences focus-mode 'click'
 gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['<Super>F']"
 gsettings set org.gnome.desktop.wm.keybindings close "['<Alt>F4', '<Super><Shift>Q']"
 gsettings set org.gnome.settings-daemon.plugins.media-keys screensaver "['<Super>l','<Super><Shift>Return']"
+gsettings set org.gnome.shell.keybindings toggle-overview "['<Super>D']"
+# TODO: figure out why super+p doesn't work
+# gsettings set org.gnome.settings-daemon.plugins.media-keys area-screenshot-clip "['<Super>P']"
+
+
 for i in {1..9}; do
     gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-$i "['<Super>$i']"
     gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-$i "['<Shift><Super>$i']"
