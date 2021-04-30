@@ -53,8 +53,7 @@ steam \
 wireshark \
 pavucontrol \
 transmission-gtk \
-pulseeffects \
-blueman
+pulseeffects
 
 # Set up Wireshark
 sudo usermod -a -G wireshark $USER

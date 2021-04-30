@@ -12,7 +12,6 @@ sudo dnf install -y \
     mako \
     ranger \
     ulauncher \
-    rofi \
     brightnessctl \
     playerctl \
     kitty \
@@ -24,6 +23,7 @@ sudo dnf install -y \
     slurp \
     grim \
     ImageMagick \
+    blueman \
     NetworkManager-tui
 
 # remove alacritty in facor of kitty
