@@ -2,10 +2,6 @@
 sudo dnf update -y 
 DOTFILES="$(dirname $(dirname $(dirname $(dirname "$( realpath "${BASH_SOURCE[0]}")"))))"
 
-#############################################
-# APPLICATIONS / DEPENDENCIES 
-#############################################
-
 # Get config files
 cp -r $DOTFILES/config/* $HOME/.config
 
@@ -16,6 +12,10 @@ curl -L https://github.com/Hermitter/tepe/releases/latest/download/tepe-linux-am
 
 # Get wallpapers
 cp -r $DOTFILES/images/Wallpapers $HOME/Pictures/Wallpapers
+
+#############################################
+# APPLICATIONS / DEPENDENCIES 
+#############################################
 
 # Enable rpm fusion's free&non-free repos
 sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
@@ -28,7 +28,7 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 # - apply upgrade: sudo dnf offline-upgrade reboot
 sudo dnf install 'dnf-command(system-upgrade)' -y
 
-# Install essentials/dependencies
+# Install essentials
 sudo dnf install -y \
 ascii \
 toolbox \
@@ -54,6 +54,9 @@ wireshark \
 pavucontrol \
 transmission-gtk \
 pulseeffects
+
+# Install GNOME extentions
+sudo dnf install -y gnome-shell-extension-dash-to-dock gnome-shell-extension-appindicator.noarch gnome-shell-extension-user-theme
 
 # Set up Wireshark
 sudo usermod -a -G wireshark $USER
@@ -82,7 +85,7 @@ git clone https://github.com/hermitter/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 cp $DOTFILES/zsh/zshrc $HOME/.zshrc
 
 #############################################
-# THEME PACKAGES
+# THEME
 #############################################
 
 # Install GTK theme and Flatpak theme
@@ -91,80 +94,6 @@ flatpak install -y flathub org.gtk.Gtk3theme.Materia{,-dark,-light}{,-compact}
 
 # Install Fonts
 sudo dnf install -y fira-code-fonts roboto-fontface-fonts
-
-# Install GNOME extentions
-sudo dnf install -y gnome-shell-extension-dash-to-dock gnome-shell-extension-appindicator.noarch gnome-shell-extension-user-theme
-
-# Enable GNOME extentions
-gsettings set org.gnome.shell disable-user-extensions true
-gnome-extensions enable appindicatorsupport@rgcjonas.gmail.com
-
-#############################################
-# GNOME SETTINGS
-#############################################
-# Behavior 
-gsettings set org.gnome.desktop.peripherals.touchpad click-method 'fingers'
-gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true 
-gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll true
-gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing false
-gsettings set org.gnome.desktop.wm.preferences focus-mode 'click'
-
-# Key Bindings
-gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['<Super>F']"
-gsettings set org.gnome.desktop.wm.keybindings close "['<Alt>F4', '<Super><Shift>Q']"
-gsettings set org.gnome.settings-daemon.plugins.media-keys screensaver "['<Super>l','<Super><Shift>Return']"
-gsettings set org.gnome.shell.keybindings toggle-overview "['<Super>D']"
-# TODO: figure out why super+p doesn't work
-# gsettings set org.gnome.settings-daemon.plugins.media-keys area-screenshot-clip "['<Super>P']"
-
-for i in {1..9}; do
-    gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-$i "['<Super>$i']"
-    gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-$i "['<Shift><Super>$i']"
-done
-
-# Custom Key Bindings
-unset keybind_paths && declare keybind_paths
-unset names && declare names
-unset keybinds && declare keybinds
-unset cmds && declare cmds
-keybind () {
-    names+=("'$1'")
-    keybinds+=("'$2'")
-    cmds+=("'$3'")
-}
-
-keybind 'Open Terminal'      '<Super>Return'           'tilix'
-keybind 'Volume Up'          '<Ctrl><Super><Alt>Up'    'bash -c "amixer set Master unmute && amixer set Master 5%+"'
-keybind 'Volume Down'        '<Ctrl><Super><Alt>Down'  'bash -c "amixer set Master unmute && amixer set Master 5%-"'
-keybind 'Volume Mute LArrow' '<Ctrl><Super><Alt>Left'  'amixer set Master toggle'
-keybind 'Volume Mute RArrow' '<Ctrl><Super><Alt>Right' 'amixer set Master toggle'
-keybind 'Screenshot Tool'    '<Super><Shift>P'         'gnome-screenshot -i'
-
-# - Create storage path for each keybind
-for ((i=0; i<${#keybinds[@]}; ++i)); do
-    keybind_paths+=("'/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$(($i+1))/'")
-done
-printf -v joined '%s, ' "${keybind_paths[@]}"
-keybind_paths="\"[$(echo "${joined%, }")]\""
-
-# - Apply each keybind
-bash -c "gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings $keybind_paths"
-for ((i=0; i<${#keybinds[@]}; ++i)); do
-    offset=$(($i+1))
-    bash -c "gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$offset/ name ${names[$i]}"
-    bash -c "gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$offset/ binding  ${keybinds[$i]}"
-    bash -c "gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$offset/ command  ${cmds[$i]}"
-done
-
-# Theme
-gsettings set org.gnome.desktop.interface gtk-theme "Materia-dark-compact"
-gsettings set org.gnome.desktop.interface icon-theme "Flat-Remix-Blue-Dark"
-gsettings set org.gnome.desktop.interface cursor-theme "Adwaita"
-gsettings set org.gnome.desktop.interface cursor-size 32
-gsettings set org.gnome.desktop.interface font-name 'Roboto 11'
-gsettings set org.gnome.desktop.interface document-font-name 'Roboto 11'
-gsettings set org.gnome.desktop.interface monospace-font-name 'Source Code Pro Regular 10'
-gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Roboto Bold 11'
 
 #############################################
 # MISC
