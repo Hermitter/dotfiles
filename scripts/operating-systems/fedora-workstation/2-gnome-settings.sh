@@ -29,6 +29,7 @@ gsettings set org.gnome.shell.keybindings toggle-overview "['<Super>D']"
 # TODO: figure out why super+p doesn't work
 # gsettings set org.gnome.settings-daemon.plugins.media-keys area-screenshot-clip "['<Super>P']"
 
+# TODO: fix GNOME randomly overwritting (Super+number) shortcuts
 for i in {1..9}; do
     gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-$i "['<Super>$i']"
     gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-$i "['<Shift><Super>$i']"
