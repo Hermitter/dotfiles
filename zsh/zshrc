@@ -60,6 +60,11 @@ if exists exa; then
     alias bashtop='bpytop'
 fi
 
+# List user occupied ports
+if exists netstat; then
+    alias ports='netstat -tulpn | grep LISTEN'
+fi
+
 # Pick clipboard commands for Wayland and X11
 # TODO: Determine session type
 # DISPLAY_SERVER=$(cut -d "=" -f2- <<< $(loginctl show-session 2 -p Type))
