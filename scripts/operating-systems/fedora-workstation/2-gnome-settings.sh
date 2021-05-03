@@ -30,10 +30,10 @@ gsettings set org.gnome.shell.keybindings toggle-overview "['<Super>D']"
 # gsettings set org.gnome.settings-daemon.plugins.media-keys area-screenshot-clip "['<Super>P']"
 
 # TODO: fix GNOME randomly overwritting (Super+number) shortcuts
-for i in {1..9}; do
-    gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-$i "['<Super>$i']"
-    gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-$i "['<Shift><Super>$i']"
-done
+# for i in {1..9}; do
+#     gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-$i "['<Super>$i']"
+#     gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-$i "['<Shift><Super>$i']"
+# done
 
 # Custom Key Bindings
 unset keybind_paths && declare keybind_paths
