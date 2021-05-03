@@ -62,7 +62,7 @@ fi
 
 # List user occupied ports
 if exists netstat; then
-    alias ports='netstat -tulpn | grep LISTEN'
+    alias ports='netstat -tulpn'
 fi
 
 # Pick clipboard commands for Wayland and X11
