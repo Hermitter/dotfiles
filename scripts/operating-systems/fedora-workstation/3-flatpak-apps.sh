@@ -14,7 +14,6 @@ com.slack.Slack \
 org.gabmus.hydrapaper \
 com.dropbox.Client \
 md.obsidian.Obsidian \
-io.github.Soundux \
 com.github.alainm23.planner
 
 #############################################
