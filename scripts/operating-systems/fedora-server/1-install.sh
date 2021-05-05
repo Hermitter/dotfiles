@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
+
+# Increase DNF speeds
+sudo bash -c " echo 'max_parallel_downloads=10' >> /etc/dnf/dnf.conf"
+sudo bash -c " echo 'fastestmirror=True' >> /etc/dnf/dnf.conf"
+
 sudo dnf update -y 
 DOTFILES="$(dirname $(dirname $(dirname $(dirname "$( realpath "${BASH_SOURCE[0]}")"))))"
 
