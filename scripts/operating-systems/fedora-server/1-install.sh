@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-sudo dnf update -y 
+sudo dnf upgrade -y 
 DOTFILES="$(dirname $(dirname $(dirname $(dirname "$( realpath "${BASH_SOURCE[0]}")"))))"
 
 #############################################
