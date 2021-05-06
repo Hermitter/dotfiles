@@ -22,6 +22,9 @@ gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing false
 gsettings set org.gnome.desktop.wm.preferences focus-mode 'click'
 
 # Key Bindings
+gsettings set org.gnome.settings-daemon.plugins.media-keys volume-up "['<Primary><Alt><Super>Up']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys volume-down "['<Primary><Alt><Super>Down']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys volume-mute "['<Primary><Alt><Super>Left','<Primary><Alt><Super>Right']"
 gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['<Super>F']"
 gsettings set org.gnome.desktop.wm.keybindings close "['<Alt>F4', '<Super><Shift>Q']"
 gsettings set org.gnome.settings-daemon.plugins.media-keys screensaver "['<Super>l','<Super><Shift>Return']"
@@ -47,10 +50,6 @@ keybind () {
 }
 
 keybind 'Open Terminal'      '<Super>Return'           'tilix'
-keybind 'Volume Up'          '<Ctrl><Super><Alt>Up'    'bash -c "amixer set Master unmute && amixer set Master 5%+"'
-keybind 'Volume Down'        '<Ctrl><Super><Alt>Down'  'bash -c "amixer set Master unmute && amixer set Master 5%-"'
-keybind 'Volume Mute LArrow' '<Ctrl><Super><Alt>Left'  'amixer set Master toggle'
-keybind 'Volume Mute RArrow' '<Ctrl><Super><Alt>Right' 'amixer set Master toggle'
 keybind 'Screenshot Tool'    '<Super><Shift>P'         'gnome-screenshot -i'
 
 # - define an id for each keybind
@@ -60,7 +59,7 @@ done
 printf -v joined '%s, ' "${keybind_paths[@]}"
 keybind_paths="\"[$(echo "${joined%, }")]\""
 
-# - apply each keybind to an id
+# - apply a keybind for each id
 bash -c "gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings $keybind_paths"
 for ((i=0; i<${#keybinds[@]}; ++i)); do
     offset=$(($i+1))
