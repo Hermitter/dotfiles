@@ -26,7 +26,7 @@ sudo dnf install -y \
     blueman \
     NetworkManager-tui
 
-# remove alacritty in facor of kitty
+# remove alacritty in favor of kitty
 sudo dnf remove alacritty -y
 
 #############################################
