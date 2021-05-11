@@ -60,7 +60,7 @@ transmission-gtk \
 pulseeffects
 
 # Install GNOME extentions
-sudo dnf install -y gnome-shell-extension-dash-to-dock gnome-shell-extension-appindicator.noarch gnome-shell-extension-user-theme
+sudo dnf install -y gnome-shell-extension-dash-to-dock gnome-shell-extension-appindicator gnome-shell-extension-user-theme
 
 # Set up Wireshark
 sudo usermod -a -G wireshark $USER
