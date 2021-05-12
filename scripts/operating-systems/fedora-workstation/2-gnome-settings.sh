@@ -15,7 +15,11 @@ gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Roboto Bold 11'
 #############################################
 # Desktop Extentions
 #############################################
+
+# enable extentions
 gsettings set org.gnome.shell disable-user-extensions false
+
+# enable system tray
 gnome-extensions enable appindicatorsupport@rgcjonas.gmail.com
 
 #############################################
@@ -27,13 +31,15 @@ gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll true
 gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing false
 gsettings set org.gnome.desktop.wm.preferences focus-mode 'click'
 
+# change max screencast length to 30 mins
+gsettings set org.gnome.settings-daemon.plugins.media-keys max-screencast-length 1800
+
 #############################################
 # App Specific Settings
 #############################################
 
 # Disable blueman system tray icon
 gsettings set org.blueman.general plugin-list "['\!AppIndicator']"
-
 
 #############################################
 # Key Bindings
@@ -46,6 +52,7 @@ gsettings set org.gnome.desktop.wm.keybindings close "['<Alt>F4', '<Super><Shift
 gsettings set org.gnome.settings-daemon.plugins.media-keys screensaver "['<Super>l','<Super><Shift>Return']"
 gsettings set org.gnome.shell.keybindings toggle-overview "['<Super>D']"
 gsettings set org.gnome.settings-daemon.plugins.media-keys screencast "['<Super><Shift>R']"
+
 # TODO: figure out why super+p doesn't work
 # gsettings set org.gnome.settings-daemon.plugins.media-keys area-screenshot-clip "['<Super>P']"
 
