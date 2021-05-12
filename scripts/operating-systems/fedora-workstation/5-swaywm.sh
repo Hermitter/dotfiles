@@ -23,7 +23,6 @@ sudo dnf install -y \
     slurp \
     grim \
     ImageMagick \
-    blueman \
     NetworkManager-tui
 
 # remove alacritty in favor of kitty

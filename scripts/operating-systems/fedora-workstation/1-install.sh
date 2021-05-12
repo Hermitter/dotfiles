@@ -57,7 +57,8 @@ steam \
 wireshark \
 pavucontrol \
 transmission-gtk \
-pulseeffects
+pulseeffects \
+blueman
 
 # Install GNOME extentions
 sudo dnf install -y gnome-shell-extension-dash-to-dock gnome-shell-extension-appindicator gnome-shell-extension-user-theme
