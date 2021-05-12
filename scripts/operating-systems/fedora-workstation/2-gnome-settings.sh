@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-# Apply Theme
+#############################################
+# Desktop Theme
+#############################################
 gsettings set org.gnome.desktop.interface gtk-theme "Materia-dark-compact"
 gsettings set org.gnome.desktop.interface icon-theme "Flat-Remix-Blue-Dark"
 gsettings set org.gnome.desktop.interface cursor-theme "Adwaita"
@@ -10,22 +12,32 @@ gsettings set org.gnome.desktop.interface document-font-name 'Roboto 11'
 gsettings set org.gnome.desktop.interface monospace-font-name 'Source Code Pro Regular 10'
 gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Roboto Bold 11'
 
-# Extentions
+#############################################
+# Desktop Extentions
+#############################################
 gsettings set org.gnome.shell disable-user-extensions false
 gnome-extensions enable appindicatorsupport@rgcjonas.gmail.com
 
-# Behavior
+#############################################
+# Desktop Behavior
+#############################################
 gsettings set org.gnome.desktop.peripherals.touchpad click-method 'fingers'
 gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true 
 gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll true
 gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing false
 gsettings set org.gnome.desktop.wm.preferences focus-mode 'click'
 
+#############################################
 # App Specific Settings
-# - Disable blueman system tray (GNOME already provides a bluetooth tray)
+#############################################
+
+# Disable blueman system tray icon
 gsettings set org.blueman.general plugin-list "['\!AppIndicator']"
 
+
+#############################################
 # Key Bindings
+#############################################
 gsettings set org.gnome.settings-daemon.plugins.media-keys volume-up "['<Primary><Alt><Super>Up']"
 gsettings set org.gnome.settings-daemon.plugins.media-keys volume-down "['<Primary><Alt><Super>Down']"
 gsettings set org.gnome.settings-daemon.plugins.media-keys volume-mute "['<Primary><Alt><Super>Left','<Primary><Alt><Super>Right']"
@@ -42,7 +54,9 @@ gsettings set org.gnome.shell.keybindings toggle-overview "['<Super>D']"
 #     gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-$i "['<Shift><Super>$i']"
 # done
 
+#############################################
 # Custom Key Bindings
+#############################################
 unset keybind_paths && declare keybind_paths
 unset names && declare names
 unset keybinds && declare keybinds
@@ -56,14 +70,14 @@ keybind () {
 keybind 'Open Terminal'      '<Super>Return'           'tilix'
 keybind 'Screenshot Tool'    '<Super><Shift>P'         'gnome-screenshot -i'
 
-# - define an id for each keybind
+# define an id for each keybind
 for ((i=0; i<${#keybinds[@]}; ++i)); do
     keybind_paths+=("'/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$(($i+1))/'")
 done
 printf -v joined '%s, ' "${keybind_paths[@]}"
 keybind_paths="\"[$(echo "${joined%, }")]\""
 
-# - apply a keybind for each id
+# apply a keybind for each id
 bash -c "gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings $keybind_paths"
 for ((i=0; i<${#keybinds[@]}; ++i)); do
     offset=$(($i+1))
