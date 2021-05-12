@@ -21,6 +21,10 @@ gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll true
 gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing false
 gsettings set org.gnome.desktop.wm.preferences focus-mode 'click'
 
+# App Specific Settings
+# - Disable blueman system tray (GNOME already provides a bluetooth tray)
+gsettings set org.blueman.general plugin-list "['\!AppIndicator']"
+
 # Key Bindings
 gsettings set org.gnome.settings-daemon.plugins.media-keys volume-up "['<Primary><Alt><Super>Up']"
 gsettings set org.gnome.settings-daemon.plugins.media-keys volume-down "['<Primary><Alt><Super>Down']"
