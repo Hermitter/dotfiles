@@ -45,6 +45,7 @@ gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['<Super>F']"
 gsettings set org.gnome.desktop.wm.keybindings close "['<Alt>F4', '<Super><Shift>Q']"
 gsettings set org.gnome.settings-daemon.plugins.media-keys screensaver "['<Super>l','<Super><Shift>Return']"
 gsettings set org.gnome.shell.keybindings toggle-overview "['<Super>D']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys screencast "['<Super><Shift>R']"
 # TODO: figure out why super+p doesn't work
 # gsettings set org.gnome.settings-daemon.plugins.media-keys area-screenshot-clip "['<Super>P']"
 
