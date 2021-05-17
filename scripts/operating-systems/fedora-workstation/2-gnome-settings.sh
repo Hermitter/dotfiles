@@ -97,14 +97,19 @@ done
 #############################################
 # Startup Script
 #############################################
-DESKTOP_ENTRY="
-[Desktop Entry]
+STARTUP_SCRIPT=$HOME/.bin/gnome-startup-script.sh
+
+# create autostart .desktop file if $STARTUP_SCRIPT exists
+if [ -f "$STARTUP_SCRIPT" ]; then
+
+DESKTOP_ENTRY="[Desktop Entry]
 Name=Launch GNOME Startup Apps
 Type=Application
-Exec=$HOME/.bin/gnome-startup-script.sh
+Exec=$STARTUP_SCRIPT
 Terminal=false
 MimeType=x-scheme-handler/tg;
-X-GNOME-UsesNotifications=true
-"
+X-GNOME-UsesNotifications=true"
 
 echo $DESKTOP_ENTRY > $HOME/.config/autostart/com.github.hermitter.dotfiles.desktop
+
+fi
