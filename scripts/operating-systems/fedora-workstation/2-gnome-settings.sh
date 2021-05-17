@@ -93,3 +93,18 @@ for ((i=0; i<${#keybinds[@]}; ++i)); do
     bash -c "gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$offset/ binding  ${keybinds[$i]}"
     bash -c "gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$offset/ command  ${cmds[$i]}"
 done
+
+#############################################
+# Startup Script
+#############################################
+DESKTOP_ENTRY="
+[Desktop Entry]
+Name=Launch GNOME Startup Apps
+Type=Application
+Exec=$HOME/.bin/gnome-startup-script.sh
+Terminal=false
+MimeType=x-scheme-handler/tg;
+X-GNOME-UsesNotifications=true
+"
+
+echo $DESKTOP_ENTRY > $HOME/.config/autostart/com.github.hermitter.dotfiles.desktop
