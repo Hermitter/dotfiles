@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+set -e
+
 # enable extentions
 gsettings set org.gnome.shell disable-user-extensions false
 
