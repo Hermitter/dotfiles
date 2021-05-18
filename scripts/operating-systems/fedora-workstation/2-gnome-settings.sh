@@ -78,15 +78,16 @@ keybind () {
 keybind 'Open Terminal'      '<Super>Return'           'tilix'
 keybind 'Screenshot Tool'    '<Super><Shift>P'         'gnome-screenshot -i'
 
-# define an id for each keybind
+# create a path for each keybind
 for ((i=0; i<${#keybinds[@]}; ++i)); do
     keybind_paths+=("'/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$(($i+1))/'")
 done
 printf -v joined '%s, ' "${keybind_paths[@]}"
 keybind_paths="\"[$(echo "${joined%, }")]\""
 
-# apply a keybind for each id
 bash -c "gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings $keybind_paths"
+
+# apply a keybind for each path
 for ((i=0; i<${#keybinds[@]}; ++i)); do
     offset=$(($i+1))
     bash -c "gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$offset/ name ${names[$i]}"
