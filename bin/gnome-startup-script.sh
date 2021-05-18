@@ -30,4 +30,5 @@ function start_apps {
 start_apps \
 "telegram-deskto":"flatpak run org.telegram.desktop -startintray" \
 "dropbox":"flatpak run com.dropbox.Client" \
-"signal-desktop":"flatpak run org.signal.Signal --start-in-tray"
+"signal-desktop":"flatpak run org.signal.Signal --start-in-tray" \
+"geary":"geary --hidden"
