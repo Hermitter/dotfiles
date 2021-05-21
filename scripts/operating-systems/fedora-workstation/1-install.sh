@@ -127,12 +127,6 @@ chsh -s /bin/zsh
 # UNUSED AREA
 #############################################
 
-# Flutter
-# git clone git@github.com:flutter/flutter.git -b stable --depth 1 $HOME/Documents/flutter
-# $HOME/Documents/flutter/bin/flutter # set up sdk
-# $HOME/Documents/flutter/bin/flutter config --no-analytics
-# echo -e "\n# Flutter\nexport PATH=\"\$PATH:\$HOME/Documents/flutter/bin\"" >> $HOME/.profile
-
 # Install ClamAV antivirus & update datavase
 # sudo dnf install -y clamtk
 # sudo freshclam
