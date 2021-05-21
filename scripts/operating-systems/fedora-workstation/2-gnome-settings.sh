@@ -53,14 +53,18 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys screensaver "['<Super
 gsettings set org.gnome.shell.keybindings toggle-overview "['<Super>D']"
 gsettings set org.gnome.settings-daemon.plugins.media-keys screencast "['<Super><Shift>R']"
 
-# TODO: figure out why super+p doesn't work
-# gsettings set org.gnome.settings-daemon.plugins.media-keys area-screenshot-clip "['<Super>P']"
+# Set Super+p area screenshot shortcut and remove conflicting keybind from area-screenshot-clip
+gsettings set org.gnome.settings-daemon.plugins.media-keys area-screenshot-clip "['<Super>P']"
+gsettings set org.gnome.mutter.keybindings switch-monitor "['XF86Display']"
 
-# TODO: fix GNOME randomly overwritting (Super+number) shortcuts
-# for i in {1..9}; do
-#     gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-$i "['<Super>$i']"
-#     gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-$i "['<Shift><Super>$i']"
-# done
+# Super+num shortcuts to move apps and switch between workspaces
+for i in {1..9}; do
+    gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-$i "['<Super>$i']"
+    gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-$i "['<Shift><Super>$i']"
+    
+    # unset conflicting switch-to-application keybinds
+    gsettings set org.gnome.shell.keybindings switch-to-application-$i '[]'
+done
 
 #############################################
 # Custom Key Bindings
