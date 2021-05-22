@@ -1,16 +1,22 @@
-# Not tested yet#
+# Not Fully Tested Yet #
+FLUTTER_DIR=$HOME/Documents/flutter/bin/flutter 
+
 # Assumes you'll use the Android Studio flatpak 
+
+# Install Flutter in ~/Documents folder
+git clone git@github.com:flutter/flutter.git -b stable --depth 1 $HOME/Documents/flutter
+$FLUTTER_DIR # set up sdk
+$FLUTTER_DIR config --no-analytics
+echo -e "\n# Flutter\nexport PATH=\"\$PATH:\$HOME/Documents/flutter/bin\"" >> $HOME/.profile
 
 # Install Android Studio
 flatpak install -y flathub com.google.AndroidStudio
 
-# Install Flutter in ~/Documents folder
-git clone git@github.com:flutter/flutter.git -b stable --depth 1 $HOME/Documents/flutter
-$HOME/Documents/flutter/bin/flutter # set up sdk
-$HOME/Documents/flutter/bin/flutter config --no-analytics
-echo -e "\n# Flutter\nexport PATH=\"\$PATH:\$HOME/Documents/flutter/bin\"" >> $HOME/.profile
+# Configure Android Studio
+$FLUTTER_DIR config --android-studio-dir=/var/lib/flatpak/app/com.google.AndroidStudio/current/active/files/extra/android-studio
 
-# Set Flutter path to Android Studio
-flutter config --android-studio-dir=/var/lib/flatpak/app/com.google.AndroidStudio/current/active/files/extra/android-studio
+echo "Open Android Studio to configure it on your machine and then download the following:"
+echo -e "  Configure > SDK Manager > SDK Tools > Android SDK Command-line Tools"
 
-# TODO: agree to Android terms of service
+echo "\nFinally, run the following to finish setting up Flutter:"
+echo -e "  flutter doctor --android-licenses"
