@@ -37,7 +37,6 @@ sudo dnf install -y \
 ascii \
 toolbox \
 podman-compose \
-ffmpeg \
 util-linux-user \
 wl-clipboard xclip \
 trash-cli zsh fish bat exa bpytop starship \
@@ -59,6 +58,10 @@ pavucontrol \
 transmission-gtk \
 pulseeffects \
 blueman
+
+# Install media codecs
+sudo dnf install ffmpeg -y
+sudo dnf groupinstall Multimedia -y
 
 # Install GNOME extentions
 sudo dnf install -y gnome-shell-extension-dash-to-dock gnome-shell-extension-appindicator gnome-shell-extension-user-theme
