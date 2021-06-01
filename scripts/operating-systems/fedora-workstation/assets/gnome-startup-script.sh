@@ -22,11 +22,12 @@ function start_apps {
         fi
     done
 
-    # Kill each child process. The disown command was not used because an empty proces>
+    # Kill each child process. The disown command was not used because an empty process was
     # left behind for each app that was disowned.
     pkill -P $$
 }
 
+# process_name : run_command
 start_apps \
 "telegram-deskto":"flatpak run org.telegram.desktop -startintray" \
 "dropbox":"flatpak run com.dropbox.Client" \
