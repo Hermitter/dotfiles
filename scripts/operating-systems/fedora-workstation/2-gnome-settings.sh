@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+ASSETS="$(dirname "$( realpath "${BASH_SOURCE[0]}")")/assets"
+
 #############################################
 # Desktop Theme
 #############################################
@@ -102,21 +104,17 @@ done
 #############################################
 # Startup Script
 #############################################
-STARTUP_SCRIPT=$HOME/.bin/gnome-startup-script.sh
+cp $ASSETS/gnome-startup-script.sh $HOME/.config/autostart
 
 # create autostart .desktop file if $STARTUP_SCRIPT exists
-if [ -f "$STARTUP_SCRIPT" ]; then
-
 read -r -d '' DESKTOP_ENTRY << EOM 
 [Desktop Entry]
 Name=Launch GNOME Startup Apps
 Type=Application
-Exec=$HOME/.bin/gnome-startup-script.sh
+Exec=$HOME/.config/autostart/gnome-startup-script.sh 
 Terminal=false
 MimeType=x-scheme-handler/tg;
 X-GNOME-UsesNotifications=true
 EOM
 
 echo "$DESKTOP_ENTRY" > $HOME/.config/autostart/com.github.hermitter.dotfiles.desktop
-
-fi
