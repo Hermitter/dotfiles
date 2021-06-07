@@ -9,3 +9,11 @@ symbol = "❯"
 ssh_only = true
 trim_at = "."
 disabled = false
+
+[custom.toolbox]
+description = "The activated toolbox container"
+command = "echo ${DISTTAG%container}"
+when = """ [[ -f /run/.containerenv && -f /run/.toolboxenv ]] """
+style = "bold red"
+format = "[\\[Toolbox: $output\\]]($style) "
+disabled = false
