@@ -11,4 +11,3 @@ Configs and scripts for my Linux machines.
 - **images**: it's the plural of image
 - **scripts**: installation/setup scripts
 - **zsh**: shell config
-- **fish**: a fishy shell config
