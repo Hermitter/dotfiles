@@ -30,6 +30,7 @@ cp -r $SYS_THEMES/Materia-light $USR_THEMES/Materia-light
 cp -r $SYS_THEMES/Materia-light-compact $USR_THEMES/Materia-light-compact
 
 # Force Flatpaks to use user installed themes 
+# Note: override settings can be manually edited in /var/lib/flatpak/overrides/global
 sudo flatpak override --filesystem=~/.themes
 
 #############################################
