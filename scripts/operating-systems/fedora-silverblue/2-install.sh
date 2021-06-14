@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+DOTFILES="$(dirname $(dirname $(dirname $(dirname "$( realpath "${BASH_SOURCE[0]}")"))))"
+
 # Install media codecs
 # TODO: find more: gstreamer1-plugin-openh264
 rpm-ostree install ffmpeg
@@ -50,9 +52,9 @@ cp $DOTFILES/zsh/zshrc $HOME/.zshrc
 
 echo -e '\nFINISHED INSTALLING: 2-install.sh\n~~~~~~~~~~ Please Reboot ~~~~~~~~~~\n'
 
-# Start zsh session
-exec zsh -l
-
 # Change shell to zsh
 echo "Changing shell to zsh..."
 chsh -s /bin/zsh
+
+# Start zsh session
+exec zsh -l
