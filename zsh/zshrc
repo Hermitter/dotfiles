@@ -56,7 +56,7 @@ else
 fi
 
 # Bashtop alias
-if exists exa; then
+if exists bpytop; then
     alias bashtop='bpytop'
 fi
 
