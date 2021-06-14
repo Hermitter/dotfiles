@@ -13,8 +13,7 @@ com.discordapp.Discord \
 com.slack.Slack \
 org.gabmus.hydrapaper \
 com.dropbox.Client \
-md.obsidian.Obsidian \
-com.github.alainm23.planner
+md.obsidian.Obsidian
 
 #############################################
 # CONFIGS 
