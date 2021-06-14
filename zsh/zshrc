@@ -5,7 +5,9 @@
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="dallas"
 COMPLETION_WAITING_DOTS="true"
-plugins=(zsh-syntax-highlighting git zsh-autosuggestions history-substring-search ssh-agent)
+
+# TODO: conditonally add "ssh-agent" plugin for Sway desktop
+plugins=(zsh-syntax-highlighting git zsh-autosuggestions history-substring-search)
 
 #-------------------------------------------------------------------------------
 # ~~~~~ Functions ~~~~~
@@ -48,16 +50,22 @@ alias emacs="emacs --no-window-system"
 alias scanvirus="virus_scan"
 alias sizeof="du -h -s"
 
-# Pick ls command
 if exists exa; then
     alias a='exa --header --git'
 else
     alias a='ls'
 fi
 
-# Bashtop alias
 if exists bpytop; then
     alias bashtop='bpytop'
+fi
+
+if exists rpm-ostree; then
+    alias rot=rpm-ostree
+fi
+
+if exists toolbox; then
+    alias tb=toolbox
 fi
 
 # List user occupied ports
