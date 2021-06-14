@@ -1,4 +1,3 @@
-## TODO: fully test this script ##
 toolbox create -y
 
 # Increase download speeds
@@ -41,5 +40,27 @@ fi
 ' > $CUSTOM_XDG_OPEN
 chmod +x $CUSTOM_XDG_OPEN
 
-# Add a .desktop that calls into the toolbox's VScode
-# TODO:  ...
+# Add alias to toolbox's VScode
+echo 'alias code="toolbox run code"' >> ~/.profile
+
+# Add .desktop file to toolbox's VScode
+VSCODE_DESKTOP="[Desktop Entry]
+Name=Visual Studio Code
+Comment=Code Editing. Redefined.
+GenericName=Text Editor
+Exec=toolbox run code --unity-launch %F
+Icon=com.visualstudio.code
+Type=Application
+StartupNotify=false
+StartupWMClass=Code
+Categories=Utility;TextEditor;Development;IDE;
+MimeType=text/plain;inode/directory;application/x-code-workspace;
+Actions=new-empty-window;
+Keywords=vscode;
+
+[Desktop Action new-empty-window]
+Name=New Empty Window
+Exec=toolbox run code --new-window %F
+Icon=com.visualstudio.code
+"
+echo $VSCODE_DESKTOP > ~/.local/share/applications/code.desktop
