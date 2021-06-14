@@ -24,6 +24,9 @@ gsettings set org.gnome.shell disable-user-extensions false
 # enable system tray
 gnome-extensions enable appindicatorsupport@rgcjonas.gmail.com
 
+# disable Fedora desktop icon
+gnome-extensions disable background-logo@fedorahosted.org
+
 #############################################
 # Desktop Behavior
 #############################################
@@ -32,6 +35,7 @@ gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true
 gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll true
 gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing false
 gsettings set org.gnome.desktop.wm.preferences focus-mode 'click'
+gsettings set org.gnome.desktop.interface show-battery-percentage true
 
 # change max screencast length to 30 mins
 gsettings set org.gnome.settings-daemon.plugins.media-keys max-screencast-length 1800
@@ -104,7 +108,8 @@ done
 #############################################
 # Startup Script
 #############################################
-cp $ASSETS/gnome-startup-script.sh $HOME/.config/autostart
+mkdir -p $HOME/.config/autostart
+cp $ASSETS/gnome-startup-script.sh $HOME/.config/autostart/
 
 # create autostart .desktop file if $STARTUP_SCRIPT exists
 read -r -d '' DESKTOP_ENTRY << EOM 
