@@ -32,7 +32,8 @@ rpm-ostree install \
 tilix \
 podman-compose \
 util-linux-user \
-zsh exa starship
+zsh exa bat starship \
+wl-clipboard
 
 # Install Fedora Flatpak apps
 flatpak install fedora -y \
