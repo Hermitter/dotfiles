@@ -23,23 +23,21 @@ nghttp2
 sudo dnf groupinstall -y "Development Tools"
 
 # Expose host's podman and podman-compose to toolbox
-echo "#\!/usr/bin/env bash
-if [[ -v \$TOOLBOX_PATH ]] | [[ -z \$TOOLBOX_PATH ]]; then
-    /usr/bin/podman "\$@"
-else
-    flatpak-spawn --host podman "\$@"
-fi
-" > $HOME/.bin/podman
-chmod +x $HOME/.bin/podman
+TB_BIN=$HOME/.toolbox_bin
+mkdir -p $TB_BIN
+echo "if [[ ! -v \$TOOLBOX_PATH ]] | [[ ! -z \$TOOLBOX_PATH ]]; then
+    export PATH=\"$TB_BIN:\$PATH\"
+fi" >> $HOME/.profile
 
 echo "#\!/usr/bin/env bash
-if [[ -v \$TOOLBOX_PATH ]] | [[ -z \$TOOLBOX_PATH ]]; then
-    /usr/bin/podman-compose "\$@"
-else
+    flatpak-spawn --host podman "\$@"
+" > $TB_BIN/podman
+chmod +x $TB_BIN/podman
+
+echo "#\!/usr/bin/env bash
     flatpak-spawn --host podman-compose "\$@"
-fi
-" > $HOME/.bin/podman-compose
-chmod +x $HOME/.bin/podman-compose
+" > $TB_BIN/podman-compose
+chmod +x $TB_BIN/podman-compose
 
 #############################################
 # VS Code
