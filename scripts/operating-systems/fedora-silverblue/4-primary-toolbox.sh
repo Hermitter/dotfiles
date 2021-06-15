@@ -4,7 +4,9 @@ toolbox create -y
 # Increase download speeds
 toolbox run sudo bash -c "echo -e 'max_parallel_downloads=10\nfastestmirror=True' >> /etc/dnf/dnf.conf"
 
-# Install essential apps and deps
+#############################################
+# APPLICATIONS / DEPENDENCIES 
+#############################################
 toolbox run sudo dnf install -y \
 zsh \
 fish \
@@ -20,12 +22,28 @@ nghttp2
 
 sudo dnf groupinstall -y "Development Tools"
 
-# Toolbox aliases to host programs
-echo "if [[ ! -v $TOOLBOX_PATH ]] | [[ ! -z $TOOLBOX_PATH ]]; then
-    alias podman='flatpak-spawn --host podman'
-fi" >> ~/.profile
+# Expose host's podman and podman-compose to toolbox
+echo "#\!/usr/bin/env bash
+if [[ -v \$TOOLBOX_PATH ]] | [[ -z \$TOOLBOX_PATH ]]; then
+    /usr/bin/podman "\$@"
+else
+    flatpak-spawn --host podman "\$@"
+fi
+" > $HOME/.bin/podman
+chmod +x $HOME/.bin/podman
 
-# Install vscode in toolbox
+echo "#\!/usr/bin/env bash
+if [[ -v \$TOOLBOX_PATH ]] | [[ -z \$TOOLBOX_PATH ]]; then
+    /usr/bin/podman-compose "\$@"
+else
+    flatpak-spawn --host podman-compose "\$@"
+fi
+" > $HOME/.bin/podman-compose
+chmod +x $HOME/.bin/podman-compose
+
+#############################################
+# VS Code
+#############################################
 # Source: https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-based-distributions
 toolbox run sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 toolbox run sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
