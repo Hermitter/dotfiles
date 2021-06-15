@@ -29,10 +29,9 @@ toolbox run sudo dnf install code -y
 toolbox run sudo dnf install qt5-qtwayland -y
 
 # Set host's firefox as the default browser
-# This is so toolbox apps (mainly VScode) can open the host's web browser
+# This is so toolbox apps (mainly VScode) can open the host's browser
 toolbox run sudo dnf install xdg-utils -y
-HOST_FIREFOX='"
-[Desktop Entry]
+HOST_FIREFOX="[Desktop Entry]
 Version=1.0
 Name=Firefox
 Exec=flatpak-spawn --host firefox %u
@@ -56,8 +55,8 @@ Exec=flatpak-spawn --host firefox --private-window %u
 [Desktop Action profile-manager-window]
 Name=Open the Profile Manager
 Exec=flatpak-spawn --host firefox --ProfileManager
-"'
-toolbox run bash -c "echo $HOST_FIREFOX | sudo tee /usr/share/applications/toolbox.host.firefox.desktop"
+"
+toolbox run bash -c "echo '$HOST_FIREFOX' | sudo tee /usr/share/applications/toolbox.host.firefox.desktop"
 toolbox run xdg-settings set default-web-browser toolbox.host.firefox.desktop
 
 # TODO: figure out why this doesn't work. Ideally, this would've been a simpler solution for URLS than the above code.
@@ -97,4 +96,4 @@ Name=New Empty Window
 Exec=toolbox run code --new-window %F
 Icon=com.visualstudio.code
 "
-echo $VSCODE_DESKTOP > ~/.local/share/applications/code.desktop
+echo "$VSCODE_DESKTOP" > ~/.local/share/applications/code.desktop
