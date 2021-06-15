@@ -18,7 +18,7 @@ curl -L https://github.com/Hermitter/tepe/releases/latest/download/tepe-x86_64-u
 cp -r $DOTFILES/images/Wallpapers $HOME/Pictures/Wallpapers
 
 #############################################
-# APPLICATIONS / DEPENDENCIES 
+# APPLICATIONS / DEPENDENCIES
 #############################################
 
 # Enable rpm fusion's free&non-free repos
