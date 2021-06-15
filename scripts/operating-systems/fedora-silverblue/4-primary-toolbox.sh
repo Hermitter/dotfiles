@@ -18,6 +18,8 @@ nano \
 openssl-devel \
 nghttp2
 
+sudo dnf groupinstall -y "Development Tools"
+
 # Install vscode in toolbox
 # Source: https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-based-distributions
 toolbox run sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
