@@ -16,8 +16,7 @@ trash-cli \
 wl-clipboard \
 nano \
 openssl-devel \
-nghttp2 \
-postgresql
+nghttp2
 
 sudo dnf groupinstall -y "Development Tools"
 
