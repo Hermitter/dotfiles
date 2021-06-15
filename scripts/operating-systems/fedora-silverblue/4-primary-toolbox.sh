@@ -21,6 +21,11 @@ postgresql
 
 sudo dnf groupinstall -y "Development Tools"
 
+# Toolbox aliases to host programs
+echo "if [[ ! -v $TOOLBOX_PATH ]] | [[ ! -z $TOOLBOX_PATH ]]; then
+    alias podman='flatpak-spawn --host podman'
+fi" >> ~/.profile
+
 # Install vscode in toolbox
 # Source: https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-based-distributions
 toolbox run sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
