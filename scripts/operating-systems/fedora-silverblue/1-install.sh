@@ -33,7 +33,8 @@ tilix \
 podman-compose \
 util-linux-user \
 zsh exa bat starship \
-wl-clipboard
+wl-clipboard \
+cheese
 
 # Install Fedora Flatpak apps
 flatpak install fedora -y \
@@ -43,6 +44,7 @@ com.transmissionbt.Transmission
 
 # Install Flathub Flatpak apps
 flatpak install flathub -y \
+org.gnome.Totem \
 org.wireshark.Wireshark \
 org.pulseaudio.pavucontrol \
 com.valvesoftware.Steam \
