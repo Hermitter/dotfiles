@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 ASSETS="$(dirname "$( realpath "${BASH_SOURCE[0]}")")/assets"
 
 #############################################
