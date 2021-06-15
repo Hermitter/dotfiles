@@ -60,7 +60,7 @@ Exec=flatpak-spawn --host firefox --ProfileManager
 toolbox run bash -c "echo $HOST_FIREFOX | sudo tee /usr/share/applications/toolbox.host.firefox.desktop"
 toolbox run xdg-settings set default-web-browser toolbox.host.firefox.desktop
 
-# TODO: figure out why thie doesn't work. Ideally, this would've been a simpler solution for URLS than the above code.
+# TODO: figure out why this doesn't work. Ideally, this would've been a simpler solution for URLS than the above code.
 # Add a PATH variable xdg-open that points to host machine's xdg-open 
 # CUSTOM_XDG_OPEN=~/.bin/xdg-open    
 # echo '#!/bin/sh
