@@ -32,8 +32,12 @@ toolbox run sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https:
 toolbox run sudo dnf check-update
 toolbox run sudo dnf install code -y
 
-# VScode dependency to solve inconsistent error: "error while loading shared libraries: libxshmfence.so.1"
-toolbox run sudo dnf install qt5-qtwayland -y
+# VScode dependency to solve: 
+# - "error while loading shared libraries: libxshmfence.so.1"
+# - missing emojies
+toolbox run sudo dnf install -y \
+qt5-qtwayland \
+gdouros-symbola-fonts
 
 # Set host's firefox as the default browser
 # This is so toolbox apps (mainly VScode) can open the host's browser
