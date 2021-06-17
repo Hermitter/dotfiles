@@ -140,7 +140,7 @@ chsh -s /bin/zsh
 # sudo dnf check-update
 # sudo dnf install -y code
 
-# Firefox (about:config) these settings can't be automated >:(
+# Firefox (about:config) I don't know how to automate this >:(
 # gfx.webrender.all
 # layers.acceleration.force-enabled
 

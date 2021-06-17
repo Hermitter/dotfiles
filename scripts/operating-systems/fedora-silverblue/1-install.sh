@@ -34,6 +34,7 @@ podman-compose \
 util-linux-user \
 zsh exa bat starship \
 wl-clipboard \
+bpytop \
 cheese
 
 # Install Fedora Flatpak apps
@@ -97,6 +98,6 @@ echo -e '\nFINISHED INSTALLING: 1-install.sh\n~~~~~~~~~~ Please Reboot ~~~~~~~~~
 #############################################
 # UNUSED AREA
 #############################################
-# Firefox (about:config) these settings can't be automated >:(
+# Firefox (about:config) I don't know how to automate this >:(
 # gfx.webrender.all
 # layers.acceleration.force-enabled
