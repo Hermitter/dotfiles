@@ -79,7 +79,7 @@ keybind () {
 }
 
 keybind 'Open Terminal'      '<Super>Return'           'tilix'
-keybind 'Screenshot Tool'    '<Super><Shift>P'         'gnome-screenshot -i'
+keybind 'Screenshot Tool'    '<Super><Shift>P'         'flatpak run org.gnome.Screenshot -i'
 
 # create a path for each keybind
 for ((i=0; i<${#keybinds[@]}; ++i)); do
