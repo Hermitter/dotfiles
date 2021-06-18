@@ -2,6 +2,8 @@
 
 add_newline = true
 
+format = "${custom.toolbox_indicator} $all"
+
 [character]
 success_symbol = "[❯](bold green) "
 error_symbol = "[❯](bold red) "
@@ -10,6 +12,13 @@ error_symbol = "[❯](bold red) "
 ssh_only = true
 trim_at = "."
 disabled = false
+
+[custom.toolbox_indicator]
+description = "A symbol indicating that the shell is inside a toolbox container"
+command = "echo '⬢'"
+style="bold purple"
+when = """ [[ -f /run/.containerenv && -f /run/.toolboxenv ]] """
+format = "[$output]($style)"
 
 [custom.toolbox]
 description = "The activated toolbox container"
