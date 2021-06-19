@@ -2,7 +2,7 @@
 
 add_newline = true
 
-format = "${custom.toolbox_indicator} $all"
+format = "${custom.toolbox_indicator}$all"
 
 [character]
 success_symbol = "[❯](bold green) "
@@ -18,7 +18,7 @@ description = "A symbol indicating that the shell is inside a toolbox container"
 command = "echo '⬢'"
 style="bold purple"
 when = """ [[ -f /run/.containerenv && -f /run/.toolboxenv ]] """
-format = "[$output]($style)"
+format = "[$output]($style) "
 
 [custom.toolbox]
 description = "The activated toolbox container"
