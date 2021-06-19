@@ -8,7 +8,7 @@ Configs and scripts for my Linux machines.
 - **scripts**: installation/setup scripts
 - **zsh**: shell config
 
-## Workstation Sway Preview
+## Sway Workstation Preview
 <div align=center>
   <img width=800 src="images/sway-desktop.png" alt="Sway desktop preview"/>
   <img width=800 src="images/sway-desktop-active.png" alt="Sway desktop preview with apps"/>
