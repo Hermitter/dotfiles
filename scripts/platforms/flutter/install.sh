@@ -15,8 +15,8 @@ flatpak install -y flathub com.google.AndroidStudio
 # Configure Android Studio
 $FLUTTER_DIR config --android-studio-dir=/var/lib/flatpak/app/com.google.AndroidStudio/current/active/files/extra/android-studio
 
-echo "Open Android Studio to configure it on your machine and then download the following:"
-echo -e "  Configure > SDK Manager > SDK Tools > Android SDK Command-line Tools"
+echo -e "\nOpen Android Studio to configure it on your machine and then download the following:"
+echo -e "  Configure > SDK Manager > SDK Tools > Android SDK Command-line Tools\n"
 
-echo "\nFinally, run the following to finish setting up Flutter:"
+echo    "Finally, run the following to finish setting up Flutter:"
 echo -e "  flutter doctor --android-licenses"
