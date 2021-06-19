@@ -13,7 +13,6 @@ fish \
 starship \
 exa \
 bat \
-bpytop \
 trash-cli \
 wl-clipboard \
 nano \
