@@ -25,6 +25,10 @@ jq \
 nghttp2 \
 trash-cli
 
+# Fedora release upgrade plugin
+# Learn more: https://docs.fedoraproject.org/en-US/quick-docs/dnf-system-upgrade/
+sudo dnf install dnf-plugin-system-upgrade -y
+
 # Generate ssh keys
 ssh-keygen
 
