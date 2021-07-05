@@ -27,6 +27,18 @@ sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-r
 # Enable flathub
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
+# Install flathub apps
+flatpak install -y flathub \
+org.gnome.Extensions \
+com.spotify.Client \
+org.telegram.desktop \
+org.signal.Signal \
+com.discordapp.Discord \
+com.slack.Slack \
+org.gabmus.hydrapaper \
+com.dropbox.Client \
+md.obsidian.Obsidian
+
 # Enable offline upgrades from cli
 # - download upgrade: sudo dnf offline-upgrade download
 # - apply upgrade: sudo dnf offline-upgrade reboot
