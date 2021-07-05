@@ -32,7 +32,7 @@ rpm-ostree install \
 tilix \
 podman-compose \
 util-linux-user \
-zsh exa bat starship \
+zsh fish exa bat starship \
 wl-clipboard \
 bpytop \
 cheese
