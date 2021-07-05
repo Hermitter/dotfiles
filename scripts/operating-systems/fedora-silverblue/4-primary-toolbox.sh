@@ -17,6 +17,7 @@ trash-cli \
 wl-clipboard \
 nano \
 openssl-devel \
+net-tools \
 nghttp2
 
 sudo dnf groupinstall -y "Development Tools"
