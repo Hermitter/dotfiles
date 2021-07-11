@@ -39,6 +39,7 @@ cheese
 
 # Install Fedora Flatpak apps
 flatpak install fedora -y \
+org.gnome.FileRoller \
 org.gnome.Geary \
 org.gnome.Extensions \
 com.transmissionbt.Transmission

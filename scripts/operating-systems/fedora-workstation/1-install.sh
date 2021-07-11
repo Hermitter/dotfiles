@@ -60,6 +60,7 @@ sudo dnf groupinstall -y "Development Tools"
 
 # Install apps
 sudo dnf install -y \
+file-roller \
 geary \
 lutris \
 gnome-tweaks \
