@@ -65,3 +65,12 @@ echo "$LUTRIS_DESKTOP" > ~/.local/share/applications/net.lutris.Lutris.desktop
 
 # Set Lutris app to open lutris links
 xdg-settings set default-url-scheme-handler lutris net.lutris.Lutris.desktop
+
+#############################################
+# GAME WORKAROUNDS
+#############################################
+# MTG ARENA: https://lutris.net/games/magic-the-gathering-arena/
+# MSI DOWNLOAD: https://mtgarena-support.wizards.com/hc/en-us/articles/4402583467156-Installing-through-the-Windows-Installer-Package-MSI-
+# DESCRIPTION: Requires you to manually download the .msi files and point to it
+#              during the installation. Once installed point Lutris to use MTGA.exe instead
+#              of MTGALAUNCHER.exe
