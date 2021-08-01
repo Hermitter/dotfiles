@@ -20,7 +20,7 @@ openssl-devel \
 net-tools \
 nghttp2
 
-sudo dnf groupinstall -y "Development Tools"
+toolbox run sudo dnf groupinstall -y "Development Tools"
 
 # Expose host's podman and podman-compose to toolbox
 TB_BIN=$HOME/.toolbox_bin
