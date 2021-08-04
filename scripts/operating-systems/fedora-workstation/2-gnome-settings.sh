@@ -45,7 +45,7 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys max-screencast-length
 #############################################
 
 # Disable blueman system tray icon
-gsettings set org.blueman.general plugin-list "['\!AppIndicator']"
+# gsettings set org.blueman.general plugin-list "['\!AppIndicator']"
 
 #############################################
 # Key Bindings

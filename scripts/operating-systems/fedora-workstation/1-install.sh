@@ -69,8 +69,7 @@ steam \
 wireshark \
 pavucontrol \
 transmission-gtk \
-pulseeffects \
-blueman
+pulseeffects
 
 # Install media codecs
 sudo dnf install ffmpeg -y
