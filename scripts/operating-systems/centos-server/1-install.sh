@@ -24,6 +24,11 @@ git \
 bpytop \
 trash-cli
 
+# Add configs
+mkdir -p ~/.config
+# TODO: test
+# cp $DOTFILES/config/starship.toml ~/.config
+
 # Enable Cockpit web dashboard (localhost:9090)
 sudo systemctl enable --now cockpit.socket
 
