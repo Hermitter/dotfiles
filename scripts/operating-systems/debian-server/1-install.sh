@@ -30,4 +30,4 @@ cp $DOTFILES/config/starship.toml ~/.config
 mkdir -p ~/.bin
 
 # Add bat symlink for batcat
-ln -s /usr/bin/batcat ~/.bin
+ln -s /usr/bin/batcat ~/.bin/bat
