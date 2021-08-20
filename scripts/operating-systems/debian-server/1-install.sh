@@ -8,26 +8,26 @@
 
 DOTFILES="$(dirname $(dirname $(dirname $(dirname "$( realpath "${BASH_SOURCE[0]}")"))))"
 
-# Enable backports repository (https://backports.debian.org/)
-sudo bash -c "echo 'deb http://deb.debian.org/debian bullseye-backports main' > /etc/apt/sources.list.d/backports.list"
-
 sudo apt update -y
 sudo apt upgrade -y 
 
 # Install essentials/dependencies
 sudo apt install -y \
 cockpit \
+curl \
 zsh \
 git \
 bpytop \
 exa \
 bat \
-trash-cli
+trash-cli \
 
 # Add config files
 mkdir -p ~/.config
-mkdir -p ~/.bin
 cp $DOTFILES/config/starship.toml ~/.config
 
-# add bat symlink for batcat
+# Add folder for user bins
+mkdir -p ~/.bin
+
+# Add bat symlink for batcat
 ln -s /usr/bin/batcat ~/.bin
