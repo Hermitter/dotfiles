@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
 
 # Install Docker (https://docs.docker.com/engine/install/centos/)
-sudo dnf -y install dnf-plugins-core
-sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-sudo dnf install -y docker-ce docker-ce-cli containerd.io --allowerasing
+sudo yum install -y yum-utils
+sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum install -y docker-ce docker-ce-cli containerd.io
+
+# Enable/Start Docker service
 sudo systemctl enable --now docker
 
 # Add user to docker group (applies on reboot)
