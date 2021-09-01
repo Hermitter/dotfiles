@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Remove conflicting dependencies
+sudo dnf remove -y containers-common runc podman
+
 # Install Docker (https://docs.docker.com/engine/install/centos/)
 sudo yum install -y yum-utils
 sudo yum-config-manager \
