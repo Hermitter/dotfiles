@@ -19,6 +19,7 @@ sudo dnf install -y epel-release elrepo-release
 
 # Install essentials/dependencies
 sudo dnf install -y \
+util-linux-user \
 zsh \
 git \
 bpytop \
