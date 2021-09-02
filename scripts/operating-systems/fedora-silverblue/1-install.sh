@@ -72,7 +72,7 @@ touch $HOME/.secrets
 
 # Install GTK theme and flatpak theme
 rpm-ostree install flat-remix-icon-theme materia-gtk-theme
-flatpak install -y flathub org.gtk.Gtk3theme.Materia{,-dark,-light}{,-compact}
+sudo flatpak install -y flathub org.gtk.Gtk3theme.Materia{,-dark,-light}{,-compact}
 
 # Install Fonts
 rpm-ostree install fira-code-fonts roboto-fontface-fonts
