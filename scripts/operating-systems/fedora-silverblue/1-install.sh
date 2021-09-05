@@ -100,5 +100,6 @@ echo -e '\nFINISHED INSTALLING: 1-install.sh\n~~~~~~~~~~ Please Reboot ~~~~~~~~~
 # UNUSED AREA
 #############################################
 # Firefox (about:config) I don't know how to automate this >:(
+# apz.gtk.kinetic_scroll.enabled = false
 # gfx.webrender.all
 # layers.acceleration.force-enabled
