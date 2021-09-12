@@ -57,7 +57,8 @@ com.slack.Slack \
 org.gabmus.hydrapaper \
 com.dropbox.Client \
 md.obsidian.Obsidian \
-org.gnome.Cheese
+org.gnome.Cheese \
+org.gnome.Boxes
 
 # Generate ssh keys
 ssh-keygen
