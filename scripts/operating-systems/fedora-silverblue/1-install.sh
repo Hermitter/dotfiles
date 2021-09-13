@@ -58,7 +58,8 @@ org.gabmus.hydrapaper \
 com.dropbox.Client \
 md.obsidian.Obsidian \
 org.gnome.Cheese \
-org.gnome.Boxes
+org.gnome.Boxes \
+com.github.tchx84.Flatseal
 
 # Generate ssh keys
 ssh-keygen
