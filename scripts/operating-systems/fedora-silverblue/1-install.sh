@@ -2,7 +2,7 @@
 DOTFILES="$(dirname $(dirname $(dirname $(dirname "$( realpath "${BASH_SOURCE[0]}")"))))"
 
 # Increase DNF speeds
-sudo bash -c "echo -e 'max_parallel_downloads=10\nfastestmirror=True' >> /etc/dnf/dnf.conf"
+sudo bash -c "echo -e '[main]\nmax_parallel_downloads=10\nfastestmirror=True' >> /etc/dnf/dnf.conf"
 
 rpm-ostree upgrade
 
@@ -57,7 +57,9 @@ com.slack.Slack \
 org.gabmus.hydrapaper \
 com.dropbox.Client \
 md.obsidian.Obsidian \
-org.gnome.Cheese
+org.gnome.Cheese \
+org.gnome.Boxes \
+com.github.tchx84.Flatseal
 
 # Generate ssh keys
 ssh-keygen
@@ -72,7 +74,7 @@ touch $HOME/.secrets
 
 # Install GTK theme and flatpak theme
 rpm-ostree install flat-remix-icon-theme materia-gtk-theme
-flatpak install -y flathub org.gtk.Gtk3theme.Materia{,-dark,-light}{,-compact}
+sudo flatpak install -y flathub org.gtk.Gtk3theme.Materia{,-dark,-light}{,-compact}
 
 # Install Fonts
 rpm-ostree install fira-code-fonts roboto-fontface-fonts
@@ -101,5 +103,6 @@ echo -e '\nFINISHED INSTALLING: 1-install.sh\n~~~~~~~~~~ Please Reboot ~~~~~~~~~
 # UNUSED AREA
 #############################################
 # Firefox (about:config) I don't know how to automate this >:(
+# apz.gtk.kinetic_scroll.enabled = false
 # gfx.webrender.all
 # layers.acceleration.force-enabled

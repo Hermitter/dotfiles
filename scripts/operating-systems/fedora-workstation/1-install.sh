@@ -2,7 +2,7 @@
 DOTFILES="$(dirname $(dirname $(dirname $(dirname "$( realpath "${BASH_SOURCE[0]}")"))))"
 
 # Increase DNF speeds
-sudo bash -c "echo -e 'max_parallel_downloads=10\nfastestmirror=True' >> /etc/dnf/dnf.conf"
+sudo bash -c "echo -e '[main]\nmax_parallel_downloads=10\nfastestmirror=True' >> /etc/dnf/dnf.conf"
 
 sudo dnf upgrade -y 
 
@@ -69,8 +69,7 @@ steam \
 wireshark \
 pavucontrol \
 transmission-gtk \
-pulseeffects \
-blueman
+pulseeffects
 
 # Install media codecs
 sudo dnf install ffmpeg -y

@@ -48,7 +48,7 @@ toolbox run sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https:
 toolbox run sudo dnf check-update
 toolbox run sudo dnf install code -y
 
-# VScode dependency to solve: 
+# VScode dependencies to solve: 
 # - "error while loading shared libraries: libxshmfence.so.1"
 # - missing emojies
 toolbox run sudo dnf install -y \
