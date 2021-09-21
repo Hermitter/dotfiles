@@ -121,6 +121,7 @@ sudo dnf install -y fira-code-fonts roboto-fontface-fonts
 #############################################
 # git configs
 git config pull.rebase false --global
+git config --global init.defaultBranch main
 
 # Increase number of file watchers
 echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
