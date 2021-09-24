@@ -34,7 +34,8 @@ podman-compose \
 util-linux-user \
 zsh fish exa bat starship \
 wl-clipboard \
-bpytop
+bpytop \
+openssl
 
 # Install Fedora Flatpak apps
 flatpak install fedora -y \
