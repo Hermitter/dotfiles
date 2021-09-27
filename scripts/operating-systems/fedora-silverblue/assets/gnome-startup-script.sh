@@ -32,4 +32,5 @@ start_apps \
 "telegram-deskto":"flatpak run org.telegram.desktop -startintray" \
 "dropbox":"flatpak run com.dropbox.Client" \
 "signal-desktop":"flatpak run org.signal.Signal --start-in-tray" \
+"protonmail-bridge":"flatpak run ch.protonmail.protonmail-bridge --no-window" \
 "geary":"flatpak run org.gnome.Geary --hidden"

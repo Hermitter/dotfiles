@@ -42,7 +42,8 @@ flatpak install fedora -y \
 org.gnome.FileRoller \
 org.gnome.Geary \
 org.gnome.Extensions \
-com.transmissionbt.Transmission
+com.transmissionbt.Transmission \
+ch.protonmail.protonmail-bridge
 
 # Install Flathub Flatpak apps
 flatpak install flathub -y \
