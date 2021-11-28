@@ -63,6 +63,12 @@ org.gnome.Cheese \
 org.gnome.Boxes \
 com.github.tchx84.Flatseal
 
+# Allow user to use Wireshark
+# TODO: fix group not added
+# GROUP=wireshark
+# sudo bash -c "grep -E '^$GROUP:' /usr/lib/group >> /etc/group"
+# sudo usermod -aG $GROUP $USER
+
 # Generate ssh keys
 ssh-keygen
 
