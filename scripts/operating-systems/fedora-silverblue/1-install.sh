@@ -42,8 +42,7 @@ flatpak install fedora -y \
 org.gnome.FileRoller \
 org.gnome.Geary \
 org.gnome.Extensions \
-com.transmissionbt.Transmission \
-ch.protonmail.protonmail-bridge
+com.transmissionbt.Transmission
 
 # Install Flathub Flatpak apps
 flatpak install flathub -y \
@@ -61,7 +60,8 @@ com.dropbox.Client \
 md.obsidian.Obsidian \
 org.gnome.Cheese \
 org.gnome.Boxes \
-com.github.tchx84.Flatseal
+com.github.tchx84.Flatseal \
+ch.protonmail.protonmail-bridge
 
 # Allow user to use Wireshark
 # TODO: fix group not added
