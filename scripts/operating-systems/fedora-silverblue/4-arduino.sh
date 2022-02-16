@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Allow user to access serial ports
 GROUP=dialout
 sudo bash -c "grep -E '^$GROUP:' /usr/lib/group >> /etc/group"
