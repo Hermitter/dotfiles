@@ -22,12 +22,13 @@ nghttp2
 
 toolbox run sudo dnf groupinstall -y "Development Tools"
 
+# Removed in favor of addding it to fish config
 # Expose host's podman and podman-compose to toolbox
-TB_BIN=$HOME/.toolbox_bin
-mkdir -p $TB_BIN
-echo "if [[ ! -v \$TOOLBOX_PATH ]] | [[ ! -z \$TOOLBOX_PATH ]]; then
-    export PATH=\"$TB_BIN:\$PATH\"
-fi" >> $HOME/.profile
+# TB_BIN=$HOME/.toolbox_bin
+# mkdir -p $TB_BIN
+# echo "if [[ ! -v \$TOOLBOX_PATH ]] | [[ ! -z \$TOOLBOX_PATH ]]; then
+#     export PATH=\"$TB_BIN:\$PATH\"
+# fi" >> $HOME/.profile
 
 echo "#\!/usr/bin/env bash
     flatpak-spawn --host podman "\$@"
