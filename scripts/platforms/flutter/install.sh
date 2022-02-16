@@ -1,15 +1,15 @@
 ## Assumes you'll use the Android Studio flatpak ##
 
-FLUTTER_ROOT=$HOME/Documents/flutter
+FLUTTER_ROOT=$HOME/.tools/flutter
 FLUTTER_BIN=$FLUTTER_ROOT/bin/flutter
 
-# Install Flutter in ~/Documents folder
-mkdir -p $HOME/Documents/flutter
-git clone git@github.com:flutter/flutter.git -b stable --depth 1 $HOME/Documents/flutter
+# Install Flutter in ~/.tools folder
+mkdir -p $HOME/.tools/flutter
+git clone git@github.com:flutter/flutter.git -b stable --depth 1 $HOME/.tools/flutter
 $FLUTTER_BIN # set up sdk
 $FLUTTER_BIN config --no-analytics
-echo -e "\n# Flutter\nexport PATH=\"\$PATH:\$HOME/Documents/flutter/bin\"" >> $HOME/.profile
-echo -e "export FLUTTER_ROOT=\"$HOME/Documents\"" >> $HOME/.profile
+echo -e "\n# Flutter\nexport PATH=\"\$PATH:\$HOME/.tools/flutter/bin\"" >> $HOME/.profile
+echo -e "export FLUTTER_ROOT=\"$HOME/.tools\"" >> $HOME/.profile
 
 # Install Android Studio
 flatpak install -y flathub com.google.AndroidStudio
