@@ -39,6 +39,11 @@ sudo flatpak override --filesystem=~/.themes
 USER_SHELL="fish"
 echo "Changing shell to $USER_SHELL..."
 sudo usermod --shell /bin/$USER_SHELL $USER
+
+# Symbolically link fish config in dotfiles to user's config folder
+sudo ln -s ~/.dotfiles/fish ~/.config/fish
+
+# Enter fish session
 exec fish -l
 
 #############################################
@@ -61,5 +66,4 @@ exec fish -l
 #############################################
 # WRAPPING UP
 #############################################
-
 echo -e '\nFINISHED INSTALLING: 2-install.sh\n~~~~~~~~~~ Please Reboot ~~~~~~~~~~\n'
