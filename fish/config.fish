@@ -7,8 +7,14 @@ if exists toolbox
 
     # Expose scripts meant for use in toolbox
     if set -q TOOLBOX_PATH
-        fish_add_path ~/.toolbox_bin
+        fish_add_path -aP ~/.toolbox_bin
     end
+end
+
+# https://flutter.dev/
+if not test -d ~/.tools/flutter
+    fish_add_path -aP ~/.tools/flutter/bin
+    set FLUTTER_ROOT ~/Documents
 end
 
 # https://starship.rs
