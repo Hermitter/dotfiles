@@ -2,10 +2,10 @@
 
 # Color Palette
 set --local background 191622
-set --local foreground e1e1e6
-set --local selection 41414d
+set --local foreground ff79c6
+set --local selection 5b5369
 set --local current 44475a
-set --local comment 483c67
+set --local comment 55467e
 set --local orange ffb86c
 set --local black 000000
 set --local red ff5555
