@@ -1,3 +1,7 @@
+if test -d ~/.bin
+    fish_add_path ~/.bin
+end
+
 # Fix unthemed ls output: https://linuxhint.com/ls_colors_bash/
 set -Ux LS_COLORS 'di=1a;35:fi=0;0'
 
@@ -21,6 +25,12 @@ if test -d ~/.tools/flutter
     fish_add_path -aP ~/.tools/flutter/bin
     set FLUTTER_ROOT ~/Documents
 end
+
+# TODO: add aws cli
+# if test -d ~/.tools/aws
+    # fish_add_path -aP ~/.tools/aws/current/bin/aws
+        # fish_add_path -aP ~/.tools/aws/current/bin/bin/aws
+# end
 
 # https://starship.rs
 if exists starship

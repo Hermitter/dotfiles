@@ -33,3 +33,4 @@ SETUVAR fish_pager_color_description:e7c547
 SETUVAR fish_pager_color_prefix:B3A06D\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:FFFFFF
 SETUVAR fish_pager_color_secondary:BBBBBB
+SETUVAR fish_user_paths:/var/home/carlos/\x2ebin
