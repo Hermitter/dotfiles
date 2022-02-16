@@ -12,7 +12,6 @@ cp -r $DOTFILES/config/* $HOME/.config
 # Get personal scripts
 BIN=$HOME/.bin
 cp -r $DOTFILES/bin/ $BIN
-curl -L https://github.com/Hermitter/tepe/releases/latest/download/tepe-x86_64-unknown-linux-musl -o $BIN/tepe && chmod +x $BIN/tepe
 
 # Get wallpapers
 cp -r $DOTFILES/images/Wallpapers $HOME/Pictures/Wallpapers
@@ -31,7 +30,6 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 rpm-ostree install \
 tilix \
 podman-compose \
-util-linux-user \
 zsh fish exa bat starship \
 wl-clipboard \
 bpytop \
@@ -64,7 +62,7 @@ com.github.tchx84.Flatseal \
 ch.protonmail.protonmail-bridge
 
 # Allow user to use Wireshark
-# TODO: fix group not added
+# TODO: fix group not being added
 # GROUP=wireshark
 # sudo bash -c "grep -E '^$GROUP:' /usr/lib/group >> /etc/group"
 # sudo usermod -aG $GROUP $USER
