@@ -56,3 +56,8 @@ if exists wl-copy
     alias copy 'wl-copy'
     alias paste 'wl-paste'
 end
+
+# https://github.com/aristocratos/bpytop
+if exists bpytop
+    alias bashtop 'bpytop'
+end
