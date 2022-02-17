@@ -41,7 +41,8 @@ echo "Changing shell to $USER_SHELL..."
 sudo usermod --shell /bin/$USER_SHELL $USER
 
 # Symbolically link fish config in dotfiles to user's config folder
-sudo ln -s ~/.dotfiles/fish ~/.config/fish
+ln -s ~/.dotfiles/fish ~/.config/fish
+ln -s ~/.dotfiles/config/starship.toml ~/.config/starship.toml
 
 # Enter fish session
 exec fish -l

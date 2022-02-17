@@ -17,13 +17,14 @@ disabled = false
 description = "A symbol indicating that the shell is inside a toolbox container"
 command = "echo '⬢'"
 style="bold purple"
-when = """ [[ -f /run/.containerenv && -f /run/.toolboxenv ]] """
+shell=["/bin/fish"]
+when = """ test -f /run/.containerenv && test -f /run/.toolboxenv """
 format = "[$output]($style) "
 
 [custom.toolbox]
 description = "The activated toolbox container"
-command = "echo ${DISTTAG%container}"
-when = """ [[ -f /run/.containerenv && -f /run/.toolboxenv ]] """
+command = "string replace 'container' '' f35container"
 style = "bold red"
+when = """ test -f /run/.containerenv && test -f /run/.toolboxenv """
+shell=["/bin/fish"]
 format = "[\\[Toolbox: $output\\]]($style) "
-disabled = false
