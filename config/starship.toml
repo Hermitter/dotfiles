@@ -13,18 +13,19 @@ ssh_only = true
 trim_at = "."
 disabled = false
 
+
 [custom.toolbox_indicator]
 description = "A symbol indicating that the shell is inside a toolbox container"
 command = "echo '⬢'"
-style="bold purple"
-shell=["/bin/fish"]
-when = """ test -f /run/.containerenv && test -f /run/.toolboxenv """
+style = "bold purple"
+shell=["/bin/bash"]
+when = """ [[ -f /run/.containerenv && -f /run/.toolboxenv ]] """
 format = "[$output]($style) "
 
 [custom.toolbox]
 description = "The activated toolbox container"
-command = "string replace 'container' '' f35container"
+command = "echo ${DISTTAG%container}"
 style = "bold red"
-when = """ test -f /run/.containerenv && test -f /run/.toolboxenv """
-shell=["/bin/fish"]
+shell=["/bin/bash"]
+when = """ [[ -f /run/.containerenv && -f /run/.toolboxenv ]] """
 format = "[\\[Toolbox: $output\\]]($style) "
