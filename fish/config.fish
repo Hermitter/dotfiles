@@ -46,3 +46,8 @@ end
 if exists terraform
     alias tf 'terraform'
 end
+
+# https://linux.die.net/man/1/espeak
+if exists espeak
+    alias say 'espeak'
+end
