@@ -26,11 +26,10 @@ if test -d ~/.tools/flutter
     set FLUTTER_ROOT ~/Documents
 end
 
-# TODO: add aws cli
-# if test -d ~/.tools/aws
-    # fish_add_path -aP ~/.tools/aws/current/bin/aws
-        # fish_add_path -aP ~/.tools/aws/current/bin/bin/aws
-# end
+# https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+if test -d ~/.tools/aws
+    alias aws '~/.tools/aws/dist/aws'
+end
 
 # https://starship.rs
 if exists starship
@@ -50,4 +49,10 @@ end
 # https://linux.die.net/man/1/espeak
 if exists espeak
     alias say 'espeak'
+end
+
+# Wayland clipboard
+if exists wl-copy
+    alias copy 'wl-copy'
+    alias paste 'wl-paste'
 end

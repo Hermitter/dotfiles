@@ -13,7 +13,6 @@ ssh_only = true
 trim_at = "."
 disabled = false
 
-
 [custom.toolbox_indicator]
 description = "A symbol indicating that the shell is inside a toolbox container"
 command = "echo '⬢'"
