@@ -1,11 +1,16 @@
 if test -d ~/.bin
-    fish_add_path ~/.bin
+    fish_add_path -aP ~/.bin
 end
+
+if test -d ~/.cargo
+    fish_add_path -aP ~/.cargo/bin
+end
+
 
 # Fix unthemed ls output: https://linuxhint.com/ls_colors_bash/
 set -x LS_COLORS 'di=1;35:fi=0;0'
 
-# Code alias for Silverblue
+# Code alias for Silverblue setup
 if string match -q "*Silverblue*" (cat /etc/*-release | grep VARIANT= | head -n 1)
     alias code 'toolbox run code'
 end
