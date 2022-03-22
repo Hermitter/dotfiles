@@ -23,6 +23,9 @@ if exists toolbox
     if set -q TOOLBOX_PATH
         fish_add_path -aP ~/.toolbox_bin
     end
+
+    # Fix missing locale variable in Silverblue. This removes the DNF warning. 
+    set -x LC_ALL 'C.UTF-8'
 end
 
 # https://flutter.dev/
