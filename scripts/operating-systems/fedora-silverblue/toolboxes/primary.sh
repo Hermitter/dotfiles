@@ -18,7 +18,8 @@ wl-clipboard \
 nano \
 openssl-devel \
 net-tools \
-nghttp2
+nghttp2 \
+usbutils \
 
 toolbox run sudo dnf groupinstall -y "Development Tools"
 
