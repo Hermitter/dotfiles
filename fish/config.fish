@@ -6,6 +6,10 @@ if test -d ~/.cargo
     fish_add_path -aP ~/.cargo/bin
 end
 
+if test -d ~/.deno
+  set -x DENO_INSTALL "$HOME/.deno"
+  fish_add_path -aP $DENO_INSTALL/bin
+end
 
 # Fix unthemed ls output: https://linuxhint.com/ls_colors_bash/
 set -x LS_COLORS 'di=1;35:fi=0;0'
