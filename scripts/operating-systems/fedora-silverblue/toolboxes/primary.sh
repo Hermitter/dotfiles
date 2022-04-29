@@ -23,23 +23,28 @@ usbutils \
 
 toolbox run sudo dnf groupinstall -y "Development Tools"
 
-# Removed in favor of addding it to fish config
-# Expose host's podman and podman-compose to toolbox
-# TB_BIN=$HOME/.toolbox_bin
-# mkdir -p $TB_BIN
-# echo "if [[ ! -v \$TOOLBOX_PATH ]] | [[ ! -z \$TOOLBOX_PATH ]]; then
-#     export PATH=\"$TB_BIN:\$PATH\"
-# fi" >> $HOME/.profile
+#############################################
+# Expose host tools to toolbox 
+#############################################
+TB_BIN=$HOME/.toolbox_bin
 
-echo "#\!/usr/bin/env bash
-    flatpak-spawn --host podman "\$@"
-" > $TB_BIN/podman
-chmod +x $TB_BIN/podman
+# podman
+sudo bash -c 'echo "#\!/usr/bin/env bash
+  flatpak-spawn --host /usr/bin/podman "\$@"
+" > /usr/local/bin/podman'
+sudo chmod +x /usr/local/bin/podman
 
-echo "#\!/usr/bin/env bash
-    flatpak-spawn --host podman-compose "\$@"
-" > $TB_BIN/podman-compose
-chmod +x $TB_BIN/podman-compose
+# podman-compose
+sudo bash -c 'echo "#\!/usr/bin/env bash
+  flatpak-spawn --host /usr/bin/podman-compose "\$@"
+" > /usr/local/bin/podman-compose'
+sudo chmod +x /usr/local/bin/podman-compose
+
+# xdg-open (Opens all URLs in the host)
+sudo bash -c 'echo "#\!/usr/bin/env bash
+  flatpak-spawn --host /usr/bin/xdg-open "\$@"
+" > /usr/local/bin/xdg-open'
+sudo chmod +x /usr/local/bin/xdg-open
 
 #############################################
 # VS Code
@@ -50,60 +55,12 @@ toolbox run sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https:
 toolbox run sudo dnf check-update
 toolbox run sudo dnf install code -y
 
-# VScode dependencies to solve: 
+# Add missing VScode dependencies. This fixes: 
 # - "error while loading shared libraries: libxshmfence.so.1"
-# - missing emojies
+# - missing emojis
 toolbox run sudo dnf install -y \
 qt5-qtwayland \
 gdouros-symbola-fonts
-
-# Set host's firefox as the default browser
-# This is so toolbox apps (mainly VScode) can open the host's browser
-toolbox run sudo dnf install xdg-utils -y
-HOST_FIREFOX="[Desktop Entry]
-Version=1.0
-Name=Firefox
-Exec=flatpak-spawn --host firefox %u
-Icon=firefox
-Terminal=false
-Type=Application
-MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;
-StartupNotify=true
-Actions=new-window;new-private-window;profile-manager-window;
-
-X-Desktop-File-Install-Version=0.26
-
-[Desktop Action new-window]
-Name=Open a New Window
-Exec=flatpak-spawn --host firefox --new-window %u
-
-[Desktop Action new-private-window]
-Name=Open a New Private Window
-Exec=flatpak-spawn --host firefox --private-window %u
-
-[Desktop Action profile-manager-window]
-Name=Open the Profile Manager
-Exec=flatpak-spawn --host firefox --ProfileManager
-"
-toolbox run bash -c "echo '$HOST_FIREFOX' | sudo tee /usr/share/applications/toolbox.host.firefox.desktop"
-toolbox run xdg-settings set default-web-browser toolbox.host.firefox.desktop
-
-# TODO: figure out why this doesn't work. Ideally, this would've been a simpler solution for URLS than the above code.
-# Add a PATH variable xdg-open that points to host machine's xdg-open 
-# CUSTOM_XDG_OPEN=~/.bin/xdg-open    
-# echo '#!/bin/sh
-# if [[ -v $TOOLBOX_PATH ]] | [[ -z $TOOLBOX_PATH ]]; then
-#   echo "THIS IS HOST"
-#   /usr/bin/xdg-open "$@"
-# else
-#   echo "THIS IS TOOLBOX"
-#   ${TOOLBOX_PATH:+flatpak-spawn --host} /usr/bin/xdg-open "$@"
-# fi
-# ' > $CUSTOM_XDG_OPEN
-# chmod +x $CUSTOM_XDG_OPEN
-
-# Add alias to toolbox's VScode
-echo 'alias code="toolbox run code"' >> ~/.profile
 
 # Add .desktop file to toolbox's VScode
 VSCODE_DESKTOP="[Desktop Entry]

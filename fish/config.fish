@@ -14,7 +14,7 @@ end
 # Fix unthemed ls output: https://linuxhint.com/ls_colors_bash/
 set -x LS_COLORS 'di=1;35:fi=0;0'
 
-# Code alias for Silverblue setup
+# VS Code alias for Silverblue 
 if string match -q "*Silverblue*" (cat /etc/*-release | grep VARIANT= | head -n 1)
     alias code 'toolbox run code'
 end
@@ -22,11 +22,6 @@ end
 # https://containertoolbx.org/
 if exists toolbox
     alias tb 'toolbox'
-
-    # Expose specific scripts during toolbox session
-    if set -q TOOLBOX_PATH
-        fish_add_path -aP ~/.toolbox_bin
-    end
 
     # Fix missing locale variable in Silverblue. This removes the DNF warning. 
     set -x LC_ALL 'C.UTF-8'
