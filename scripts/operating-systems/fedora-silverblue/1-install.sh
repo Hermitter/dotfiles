@@ -9,7 +9,7 @@ then
 fi
 
 # Increase DNF speeds
-sudo bash -c "echo -e '[main]\nmax_parallel_downloads=10\nfastestmirror=True' >> /etc/dnf/dnf.conf"
+sudo bash -c "echo -e '[main]\nmax_parallel_downloads=20\nfastestmirror=True' >> /etc/dnf/dnf.conf"
 
 rpm-ostree upgrade
 

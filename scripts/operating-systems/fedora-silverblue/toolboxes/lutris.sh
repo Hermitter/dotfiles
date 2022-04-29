@@ -3,7 +3,7 @@ TOOLBOX=lutris-toolbox
 toolbox create --container $TOOLBOX
 
 # Increase download speeds
-toolbox run --container $TOOLBOX sudo bash -c "echo -e 'max_parallel_downloads=10\nfastestmirror=True' >> /etc/dnf/dnf.conf"
+toolbox run --container $TOOLBOX sudo bash -c "echo -e 'max_parallel_downloads=20\nfastestmirror=True' >> /etc/dnf/dnf.conf"
 
 #############################################
 # APPLICATIONS / DEPENDENCIES 

@@ -2,7 +2,7 @@
 toolbox create -y
 
 # Increase download speeds
-toolbox run sudo bash -c "echo -e 'max_parallel_downloads=10\nfastestmirror=True' >> /etc/dnf/dnf.conf"
+toolbox run sudo bash -c "echo -e 'max_parallel_downloads=20\nfastestmirror=True' >> /etc/dnf/dnf.conf"
 
 #############################################
 # APPLICATIONS / DEPENDENCIES 
