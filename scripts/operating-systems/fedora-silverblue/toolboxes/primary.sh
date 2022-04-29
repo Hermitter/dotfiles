@@ -31,7 +31,6 @@ toolbox run sudo bash -c 'echo -e "set -x LC_ALL C.UTF-8\n" >> /etc/fish/config.
 #############################################
 # Expose host tools to toolbox 
 #############################################
-TB_BIN=$HOME/.toolbox_bin
 
 # podman
 toolbox run sudo bash -c 'echo "#\!/usr/bin/env bash
