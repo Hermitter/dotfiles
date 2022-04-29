@@ -22,9 +22,6 @@ end
 # https://containertoolbx.org/
 if exists toolbox
     alias tb 'toolbox'
-
-    # Fix missing locale variable in Silverblue. This removes the DNF warning. 
-    set -x LC_ALL 'C.UTF-8'
 end
 
 # https://flutter.dev/

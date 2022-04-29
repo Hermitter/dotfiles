@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 toolbox create -y
 
-# Increase download speeds
+# Increase DNF download speeds
 toolbox run sudo bash -c "echo -e 'max_parallel_downloads=20\nfastestmirror=True' >> /etc/dnf/dnf.conf"
 
 #############################################
@@ -23,28 +23,33 @@ usbutils \
 
 toolbox run sudo dnf groupinstall -y "Development Tools"
 
+# Set locale
+toolbox run sudo bash -c 'echo -e "export LC_ALL=C.UTF-8\n" >> /etc/zshrc'
+toolbox run sudo bash -c 'echo -e "export LC_ALL=C.UTF-8\n" >> /etc/bashrc'
+toolbox run sudo bash -c 'echo -e "set -x LC_ALL C.UTF-8\n" >> /etc/fish/config.fish'
+
 #############################################
 # Expose host tools to toolbox 
 #############################################
 TB_BIN=$HOME/.toolbox_bin
 
 # podman
-sudo bash -c 'echo "#\!/usr/bin/env bash
+toolbox run sudo bash -c 'echo "#\!/usr/bin/env bash
   flatpak-spawn --host /usr/bin/podman "\$@"
 " > /usr/local/bin/podman'
-sudo chmod +x /usr/local/bin/podman
+toolbox run sudo chmod +x /usr/local/bin/podman
 
 # podman-compose
-sudo bash -c 'echo "#\!/usr/bin/env bash
+toolbox run sudo bash -c 'echo "#\!/usr/bin/env bash
   flatpak-spawn --host /usr/bin/podman-compose "\$@"
 " > /usr/local/bin/podman-compose'
-sudo chmod +x /usr/local/bin/podman-compose
+toolbox run sudo chmod +x /usr/local/bin/podman-compose
 
 # xdg-open (Opens all URLs in the host)
-sudo bash -c 'echo "#\!/usr/bin/env bash
+toolbox run sudo bash -c 'echo "#\!/usr/bin/env bash
   flatpak-spawn --host /usr/bin/xdg-open "\$@"
 " > /usr/local/bin/xdg-open'
-sudo chmod +x /usr/local/bin/xdg-open
+toolbox run sudo chmod +x /usr/local/bin/xdg-open
 
 #############################################
 # VS Code
@@ -62,24 +67,13 @@ toolbox run sudo dnf install -y \
 qt5-qtwayland \
 gdouros-symbola-fonts
 
-# Add .desktop file to toolbox's VScode
-VSCODE_DESKTOP="[Desktop Entry]
-Name=Visual Studio Code
-Comment=Code Editing. Redefined.
-GenericName=Text Editor
-Exec=toolbox run code --unity-launch %F
-Icon=com.visualstudio.code
-Type=Application
-StartupNotify=false
-StartupWMClass=Code
-Categories=Utility;TextEditor;Development;IDE;
-MimeType=text/plain;inode/directory;application/x-code-workspace;
-Actions=new-empty-window;
-Keywords=vscode;
+# Create .desktop files to open toolbox GUI apps from host
+function create_host_desktop_file {
+    app_name=$1
+    toolbox_destop_file=/usr/share/applications/$app_name.desktop
+    host_desktop_file=~/.local/share/applications/$app_name.desktop
 
-[Desktop Action new-empty-window]
-Name=New Empty Window
-Exec=toolbox run code --new-window %F
-Icon=com.visualstudio.code
-"
-echo "$VSCODE_DESKTOP" > ~/.local/share/applications/code.desktop
+    toolbox run sed 's/Exec=/Exec=toolbox run /g' $toolbox_destop_file > $host_desktop_file
+}
+
+create_host_desktop_file "code"
