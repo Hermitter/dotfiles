@@ -119,3 +119,5 @@ echo -e '\nFINISHED INSTALLING: 1-install.sh\n~~~~~~~~~~ Please Reboot ~~~~~~~~~
 # apz.gtk.kinetic_scroll.enabled = false
 # gfx.webrender.all
 # layers.acceleration.force-enabled
+# git config --global user.name "Hermitter"
+# git config --global user.email "hermitter@jellyapple.com"
