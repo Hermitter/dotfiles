@@ -87,31 +87,29 @@ function export_toolbox_app {
 # https://github.com/containers/toolbox/issues/586
 # FIX: sudo hostname toolbox
 ####################################################
-
-# Download
 $TB_RUN sudo rpmkeys --import https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg
 $TB_RUN bash -c 'printf "[gitlab.com_paulcarroty_vscodium_repo]\nname=download.vscodium.com\nbaseurl=https://download.vscodium.com/rpms/\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg\nmetadata_expire=1h" | sudo tee -a /etc/yum.repos.d/vscodium.repo'
-$TB_RUN sudo dnf install codium -y
+CODIUM=(
+    codium
+    # Missing dep fixes:
+    # - missing emojis
+    qt5-qtwayland
+    # - "error while loading shared libraries: libxshmfence.so.1"
+    gdouros-symbola-fonts
+)
+$TB_RUN sudo dnf install -y "${CODIUM[@]}"
 
-# Create .desktop for host
 export_toolbox_app "codium" "vscodium"
 
 ####################################################
 # UNUSED AREA
 ####################################################
 # VS Code
+# Source: https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-based-distributions
 ####################################################
-## Source: https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-based-distributions
 # $TB_RUN sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 # $TB_RUN sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 # $TB_RUN sudo dnf check-update
 # $TB_RUN sudo dnf install code -y
-
-## Add missing VScode dependencies. This fixes: 
-## - "error while loading shared libraries: libxshmfence.so.1"
-## - missing emojis
-# $TB_RUN sudo dnf install -y \
-# qt5-qtwayland \
-# gdouros-symbola-fonts
 
 # create_host_desktop_file "code"
