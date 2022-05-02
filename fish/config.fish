@@ -7,8 +7,8 @@ if test -d ~/.cargo
 end
 
 if test -d ~/.deno
-  set -x DENO_INSTALL "$HOME/.deno"
-  fish_add_path -aP $DENO_INSTALL/bin
+    set -x DENO_INSTALL "$HOME/.deno"
+    fish_add_path -aP $DENO_INSTALL/bin
 end
 
 # Fix unthemed ls output: https://linuxhint.com/ls_colors_bash/
@@ -16,12 +16,12 @@ set -x LS_COLORS 'di=1;35:fi=0;0'
 
 # VS Code alias for Silverblue 
 if string match -q "*Silverblue*" (cat /etc/*-release | grep VARIANT= | head -n 1)
-    alias code 'toolbox run code'
+    alias code 'toolbox run codium'
 end
 
 # https://containertoolbx.org/
 if exists toolbox
-    alias tb 'toolbox'
+    alias tb toolbox
 end
 
 # https://flutter.dev/
@@ -42,26 +42,26 @@ end
 
 # https://the.exa.website
 if exists exa
-    alias ls 'exa'
+    alias ls exa
 end
 
 # https://www.terraform.io/
 if exists terraform
-    alias tf 'terraform'
+    alias tf terraform
 end
 
 # https://linux.die.net/man/1/espeak
 if exists espeak
-    alias say 'espeak'
+    alias say espeak
 end
 
 # Wayland clipboard
 if exists wl-copy
-    alias copy 'wl-copy'
-    alias paste 'wl-paste'
+    alias copy wl-copy
+    alias paste wl-paste
 end
 
 # https://github.com/aristocratos/bpytop
 if exists bpytop
-    alias bashtop 'bpytop'
+    alias bashtop bpytop
 end
