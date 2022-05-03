@@ -7,7 +7,7 @@ if test -d ~/.cargo
 end
 
 if test -d ~/.deno
-    set -x DENO_INSTALL "$HOME/.deno"
+    set -x DENO_INSTALL ~/.deno
     fish_add_path -aP $DENO_INSTALL/bin
 end
 
