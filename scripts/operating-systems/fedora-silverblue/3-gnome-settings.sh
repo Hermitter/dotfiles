@@ -78,7 +78,7 @@ keybind () {
 }
 
 keybind 'Open Terminal'      '<Super>Return'           'tilix'
-keybind 'Screenshot Area'    '<Super>P'         'flatpak run org.gnome.Screenshot -a'
+keybind 'Screenshot Area'    '<Super>P'         'flatpak run org.gnome.Screenshot --area --clipboard'
 
 
 # create a path for each keybind
@@ -92,10 +92,10 @@ bash -c "gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybi
 
 # apply a keybind for each path
 for ((i=0; i<${#keybinds[@]}; ++i)); do
-    offset=$(($i+1))
-    bash -c "gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$offset/ name ${names[$i]}"
-    bash -c "gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$offset/ binding  ${keybinds[$i]}"
-    bash -c "gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$offset/ command  ${cmds[$i]}"
+    id=$(($i+1))
+    bash -c "gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$id/ name ${names[$i]}"
+    bash -c "gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$id/ binding  ${keybinds[$i]}"
+    bash -c "gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$id/ command  ${cmds[$i]}"
 done
 
 #############################################
