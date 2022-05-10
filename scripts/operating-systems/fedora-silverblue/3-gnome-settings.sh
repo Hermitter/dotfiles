@@ -4,6 +4,7 @@ ASSETS="$(dirname "$( realpath "${BASH_SOURCE[0]}")")/assets"
 #############################################
 # Desktop Theme
 #############################################
+gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
 gsettings set org.gnome.desktop.interface gtk-theme "Materia-dark-compact"
 gsettings set org.gnome.desktop.interface icon-theme "Flat-Remix-Blue-Dark"
 gsettings set org.gnome.desktop.interface cursor-theme "Adwaita"
@@ -12,6 +13,7 @@ gsettings set org.gnome.desktop.interface font-name 'Roboto 11'
 gsettings set org.gnome.desktop.interface document-font-name 'Roboto 11'
 gsettings set org.gnome.desktop.interface monospace-font-name 'Source Code Pro Regular 10'
 gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Roboto Bold 11'
+
 
 #############################################
 # Desktop Extentions
