@@ -40,10 +40,6 @@ gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing false
 gsettings set org.gnome.desktop.wm.preferences focus-mode 'click'
 gsettings set org.gnome.desktop.interface show-battery-percentage true
 
-
-# change max screencast length to 30 mins
-gsettings set org.gnome.settings-daemon.plugins.media-keys max-screencast-length 1800
-
 #############################################
 # Key Bindings
 #############################################
@@ -54,10 +50,9 @@ gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['<Super>F']"
 gsettings set org.gnome.desktop.wm.keybindings close "['<Alt>F4', '<Super><Shift>Q']"
 gsettings set org.gnome.settings-daemon.plugins.media-keys screensaver "['<Super>l','<Super><Shift>Return']"
 gsettings set org.gnome.shell.keybindings toggle-overview "['<Super>D']"
-gsettings set org.gnome.settings-daemon.plugins.media-keys screencast "['<Super><Shift>R']"
+gsettings set org.gnome.shell.keybindings show-screenshot-ui "['<Super><Shift>P']"
 
-# Set Super+p area screenshot shortcut and remove conflicting keybind from area-screenshot-clip
-gsettings set org.gnome.settings-daemon.plugins.media-keys area-screenshot-clip "['<Super>P']"
+# Change unused keybind from taking up <Super>P
 gsettings set org.gnome.mutter.keybindings switch-monitor "['XF86Display']"
 
 # Super+num shortcuts to move apps and switch between workspaces
@@ -83,7 +78,8 @@ keybind () {
 }
 
 keybind 'Open Terminal'      '<Super>Return'           'tilix'
-keybind 'Screenshot Tool'    '<Super><Shift>P'         'flatpak run org.gnome.Screenshot -i'
+keybind 'Screenshot Area'    '<Super>P'         'flatpak run org.gnome.Screenshot -a'
+
 
 # create a path for each keybind
 for ((i=0; i<${#keybinds[@]}; ++i)); do
