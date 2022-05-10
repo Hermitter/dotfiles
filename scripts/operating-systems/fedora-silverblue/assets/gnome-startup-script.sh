@@ -29,7 +29,6 @@ function start_apps {
 
 # process_name : run_command
 start_apps \
-"telegram-deskto":"flatpak run org.telegram.desktop -startintray" \
 "dropbox":"flatpak run com.dropbox.Client" \
 "signal-desktop":"flatpak run org.signal.Signal --start-in-tray" \
 "protonmail-bridge":"flatpak run ch.protonmail.protonmail-bridge --no-window" \
