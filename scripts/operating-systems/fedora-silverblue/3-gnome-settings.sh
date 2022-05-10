@@ -32,6 +32,7 @@ gnome-extensions disable background-logo@fedorahosted.org
 # Desktop Behavior
 #############################################
 gsettings set org.gnome.settings-daemon.plugins.power ambient-enabled false
+gsettings set org.gnome.desktop.interface gtk-enable-primary-paste false
 gsettings set org.gnome.desktop.peripherals.touchpad click-method 'fingers'
 gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true 
 gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll true
