@@ -5,8 +5,9 @@ ASSETS="$(dirname "$( realpath "${BASH_SOURCE[0]}")")/assets"
 # Desktop Theme
 #############################################
 gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
-gsettings set org.gnome.desktop.interface gtk-theme "Materia-dark-compact"
-gsettings set org.gnome.desktop.interface icon-theme "Flat-Remix-Blue-Dark"
+gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3-dark"
+gsettings set org.gnome.desktop.interface icon-theme "Adwaita"
+gsettings set org.gnome.desktop.interface icon-theme "Adwaita"
 gsettings set org.gnome.desktop.interface cursor-theme "Adwaita"
 gsettings set org.gnome.desktop.interface cursor-size 32
 gsettings set org.gnome.desktop.interface font-name 'Roboto 11'
