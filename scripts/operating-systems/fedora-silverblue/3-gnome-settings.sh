@@ -51,6 +51,7 @@ gsettings set org.gnome.desktop.wm.keybindings close "['<Alt>F4', '<Super><Shift
 gsettings set org.gnome.settings-daemon.plugins.media-keys screensaver "['<Super>l','<Super><Shift>Return']"
 gsettings set org.gnome.shell.keybindings toggle-overview "['<Super>D']"
 gsettings set org.gnome.shell.keybindings show-screenshot-ui "['<Super><Shift>P']"
+gsettings set org.gnome.shell.keybindings show-screen-recording-ui "['<Super><Shift>R']"
 
 # Change unused keybind from taking up <Super>P
 gsettings set org.gnome.mutter.keybindings switch-monitor "['XF86Display']"
