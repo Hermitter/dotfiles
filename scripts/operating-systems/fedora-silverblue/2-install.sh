@@ -11,29 +11,7 @@ rpm-ostree install ffmpeg
 # sudo usermod -a -G wireshark $USER
 # sudo chmod +x /usr/bin/dumpcap # permissions fix
 
-#############################################
-# FLATPAK THEME WORKAROUND
-#############################################
-
-# Here we're going to copy the system materia theme and place it in the user
-# themes folder due to flatpak is having issues detecting custom themes.
-# (not ideal, but it works)
-mkdir -p ~/.themes
-SYS_THEMES=/usr/share/themes
-USR_THEMES=~/.themes
-
-cp -r $SYS_THEMES/Materia $USR_THEMES/Materia
-cp -r $SYS_THEMES/Materia-compact $USR_THEMES/Materia-compact
-cp -r $SYS_THEMES/Materia-dark $USR_THEMES/Materia-dark
-cp -r $SYS_THEMES/Materia-dark-compact $USR_THEMES/Materia-dark-compact
-cp -r $SYS_THEMES/Materia-light $USR_THEMES/Materia-light
-cp -r $SYS_THEMES/Materia-light-compact $USR_THEMES/Materia-light-compact
-
-# Force Flatpaks to use user installed themes 
-# Note: override settings can be manually edited in /var/lib/flatpak/overrides/global
-sudo flatpak override --filesystem=~/.themes
-
-#############################################
+#####################################
 # SHELL
 #############################################
 USER_SHELL="fish"
