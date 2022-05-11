@@ -85,9 +85,21 @@ touch $HOME/.secrets
 # THEME
 #############################################
 
+# Download adw-gtk3 theme
+# https://github.com/lassekongo83/adw-gtk3/releases/latest/
+mkdir -p ~/.themes
+TMP_DIR=$(mktemp -d)
+ADW_TAR="adw-gtk3v1-8.tar.xz"
+wget -P $TMP_DIR "https://github.com/lassekongo83/adw-gtk3/releases/download/v1.8/$ADW_TAR"
+tar -C ~/.themes -xvf $TMP_DIR/$ADW_TAR adw-gtk3 adw-gtk3-dark
+
+# Flatpak isn't perfect at detecting our theme so we're exposing our local themes
+# and then forcing a theme for gtk3 flatpak apps.
+sudo flatpak override --filesystem=$HOME/.themes
+sudo flatpak override --env=GTK_THEME=adw-gtk3-dark
+
 # Install GTK theme and flatpak theme
-rpm-ostree install flat-remix-icon-theme materia-gtk-theme
-sudo flatpak install -y flathub org.gtk.Gtk3theme.Materia{,-dark,-light}{,-compact}
+flatpak install flathub -y org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark
 
 # Install Fonts
 rpm-ostree install fira-code-fonts roboto-fontface-fonts
