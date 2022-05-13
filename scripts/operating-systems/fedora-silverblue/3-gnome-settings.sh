@@ -51,18 +51,15 @@ gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['<Super>F']"
 gsettings set org.gnome.desktop.wm.keybindings close "['<Alt>F4', '<Super><Shift>Q']"
 gsettings set org.gnome.settings-daemon.plugins.media-keys screensaver "['<Super>l','<Super><Shift>Return']"
 gsettings set org.gnome.shell.keybindings toggle-overview "['<Super>D']"
-gsettings set org.gnome.shell.keybindings show-screenshot-ui "['<Super><Shift>P']"
-gsettings set org.gnome.shell.keybindings show-screen-recording-ui "['<Super><Shift>R']"
-
-# Change unused keybind from taking up <Super>P
-gsettings set org.gnome.mutter.keybindings switch-monitor "['XF86Display']"
+gsettings set org.gnome.shell.keybindings show-screenshot-ui "['<Super>S']"
+gsettings set org.gnome.shell.keybindings show-screen-recording-ui "['<Super>R']"
 
 # Super+num shortcuts to move apps and switch between workspaces
 for i in {1..9}; do
     gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-$i "['<Super>$i']"
     gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-$i "['<Shift><Super>$i']"
     
-    # unset conflicting switch-to-application keybinds
+    # unset conflicting keybinds
     gsettings set org.gnome.shell.keybindings switch-to-application-$i '[]'
 done
 
