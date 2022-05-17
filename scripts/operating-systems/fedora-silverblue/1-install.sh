@@ -93,8 +93,8 @@ touch $HOME/.secrets
 # https://github.com/lassekongo83/adw-gtk3/releases/latest/
 mkdir -p ~/.themes
 TMP_DIR=$(mktemp -d)
-ADW_TAR="adw-gtk3v1-8.tar.xz"
-wget -P $TMP_DIR "https://github.com/lassekongo83/adw-gtk3/releases/download/v1.8/$ADW_TAR"
+ADW_TAR="adw-gtk3v1-9.tar.xz"
+wget -P $TMP_DIR "https://github.com/lassekongo83/adw-gtk3/releases/download/v1.9/$ADW_TAR"
 tar -C ~/.themes -xvf $TMP_DIR/$ADW_TAR adw-gtk3 adw-gtk3-dark
 
 # Flatpak isn't perfect at detecting our theme so we're exposing our local themes
