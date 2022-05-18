@@ -61,7 +61,7 @@ org.signal.Signal \
 com.discordapp.Discord \
 com.slack.Slack \
 org.gabmus.hydrapaper \
-com.dropbox.Client \
+com.nextcloud.desktopclient.nextcloud \
 md.obsidian.Obsidian \
 org.gnome.Cheese \
 org.gnome.Boxes \

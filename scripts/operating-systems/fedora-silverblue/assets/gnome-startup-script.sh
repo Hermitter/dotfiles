@@ -29,7 +29,7 @@ function start_apps {
 
 # process_name : run_command
 start_apps \
-"dropbox":"flatpak run com.dropbox.Client" \
+"nextcloud":"flatpak run com.nextcloud.desktopclient.nextcloud" \
 "signal-desktop":"flatpak run org.signal.Signal --start-in-tray" \
 "protonmail-bridge":"flatpak run ch.protonmail.protonmail-bridge --no-window" \
 "geary":"flatpak run org.gnome.Geary --hidden"
