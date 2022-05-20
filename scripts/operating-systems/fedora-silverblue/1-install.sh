@@ -2,7 +2,7 @@
 DOTFILES="$(dirname $(dirname $(dirname $(dirname "$( realpath "${BASH_SOURCE[0]}")"))))"
 
 # TODO: have the setup script move it for you
-if [[ -d "$HOME/.dotfiles" ]]
+if [[ ! -d "$HOME/.dotfiles" ]]
 then
     echo "Please move/rename this directory ~/.dotfiles"
     exit 1
