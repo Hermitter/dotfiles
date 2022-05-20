@@ -68,10 +68,6 @@ org.gnome.Boxes \
 com.github.tchx84.Flatseal \
 ch.protonmail.protonmail-bridge
 
-# Remove unused default apps
-flatpak remove -y \
-org.gnome.Screenshot
-
 # Allow user to use Wireshark
 # TODO: fix group not being added
 # GROUP=wireshark
