@@ -102,7 +102,7 @@ flatpak override --user --env=GTK_THEME=adw-gtk3-dark
 # Fix Gnome Text Editor not using its GTK4 theme
 flatpak override --user org.gnome.TextEditor --unset-env=GTK_THEME
 
-# Install GTK4 LibAwaita flatpak theme for GTK3 apps
+# Install LibAwaita like theme GTK3 flatpak apps
 flatpak install flathub -y org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark
 
 # Install Fonts
