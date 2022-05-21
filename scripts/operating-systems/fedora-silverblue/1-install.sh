@@ -96,10 +96,13 @@ tar -C ~/.themes -xvf $TMP_DIR/$ADW_TAR adw-gtk3 adw-gtk3-dark
 
 # Flatpak isn't perfect at detecting our theme so we're exposing our local themes
 # and then forcing a theme for gtk3 flatpak apps.
-sudo flatpak override --filesystem=$HOME/.themes
-sudo flatpak override --env=GTK_THEME=adw-gtk3-dark
+flatpak override --user --filesystem=$HOME/.themes
+flatpak override --user --env=GTK_THEME=adw-gtk3-dark
 
-# Install GTK theme and flatpak theme
+# Fix Gnome Text Editor not using its GTK4 theme
+flatpak override --user org.gnome.TextEditor --unset-env=GTK_THEME
+
+# Install GTK4 LibAwaita flatpak theme for GTK3 apps
 flatpak install flathub -y org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark
 
 # Install Fonts
