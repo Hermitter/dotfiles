@@ -52,7 +52,7 @@ com.transmissionbt.Transmission
 
 # Install Flathub Flatpak apps
 flatpak install flathub -y \
-org.gnome.Totem \
+io.github.celluloid_player.Celluloid \
 org.wireshark.Wireshark \
 org.pulseaudio.pavucontrol \
 com.valvesoftware.Steam \
@@ -99,8 +99,10 @@ tar -C ~/.themes -xvf $TMP_DIR/$ADW_TAR adw-gtk3 adw-gtk3-dark
 flatpak override --user --filesystem=$HOME/.themes
 flatpak override --user --env=GTK_THEME=adw-gtk3-dark
 
-# Fix Gnome Text Editor not using its GTK4 theme
+# Fix certain flatpak apps not using dark theme
 flatpak override --user org.gnome.TextEditor --unset-env=GTK_THEME
+flatpak override --user io.github.celluloid_player.Celluloid --unset-env=GTK_THEME
+
 
 # Install LibAwaita like theme for GTK3 flatpak apps
 flatpak install flathub -y org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark
