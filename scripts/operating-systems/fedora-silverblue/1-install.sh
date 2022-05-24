@@ -52,7 +52,7 @@ com.transmissionbt.Transmission
 
 # Install Flathub Flatpak apps
 flatpak install flathub -y \
-io.github.celluloid_player.Celluloid \
+org.gnome.Totem \
 org.wireshark.Wireshark \
 org.pulseaudio.pavucontrol \
 com.valvesoftware.Steam \
@@ -67,7 +67,8 @@ md.obsidian.Obsidian \
 org.gnome.Cheese \
 org.gnome.Boxes \
 com.github.tchx84.Flatseal \
-ch.protonmail.protonmail-bridge
+ch.protonmail.protonmail-bridge \
+com.github.wwmm.easyeffects
 
 # Allow user to use Wireshark
 # TODO: fix group not being added
@@ -101,7 +102,7 @@ flatpak override --user --env=GTK_THEME=adw-gtk3-dark
 
 # Fix certain flatpak apps not using dark theme
 flatpak override --user org.gnome.TextEditor --unset-env=GTK_THEME
-flatpak override --user io.github.celluloid_player.Celluloid --unset-env=GTK_THEME
+flatpak override --user com.github.wwmm.easyeffects --unset-env=GTK_THEME
 
 # Install LibAwaita like theme for GTK3 flatpak apps
 flatpak install flathub -y org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark
