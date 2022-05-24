@@ -103,7 +103,6 @@ flatpak override --user --env=GTK_THEME=adw-gtk3-dark
 flatpak override --user org.gnome.TextEditor --unset-env=GTK_THEME
 flatpak override --user io.github.celluloid_player.Celluloid --unset-env=GTK_THEME
 
-
 # Install LibAwaita like theme for GTK3 flatpak apps
 flatpak install flathub -y org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark
 
