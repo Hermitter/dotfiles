@@ -52,6 +52,7 @@ com.transmissionbt.Transmission
 
 # Install Flathub Flatpak apps
 flatpak install flathub -y \
+org.gnome.baobab \
 org.gnome.Totem \
 org.wireshark.Wireshark \
 org.pulseaudio.pavucontrol \
@@ -103,6 +104,7 @@ flatpak override --user --env=GTK_THEME=adw-gtk3-dark
 # Fix certain flatpak apps not using dark theme
 flatpak override --user org.gnome.TextEditor --unset-env=GTK_THEME
 flatpak override --user com.github.wwmm.easyeffects --unset-env=GTK_THEME
+flatpak override --user org.gnome.baobab --unset-env=GTK_THEME
 
 # Install LibAwaita like theme for GTK3 flatpak apps
 flatpak install flathub -y org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark
