@@ -15,7 +15,6 @@ gsettings set org.gnome.desktop.interface document-font-name 'Roboto 11'
 gsettings set org.gnome.desktop.interface monospace-font-name 'Source Code Pro Regular 10'
 gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Roboto Bold 11'
 
-
 #############################################
 # Desktop Extentions
 #############################################
@@ -77,8 +76,6 @@ keybind () {
 }
 
 keybind 'Open Terminal'      '<Super>Return'           'tilix'
-keybind 'Screenshot Area'    '<Super>P'         'flatpak run org.gnome.Screenshot --area --clipboard'
-
 
 # create a path for each keybind
 for ((i=0; i<${#keybinds[@]}; ++i)); do
