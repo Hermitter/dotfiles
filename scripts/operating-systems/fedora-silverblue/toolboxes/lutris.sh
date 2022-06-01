@@ -1,28 +1,32 @@
 #!/usr/bin/env bash
+set -euxo pipefail
+
 TOOLBOX_NAME=lutris-toolbox
 toolbox create --container $TOOLBOX_NAME
-TB_RUN="toolbox run --container $TOOLBOX_NAME $@"
+tb_run() {
+  toolbox run --container $TOOLBOX_NAME "$@"
+}
 
 # Increase download speeds
-$TB_RUN sudo bash -c "echo -e 'max_parallel_downloads=20\nfastestmirror=True' >> /etc/dnf/dnf.conf"
+tb_run sudo bash -c "echo -e 'max_parallel_downloads=20\nfastestmirror=True' >> /etc/dnf/dnf.conf"
 
 #############################################
 # APPLICATIONS / DEPENDENCIES 
 #############################################
-$TB_RUN sudo dnf install -y \
+tb_run sudo dnf install -y \
 lutris \
 wine
 
 # Set locale
-$TB_RUN sudo bash -c 'echo -e "export LC_ALL=C.UTF-8\n" >> /etc/bashrc'
+tb_run sudo bash -c 'echo -e "export LC_ALL=C.UTF-8\n" >> /etc/bashrc'
 
 #############################################
 # Expose host tools to toolbox 
 #############################################
-$TB_RUN sudo bash -c 'echo "#\!/usr/bin/env bash
+tb_run sudo bash -c 'echo "#\!/usr/bin/env bash
   flatpak-spawn --host /usr/bin/xdg-open "\$@"
 " > /usr/local/bin/xdg-open'
-$TB_RUN sudo chmod +x /usr/local/bin/xdg-open
+tb_run sudo chmod +x /usr/local/bin/xdg-open
 
 #############################################
 # LUTRIS DESKTOP FILE
@@ -33,7 +37,7 @@ function create_host_desktop_file {
     toolbox_destop_file=/usr/share/applications/$app_name.desktop
     host_desktop_file=~/.local/share/applications/$app_name.desktop
 
-    $TB_RUN sed "s/Exec=/Exec=toolbox run --container "$TOOLBOX_NAME" /g" $toolbox_destop_file > $host_desktop_file
+    tb_run sed "s/Exec=/Exec=toolbox run --container "$TOOLBOX_NAME" /g" $toolbox_destop_file > $host_desktop_file
 }
 
 create_host_desktop_file "net.lutris.Lutris"
