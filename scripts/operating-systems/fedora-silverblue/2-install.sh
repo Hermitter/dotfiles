@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-DOTFILES="$(dirname $(dirname $(dirname $(dirname "$( realpath "${BASH_SOURCE[0]}")"))))"
-
 # Install media codecs
 # TODO: find more: gstreamer1-plugin-openh264
 rpm-ostree install ffmpeg
@@ -19,8 +17,8 @@ echo "Changing shell to $USER_SHELL..."
 sudo usermod --shell /bin/$USER_SHELL $USER
 
 # Symbolically link fish config in dotfiles to user's config folder
-ln -s ~/.dotfiles/fish ~/.config/fish
-ln -s ~/.dotfiles/config/starship.toml ~/.config/starship.toml
+ln -s $HOME/.dotfiles/fish $HOME/.config/fish
+ln -s $HOME/.dotfiles/config/starship.toml $HOME/.config/starship.toml
 
 # Enter fish session
 exec fish -l

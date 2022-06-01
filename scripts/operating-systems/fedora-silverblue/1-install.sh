@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-DOTFILES="$(dirname $(dirname $(dirname $(dirname "$( realpath "${BASH_SOURCE[0]}")"))))"
 
 # TODO: have the setup script move it for you
 if [[ ! -d "$HOME/.dotfiles" ]]
@@ -14,14 +13,14 @@ sudo bash -c "echo -e '[main]\nmax_parallel_downloads=20\nfastestmirror=True' >>
 rpm-ostree upgrade
 
 # Get config files
-cp -r $DOTFILES/config/* $HOME/.config
+cp -r $HOME/.dotfiles/config/* $HOME/.config
 
 # Get personal scripts
 BIN=$HOME/.bin
-cp -r $DOTFILES/bin/ $BIN
+cp -r $HOME/.dotfiles/bin/ $BIN
 
 # Get wallpapers
-cp -r $DOTFILES/images/Wallpapers $HOME/Pictures/Wallpapers
+cp -r $HOME/.dotfiles/images/Wallpapers $HOME/Pictures/Wallpapers
 
 #############################################
 # APPLICATIONS / DEPENDENCIES 
@@ -30,7 +29,7 @@ cp -r $DOTFILES/images/Wallpapers $HOME/Pictures/Wallpapers
 # Enable rpm fusion's free&non-free repos
 rpm-ostree install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
-# Enable flathub
+# Enable Flathub
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak remote-modify --enable flathub
 
@@ -43,14 +42,14 @@ wl-clipboard \
 bpytop \
 openssl
 
-# Install Fedora Flatpak apps
+# Install Fedora flatpaks
 flatpak install fedora -y \
 org.gnome.FileRoller \
 org.gnome.Geary \
 org.gnome.Extensions \
 com.transmissionbt.Transmission
 
-# Install Flathub Flatpak apps
+# Install Flathub flatpaks
 flatpak install flathub -y \
 org.gnome.baobab \
 org.gnome.Totem \
