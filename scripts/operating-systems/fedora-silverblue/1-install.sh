@@ -69,7 +69,8 @@ org.gnome.Cheese \
 org.gnome.Boxes \
 com.github.tchx84.Flatseal \
 ch.protonmail.protonmail-bridge \
-com.github.wwmm.easyeffects
+com.github.wwmm.easyeffects \
+org.rncbc.qpwgraph
 
 # Allow user to use Wireshark
 # TODO: fix group not being added
