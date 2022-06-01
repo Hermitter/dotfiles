@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 set -euxo pipefail
 
-TOOLBOX_NAME=lutris-toolbox
+TOOLBOX_NAME="lutris-toolbox"
 toolbox create --container $TOOLBOX_NAME
+
 tb_run() {
   toolbox run --container $TOOLBOX_NAME "$@"
 }
@@ -13,9 +14,12 @@ tb_run sudo bash -c "echo -e 'max_parallel_downloads=20\nfastestmirror=True' >> 
 #############################################
 # APPLICATIONS / DEPENDENCIES 
 #############################################
-tb_run sudo dnf install -y \
-lutris \
-wine
+BASE_PKGS=(
+  lutris
+  wine
+)
+
+tb_run sudo dnf install -y "${BASE_PKGS[@]}"
 
 # Set locale
 tb_run sudo bash -c 'echo -e "export LC_ALL=C.UTF-8\n" >> /etc/bashrc'
@@ -33,9 +37,9 @@ tb_run sudo chmod +x /usr/local/bin/xdg-open
 #############################################
 # Create .desktop files to open toolbox GUI apps from host
 function create_host_desktop_file {
-    app_name=$1
-    toolbox_destop_file=/usr/share/applications/$app_name.desktop
-    host_desktop_file=~/.local/share/applications/$app_name.desktop
+    app_name="$1"
+    toolbox_destop_file="/usr/share/applications/$app_name.desktop"
+    host_desktop_file="$HOME/.local/share/applications/$app_name.desktop"
 
     tb_run sed "s/Exec=/Exec=toolbox run --container "$TOOLBOX_NAME" /g" $toolbox_destop_file > $host_desktop_file
 }
