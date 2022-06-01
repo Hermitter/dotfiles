@@ -75,7 +75,7 @@ keybind () {
     cmds+=("'$3'")
 }
 
-keybind 'Open Terminal'      '<Super>Return'           'tilix'
+keybind 'Open Terminal' '<Super>Return' 'tilix'
 
 # create a path for each keybind
 for ((i=0; i<${#keybinds[@]}; ++i)); do
