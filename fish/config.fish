@@ -29,7 +29,7 @@ end
 # https://flutter.dev/
 if test -d ~/.tools/flutter
     fish_add_path -aP ~/.tools/flutter/bin
-    set FLUTTER_ROOT ~/Documents
+    set FLUTTER_ROOT ~/.tools/flutter
 end
 
 # https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
