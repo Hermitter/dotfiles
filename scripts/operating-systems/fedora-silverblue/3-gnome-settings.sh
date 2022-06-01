@@ -77,16 +77,17 @@ keybind () {
 
 keybind 'Open Terminal' '<Super>Return' 'tilix'
 
-# create a path for each keybind
+# createa an array with an entry for each custom keybind
 for ((i=0; i<${#keybinds[@]}; ++i)); do
     keybind_paths+=("'/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$(($i+1))/'")
 done
 printf -v joined '%s, ' "${keybind_paths[@]}"
 keybind_paths="\"[$(echo "${joined%, }")]\""
 
+# set the array of custom keybinds in gsettings
 bash -c "gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings $keybind_paths"
 
-# apply a keybind for each path
+# for each custom keybind, set its name, binding, and command
 for ((i=0; i<${#keybinds[@]}; ++i)); do
     id=$(($i+1))
     bash -c "gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$id/ name ${names[$i]}"
