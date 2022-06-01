@@ -1,80 +1,100 @@
 #!/usr/bin/env bash
-set -e
+set -euxo pipefail
 
-TB_RUN="toolbox run $@"
 toolbox create -y
 
+tb_run() {
+  toolbox run "$@"
+}
+
 # Increase DNF download speeds
-$TB_RUN sudo bash -c "echo -e 'max_parallel_downloads=20\nfastestmirror=True' >> /etc/dnf/dnf.conf"
+tb_run sudo bash -c "echo -e 'max_parallel_downloads=20\nfastestmirror=True' >> /etc/dnf/dnf.conf"
 
 ####################################################
 # APPLICATIONS / DEPENDENCIES 
 ####################################################
-$TB_RUN sudo dnf install -y \
-zsh \
-fish \
-starship \
-exa \
-bat \
-trash-cli \
-wl-clipboard \
-nano \
-openssl-devel \
-net-tools \
-nghttp2 \
-usbutils \
-ImageMagick
 
-$TB_RUN sudo dnf groupinstall -y "Development Tools"
+BASE_PKGS=(
+  # Shell
+  zsh
+  fish
+  starship
+  exa
+  bat
+  trash-cli
+  wl-clipboard
+  nano
+
+  # Dev
+  openssl-devel
+  net-tools
+  nghttp2
+  usbutils
+
+  # Packages from dnf "Development Tools" group
+  gettext
+  diffstat
+  doxygen
+  git
+  gettext
+  patch
+  patchutils
+  subversion
+  systemtap  
+
+  # Required for exporting icons in export_toolbox_app()
+  ImageMagick
+)
+
+tb_run sudo dnf install -y "${BASE_PKGS[@]}"
 
 # Set locale
-$TB_RUN sudo bash -c 'echo -e "export LC_ALL=C.UTF-8\n" >> /etc/zshrc'
-$TB_RUN sudo bash -c 'echo -e "export LC_ALL=C.UTF-8\n" >> /etc/bashrc'
-$TB_RUN sudo bash -c 'echo -e "set -x LC_ALL C.UTF-8\n" >> /etc/fish/config.fish'
+tb_run sudo bash -c 'echo -e "export LC_ALL=C.UTF-8\n" >> /etc/zshrc'
+tb_run sudo bash -c 'echo -e "export LC_ALL=C.UTF-8\n" >> /etc/bashrc'
+tb_run sudo bash -c 'echo -e "set -x LC_ALL C.UTF-8\n" >> /etc/fish/config.fish'
 
 ####################################################
 # Expose host tools to toolbox 
 ####################################################
 # podman
-$TB_RUN sudo bash -c 'echo "#\!/usr/bin/env bash
+tb_run sudo bash -c 'echo "#\!/usr/bin/env bash
   flatpak-spawn --host /usr/bin/podman "\$@"
 " > /usr/local/bin/podman'
-$TB_RUN sudo chmod +x /usr/local/bin/podman
+tb_run sudo chmod +x /usr/local/bin/podman
 
 # podman-compose
-$TB_RUN sudo bash -c 'echo "#\!/usr/bin/env bash
+tb_run sudo bash -c 'echo "#\!/usr/bin/env bash
   flatpak-spawn --host /usr/bin/podman-compose "\$@"
 " > /usr/local/bin/podman-compose'
-$TB_RUN sudo chmod +x /usr/local/bin/podman-compose
+tb_run sudo chmod +x /usr/local/bin/podman-compose
 
 # xdg-open (Opens all URLs in the host)
-$TB_RUN sudo bash -c 'echo "#\!/usr/bin/env bash
+tb_run sudo bash -c 'echo "#\!/usr/bin/env bash
   flatpak-spawn --host /usr/bin/xdg-open "\$@"
 " > /usr/local/bin/xdg-open'
-$TB_RUN sudo chmod +x /usr/local/bin/xdg-open
+tb_run sudo chmod +x /usr/local/bin/xdg-open
 
 # TODO: cleanup as some of the paths used are not guranteed for all apps
+# TODO: declare variables as local
 function export_toolbox_app {
-    app_name=$1
-    icon_name=$2
+    local app_name=$1
+    local icon_name=$2
 
     # Export .desktop #
-    toolbox_destop_file=/usr/share/applications/$app_name.desktop
-    host_desktop_file=~/.local/share/applications/$app_name.desktop
-    $TB_RUN sed "s/Exec=/Exec=toolbox run /g" $toolbox_destop_file > $host_desktop_file
+    local toolbox_destop_file="/usr/share/applications/$app_name.desktop"
+    local host_desktop_file="$HOME/.local/share/applications/$app_name.desktop"
+    tb_run sed "s/Exec=/Exec=toolbox run /g" $toolbox_destop_file > $host_desktop_file
 
     # Export icons #
-    icon_dir=~/.local/share/icons/hicolor
-    large_icon=/usr/share/pixmaps/${icon_name}.png
+    local icon_dir=$HOME/.local/share/icons/hicolor
+    local large_icon=/usr/share/pixmaps/${icon_name}.png
 
-    sizes=("16" "24" "32" "48" "64" "96" "128" "256" "512")
-
-    for size in "${sizes[@]}"; do
+    for size in 16 24 32 48 64 96 128 256 512; do
       # Create folder for each size
-      img_dir=${icon_dir}/${size}x${size}/apps
+      local img_dir="${icon_dir}/${size}x${size}/apps"
       mkdir -p $img_dir
       # Generate each icon size
-      $TB_RUN convert -resize ${size}x${size} $large_icon ${img_dir}/${icon_name}.png
+      tb_run convert -resize ${size}x${size} $large_icon ${img_dir}/${icon_name}.png
     done
 }
 
@@ -83,33 +103,20 @@ function export_toolbox_app {
 # Source: https://vscodium.com/#install
 #
 # NOTICE: Installing X11 apps has issues
-# when toolbox hostname != host's
+# when toolbox's hostname != host's
 # https://github.com/containers/toolbox/issues/586
 # FIX: sudo hostname toolbox
 ####################################################
-$TB_RUN sudo rpmkeys --import https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg
-$TB_RUN bash -c 'printf "[gitlab.com_paulcarroty_vscodium_repo]\nname=download.vscodium.com\nbaseurl=https://download.vscodium.com/rpms/\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg\nmetadata_expire=1h" | sudo tee -a /etc/yum.repos.d/vscodium.repo'
-CODIUM=(
+tb_run sudo rpmkeys --import https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg
+tb_run bash -c 'printf "[gitlab.com_paulcarroty_vscodium_repo]\nname=download.vscodium.com\nbaseurl=https://download.vscodium.com/rpms/\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg\nmetadata_expire=1h" | sudo tee -a /etc/yum.repos.d/vscodium.repo'
+CODIUM_PKGS=(
     codium
-    # Missing dep fixes:
+    # Fixes:
     # - missing emojis
     qt5-qtwayland
-    # - "error while loading shared libraries: libxshmfence.so.1"
+    # - error while loading shared libraries: libxshmfence.so.1
     gdouros-symbola-fonts
 )
-$TB_RUN sudo dnf install -y "${CODIUM[@]}"
+tb_run sudo dnf install -y "${CODIUM_PKGS[@]}"
 
 export_toolbox_app "codium" "vscodium"
-
-####################################################
-# UNUSED AREA
-####################################################
-# VS Code
-# Source: https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-based-distributions
-####################################################
-# $TB_RUN sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-# $TB_RUN sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
-# $TB_RUN sudo dnf check-update
-# $TB_RUN sudo dnf install code -y
-
-# create_host_desktop_file "code"
