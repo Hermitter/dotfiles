@@ -3,10 +3,8 @@
 ################################################################################
 # About
 #
-# The initial setup script for installing git, if needed, and selecting the
-# appropriate OS scripts to run 
-#
-# - Clones 'github.com/Hermitter/dotfiles' to `~/.dotfiles` if it doesn't exist.
+# The initial setup script for installing cloning 
+# 'github.com/Hermitter/dotfiles' to `~/.dotfiles` if it doesn't exist.
 ################################################################################
 
 # Prevent execution if this script was only partially downloaded.
@@ -44,21 +42,36 @@ log_skip() {
 }
 
 ################################################################################
-# Download the repository
+# Git
+#
+# Ensure Git is installed.
+################################################################################
+ 
+if ! [[ -x "$(which git)" ]]; then
+        log_fatal 'Git is not installed...'
+fi
+
+################################################################################
+# Finish Bootstrap Phase
+#
+# Clone 'dotfiles' repo and continue setup.
 ################################################################################
 
+DOTFILES_PATH="$HOME/.dotfiles"
+POST_INIT_PATH="$DOTFILES_PATH/setup/post-init.sh"
 
+if ! [[ -f "$POST_INIT_PATH" ]]; then
+    log_status "Cloning 'Hermitter/dotfiles' repo into '$DOTFILES_PATH'…"
 
+    # Clone with HTTPS for now because an SSH key pair has not yet been created.
+    # After setting up SSH, the remote URL will be updated to use SSH.
+    git clone https://github.com/Hermitter/dotfiles.git "$DOTFILES_PATH"
+else
+    log_skip "Cloning 'Hermitter/dotfiles' repo; found '$POST_INIT_PATH'"
+fi
 
-# Find 
-realpath() {
-    cd -- "$1" &>/dev/null && pwd -P
-}
-readonly SCRIPT_DIR="$(realpath "$(dirname "${BASH_SOURCE[0]}")")"
-cd "$SCRIPT_DIR/.."
-
-echo $SCRIPT_DIR
-
+log_status "Running 'post-init.sh'…"
+bash "$POST_INIT_PATH"
 
 # End of partial download wrapping.
 }
