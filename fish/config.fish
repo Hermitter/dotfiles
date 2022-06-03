@@ -23,7 +23,7 @@ end
 
 # https://containertoolbx.org/
 if exists toolbox
-    alias tb toolbox
+    alias tb "toolbox --container dev"
 end
 
 # https://flutter.dev/
