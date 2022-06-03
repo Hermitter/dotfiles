@@ -16,14 +16,14 @@ set -x LS_COLORS 'di=1;35:fi=0;0'
 
 # VS Code alias for Silverblue 
 if string match -q "*Silverblue*" (cat /etc/*-release | grep VARIANT= | head -n 1)
-    alias code 'toolbox run codium'
+    alias code 'toolbox run --container dev codium'
 else if exists codium
     alias code codium
 end
 
 # https://containertoolbx.org/
 if exists toolbox
-    alias tb "toolbox --container dev"
+    alias tb 'toolbox --container dev'
 end
 
 # https://flutter.dev/
