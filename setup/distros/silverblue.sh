@@ -86,7 +86,9 @@ FLATPAK_FLATHUB_PKGS=(
     org.rncbc.qpwgraph # Pipewire Redirect
 )
 
+log_status 'Installing silverblue packages'
 rpm-ostree install --apply-live --idempotent "${SILVERBLUE_PKGS[@]}"
+log_success 'Installed silverblue packages'
 
 flatpak install fedora  -y "${FLATPAK_FEDORA_PKGS[@]}"
 flatpak install flathub -y "${FLATPAK_FLATHUB_PKGS[@]}"
