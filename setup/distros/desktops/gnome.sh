@@ -160,7 +160,8 @@ X-GNOME-UsesNotifications=true
 EOF
 
 # Create autostart script
-cat <<EOF > $HOME/.config/autostart/gnome-startup-script.sh 
+STARTUP_SCRIPT_PATH="$HOME/.config/autostart/gnome-startup-script.sh"
+cat <<EOF > $STARTUP_SCRIPT_PATH
 #!/usr/bin/env bash
 set -e
 
@@ -197,3 +198,5 @@ start_apps \
 "protonmail-bridge":"flatpak run ch.protonmail.protonmail-bridge --no-window" \
 "geary":"flatpak run org.gnome.Geary --hidden"
 EOF
+
+chmod +x $STARTUP_SCRIPT_PATH
