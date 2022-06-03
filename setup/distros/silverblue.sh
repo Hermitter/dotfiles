@@ -10,8 +10,6 @@ sudo bash -c "$MAKE_DNF_FAST_CMD"
 if pgrep -x "$NAME" > /dev/null
 then
     killall --quiet gnome-software
-else
-    log_skip 'Stopping Gnome Software; App not running'
 fi
 
 rpm-ostree cancel
