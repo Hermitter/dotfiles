@@ -9,9 +9,7 @@ sudo bash -c "$MAKE_DNF_FAST_CMD"
 # Stop active background upgrades
 if pgrep -x "$NAME" > /dev/null
 then
-    log_status 'Stopping Gnome Software'
-    killall gnome-software
-    log_success 'Stopping Gnome Software'
+    killall --quiet gnome-software
 else
     log_skip 'Stopping Gnome Software; App not running'
 fi
@@ -29,16 +27,16 @@ flatpak remote-modify --enable flathub
 rpm-ostree install --idempotent --apply-live https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
 # Get configs
-mkdir -p $HOME/.config
-cp -n -r ./config/* $HOME/.config
+mkdir -p "$HOME/.config"
+cp -n -r "./config/*" "$HOME/.config"
 
 # Get personal scripts
-mkdir -p $HOME/.bin
-cp -n -r ./bin/* $HOME/.bin
+mkdir -p "$HOME/.bin"
+cp -n -r "./bin/*" "$HOME/.bin"
 
 # Get wallpapers
-mkdir -p $HOME/Pictures/Wallpapers
-cp -n -r ./images/Wallpapers/* $HOME/Pictures/Wallpapers
+mkdir -p "$HOME/Pictures/Wallpapers"
+cp -n -r "./images/Wallpapers/*" "$HOME/Pictures/Wallpapers"
 
 SILVERBLUE_PKGS=(
     # Essentials
@@ -108,8 +106,12 @@ CHSH_CMD=(sudo usermod --shell '/bin/fish' "$USER")
 "${CHSH_CMD[@]}"
 
 log_status 'Symlinking fish config'
-ln -sf "$HOME/.dotfiles/fish" "$HOME/.config/fish"
 
+if [[ -f "$HOME/.config/fish" ]]; then
+    rm -rf "$HOME/.config/fish"
+fi
+
+ln -sf "$HOME/.dotfiles/fish" "$HOME/.config/fish"
 log_success "Set shell to '/bin/fish'"
 
 
