@@ -36,3 +36,6 @@ if [[ "${DESKTOP_SESSION:-}" == 'gnome' ]]; then
 else
     log_fatal 'Unable to detect desktop environment'
 fi
+
+log_success 'System is now ready!'
+log_todo 'Please reboot...'
