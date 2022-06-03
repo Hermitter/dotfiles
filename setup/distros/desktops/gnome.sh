@@ -55,8 +55,9 @@ gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Roboto Bold 11'
 # enable extentions
 gsettings set org.gnome.shell disable-user-extensions false
 
+# TODO: Fix it not detected in first run for Silverblue (It's also set in the autostart script below)
 # enable system tray
-gnome-extensions enable appindicatorsupport@rgcjonas.gmail.com
+# gnome-extensions enable appindicatorsupport@rgcjonas.gmail.com
 
 # disable Fedora desktop watermark (idk why they insist on having this)
 gnome-extensions disable background-logo@fedorahosted.org
