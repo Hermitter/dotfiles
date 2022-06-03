@@ -67,6 +67,9 @@ gnome-extensions disable background-logo@fedorahosted.org
 # Desktop Behavior
 ################################################################################
 
+# Enable fractional Scaling
+gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
+
 # Disable ambient light sensor
 gsettings set org.gnome.settings-daemon.plugins.power ambient-enabled false
 
