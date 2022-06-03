@@ -104,12 +104,8 @@ CHSH_CMD=(sudo usermod --shell '/bin/fish' "$USER")
 "${CHSH_CMD[@]}"
 
 log_status 'Symlinking fish config'
-
-if [[ -f "$HOME/.config/fish" ]]; then
-    rm -rf "$HOME/.config/fish"
-fi
-
 ln -sf "$HOME/.dotfiles/fish" "$HOME/.config/fish"
+
 log_success "Set shell to '/bin/fish'"
 
 
