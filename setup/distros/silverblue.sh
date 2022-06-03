@@ -99,8 +99,18 @@ FLATPAK_FLATHUB_PKGS=(
 )
 
 rpm-ostree install --apply-live --idempotent "${SILVERBLUE_PKGS[@]}"
+
 flatpak install fedora  -y "${FLATPAK_FEDORA_PKGS[@]}"
 flatpak install flathub -y "${FLATPAK_FLATHUB_PKGS[@]}"
+
+log_status "Setting shell to '/bin/fish'"
+CHSH_CMD=(sudo usermod --shell '/bin/fish' "$USER")
+"${CHSH_CMD[@]}"
+
+log_status 'Symlinking fish config'
+ln -sf "$HOME/.dotfiles/fish" "$HOME/.config/fish"
+
+log_success "Set shell to '/bin/fish'"
 
 
 ################################################################################
