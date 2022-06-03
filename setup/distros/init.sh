@@ -1,6 +1,5 @@
 readonly LINUX_SCRIPT_DIR="$(cd -- "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd -P)"
 
-
 ################################################################################
 # Distro
 #
@@ -17,7 +16,9 @@ else
 fi
 
 if [[ $OS == 'fedora' ]] && [[ $VARIANT == 'silverblue' ]]; then
+    log_status 'Setting up Silverblue'
     source "$LINUX_SCRIPT_DIR/silverblue.sh"
+    log_success 'Set up Silverblue'
 else
     log_status "Detected OS: $OS $VARIANT"
     log_fatal 'This distro has no setup scripts...'

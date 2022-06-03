@@ -12,6 +12,8 @@ then
     log_status 'Stopping Gnome Software'
     killall gnome-software
     log_success 'Stopping Gnome Software'
+else
+    log_skip 'Stopping Gnome Software; App not running'
 fi
 
 rpm-ostree cancel
