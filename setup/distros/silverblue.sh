@@ -246,3 +246,9 @@ tb_run bash -c 'printf "[gitlab.com_paulcarroty_vscodium_repo]\nname=download.vs
 tb_run sudo dnf install -y "${TOOLBOX_CODIUM_PKGS[@]}"
 
 export_toolbox_app 'codium' 'vscodium'
+
+# Fix X11 app issues when container & host have different hostnames
+# Bugs: 
+# - Blurry icons used
+# - Desktop dock adds an icon for each app window
+sudo hostname toolbox
