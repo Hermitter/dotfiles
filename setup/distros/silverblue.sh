@@ -7,7 +7,13 @@ MAKE_DNF_FAST_CMD="echo -e '[main]\nmax_parallel_downloads=20\nfastestmirror=Tru
 sudo bash -c "$MAKE_DNF_FAST_CMD"
 
 # Stop active background upgrades
-killall gnome-software
+if pgrep -x "$NAME" > /dev/null
+then
+    log_status 'Stopping Gnome Software'
+    killall gnome-software
+    log_success 'Stopping Gnome Software'
+fi
+
 rpm-ostree cancel
 
 # System upgrade
