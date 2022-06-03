@@ -6,14 +6,6 @@
 MAKE_DNF_FAST_CMD="echo -e '[main]\nmax_parallel_downloads=20\nfastestmirror=True' > /etc/dnf/dnf.conf"
 sudo bash -c "$MAKE_DNF_FAST_CMD"
 
-# Stop active background upgrades
-if pgrep -x "$NAME" > /dev/null
-then
-    killall --quiet gnome-software
-fi
-
-rpm-ostree cancel
-
 # System upgrade
 rpm-ostree upgrade
 
