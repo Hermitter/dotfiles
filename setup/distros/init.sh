@@ -13,14 +13,14 @@ if [ -f /etc/os-release ]; then
     OS=$ID
     VARIANT=$VARIANT_ID
 else
-    log_fatal "Unable to detect Linux distro"
+    log_fatal 'Unable to detect Linux distro'
 fi
 
 if [[ $OS == 'fedora' ]] && [[ $VARIANT == 'silverblue' ]]; then
     source "$LINUX_SCRIPT_DIR/silverblue.sh"
 else
     log_status "Detected OS: $OS $VARIANT"
-    log_fatal "This distro has no setup scripts..."
+    log_fatal 'This distro has no setup scripts...'
 fi
 
 ################################################################################
@@ -28,5 +28,10 @@ fi
 #
 # Detect/Run the setup script for the current Desktop environment. 
 ################################################################################
-
-log_todo "Detect desktop enviorment and run its setup script"
+if [[ "${DESKTOP_SESSION:-}" == 'gnome' ]]; then
+    log_status 'Setting up GNOME desktop environment'
+    source "$LINUX_SCRIPT_DIR/desktops/gnome.sh"
+    log_success 'Set up GNOME desktop environment'
+else
+    log_fatal 'Unable to detect desktop environment'
+fi
