@@ -147,7 +147,6 @@ done
 # Startup Script
 #############################################
 mkdir -p $HOME/.config/autostart
-cp $ASSETS/gnome-startup-script.sh $HOME/.config/autostart/
 
 # Create autostart .desktop file
 cat <<EOF > $HOME/.config/autostart/com.github.hermitter.dotfiles.desktop
