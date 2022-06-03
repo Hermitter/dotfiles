@@ -26,15 +26,15 @@ rpm-ostree install --idempotent --apply-live https://mirrors.rpmfusion.org/free/
 
 # Get configs
 mkdir -p "$HOME/.config"
-cp -n -r "$HOME/.dotfiles/config/*" "$HOME/.config"
+cp -r "$HOME/.dotfiles/config/*" "$HOME/.config"
 
 # Get personal scripts
 mkdir -p "$HOME/.bin"
-cp -n -r "$HOME/.dotfiles/bin/*" "$HOME/.bin"
+cp -r "$HOME/.dotfiles/bin/*" "$HOME/.bin"
 
 # Get wallpapers
 mkdir -p "$HOME/Pictures/Wallpapers"
-cp -n -r "$HOME/.dotfiles/images/Wallpapers/*" "$HOME/Pictures/Wallpapers"
+cp -r "$HOME/.dotfiles/images/Wallpapers/*" "$HOME/Pictures/Wallpapers"
 
 SILVERBLUE_PKGS=(
     # Essentials
