@@ -47,6 +47,11 @@ if exists exa
     alias ls exa
 end
 
+# https://www.terraform.io
+if exists terraform
+    alias tf terraform
+end
+
 # https://www.terraform.io/
 if exists terraform
     alias tf terraform
