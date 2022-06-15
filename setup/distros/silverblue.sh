@@ -67,7 +67,6 @@ FLATPAK_FLATHUB_PKGS=(
     org.gnome.Boxes
     com.valvesoftware.Steam
     com.spotify.Client
-    org.telegram.desktop
     org.signal.Signal
     com.discordapp.Discord
     com.slack.Slack
