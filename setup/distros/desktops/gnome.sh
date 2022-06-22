@@ -34,6 +34,9 @@ if exists flatpak; then
     flatpak override --user org.gnome.TextEditor --unset-env=GTK_THEME
     flatpak override --user com.github.wwmm.easyeffects --unset-env=GTK_THEME
     flatpak override --user org.gnome.baobab --unset-env=GTK_THEME
+
+    # Custom flatpak overrides
+    flatpak override --user org.gnome.Shotwell --unshare=network 
 fi
 
 ################################################################################

@@ -56,8 +56,9 @@ FLATPAK_FEDORA_PKGS=(
     # Apps
     com.transmissionbt.Transmission
     org.gnome.Extensions
-    org.gnome.FileRoller
-    org.gnome.Geary
+    org.gnome.FileRoller # Archive Manager 
+    org.gnome.Geary # Email
+    org.gnome.Shotwell # Photo Gallery
 )
 
 FLATPAK_FLATHUB_PKGS=(
