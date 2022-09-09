@@ -186,7 +186,7 @@ tb_run sudo chmod +x /usr/local/bin/xdg-open
 ################################################################################
 # Development Toolbox: VS Codium
 #
-# Source: https://vscodium.com/#install
+# Source: https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-based-distributions
 # Adapted from: https://github.com/Hermitter/dotfiles/blob/198f79a165e71bdf2a73ea22d255ca5786c482ba/scripts/operating-systems/fedora-silverblue/toolboxes/primary.sh#L81-L102
 ################################################################################
 
@@ -219,8 +219,8 @@ export_toolbox_app() {
     log_success "Exported toolbox app '$app_name'"
 }
 
-TOOLBOX_CODIUM_PKGS=(
-    codium
+TOOLBOX_CODE_PKGS=(
+    code
     # Missing dep fixes:
     # - missing emojis
     qt5-qtwayland
@@ -228,12 +228,13 @@ TOOLBOX_CODIUM_PKGS=(
     gdouros-symbola-fonts
 )
 
-tb_run sudo rpmkeys --import 'https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg'
-tb_run bash -c 'printf "[gitlab.com_paulcarroty_vscodium_repo]\nname=download.vscodium.com\nbaseurl=https://download.vscodium.com/rpms/\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg\nmetadata_expire=1h" | sudo tee -a /etc/yum.repos.d/vscodium.repo'
+tb_run sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+tb_run sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 
-tb_run sudo dnf install -y "${TOOLBOX_CODIUM_PKGS[@]}"
+tb_run sudo dnf check-update
+tb_run sudo dnf install -y "${TOOLBOX_CODE_PKGS[@]}"
 
-export_toolbox_app 'codium' 'vscodium'
+export_toolbox_app 'code' 'com.visualstudio.code'
 
 # Fix X11 app issues when container & host have different hostnames
 # Bugs: 
