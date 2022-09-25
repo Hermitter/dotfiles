@@ -24,23 +24,33 @@ gsettings set org.gnome.desktop.interface gtk-theme    "adw-gtk3-dark"
 gsettings set org.gnome.desktop.interface icon-theme   "Adwaita"
 gsettings set org.gnome.desktop.interface cursor-theme "Adwaita"
 
-# Flatpak isn't perfect at detecting our theme so we're exposing our local
-# themes and then forcing a theme for GTK3 flatpak apps.
-if exists flatpak; then
-    flatpak override --user --filesystem=$HOME/.themes
-    flatpak override --user --env=GTK_THEME=adw-gtk3-dark
 
-    # Fix certain flatpak apps not using dark theme
-    flatpak override --user org.gnome.TextEditor --unset-env=GTK_THEME
-    flatpak override --user com.github.wwmm.easyeffects --unset-env=GTK_THEME
-    flatpak override --user org.gnome.baobab --unset-env=GTK_THEME
-    flatpak override --user org.gnome.Calendar --unset-env=GTK_THEME
-    flatpak override --user org.gnome.Calculator --unset-env=GTK_THEME
-    flatpak override --user org.gnome.Weather --unset-env=GTK_THEME
-    flatpak override --user org.gnome.clocks --unset-env=GTK_THEME
-    
+if exists flatpak; then
+    # Expose user installed themes to all flatpaks
+    flatpak override --user --filesystem=$HOME/.themes
+
+    # Set GTK3 theme through env for apps that do not respect our theme.
+    flatpak override --user org.gnome.Geary --env=GTK_THEME=adw-gtk3-dark
+    flatpak override --user com.obsproject.Studio --env=GTK_THEME=adw-gtk3-dark
+
     # Custom flatpak overrides
     flatpak override --user org.gnome.Shotwell --unshare=network 
+
+
+
+    ### OLD THEME SOLUTION: Auto fix GTK3 apps, but manually fix each GTK4 app ###
+    # Flatpak isn't perfect at detecting our theme so we're exposing our local
+    # themes and then forcing a theme for GTK3 flatpak apps.
+    # flatpak override --user --env=GTK_THEME=adw-gtk3-dark
+
+    # # Fix certain flatpak apps not using dark theme
+    # flatpak override --user org.gnome.TextEditor --unset-env=GTK_THEME
+    # flatpak override --user com.github.wwmm.easyeffects --unset-env=GTK_THEME
+    # flatpak override --user org.gnome.baobab --unset-env=GTK_THEME
+    # flatpak override --user org.gnome.Calendar --unset-env=GTK_THEME
+    # flatpak override --user org.gnome.Calculator --unset-env=GTK_THEME
+    # flatpak override --user org.gnome.Weather --unset-env=GTK_THEME
+    # flatpak override --user org.gnome.clocks --unset-env=GTK_THEME
 fi
 
 ################################################################################
