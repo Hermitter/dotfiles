@@ -10,8 +10,8 @@ if ! [[ -d "$HOME/.themes/adw-gtk3" ]]; then
     log_status 'Installing Adwaita GTK theme'
 
     ADW_TMP=$(mktemp -d)
-    ADW_TAR='adw-gtk3v3-6.tar.xz'
-    wget -P "$ADW_TMP" "https://github.com/lassekongo83/adw-gtk3/releases/download/v3.6/$ADW_TAR"
+    ADW_TAR='adw-gtk3v4-1.tar.xz'
+    wget -P "$ADW_TMP" "https://github.com/lassekongo83/adw-gtk3/releases/download/v4.1/$ADW_TAR"
     tar -C "$HOME/.themes" -xvf "$ADW_TMP/$ADW_TAR" adw-gtk3 adw-gtk3-dark
 
     log_success 'Installed Adwaita GTK theme'
@@ -35,22 +35,6 @@ if exists flatpak; then
 
     # Custom flatpak overrides
     flatpak override --user org.gnome.Shotwell --unshare=network 
-
-
-
-    ### OLD THEME SOLUTION: Auto fix GTK3 apps, but manually fix each GTK4 app ###
-    # Flatpak isn't perfect at detecting our theme so we're exposing our local
-    # themes and then forcing a theme for GTK3 flatpak apps.
-    # flatpak override --user --env=GTK_THEME=adw-gtk3-dark
-
-    # # Fix certain flatpak apps not using dark theme
-    # flatpak override --user org.gnome.TextEditor --unset-env=GTK_THEME
-    # flatpak override --user com.github.wwmm.easyeffects --unset-env=GTK_THEME
-    # flatpak override --user org.gnome.baobab --unset-env=GTK_THEME
-    # flatpak override --user org.gnome.Calendar --unset-env=GTK_THEME
-    # flatpak override --user org.gnome.Calculator --unset-env=GTK_THEME
-    # flatpak override --user org.gnome.Weather --unset-env=GTK_THEME
-    # flatpak override --user org.gnome.clocks --unset-env=GTK_THEME
 fi
 
 ################################################################################
