@@ -37,7 +37,6 @@ SILVERBLUE_PKGS=(
     wl-clipboard
     exa
     bat
-    starship
     ffmpeg
 
     # Desktop Environment
