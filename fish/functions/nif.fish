@@ -1,3 +1,6 @@
+# Helpful Links:
+# - Syntax Tutorial: https://nixos.org/guides/nix-language.html
+
 if exists nix
     function nif --description 'Aliases for common Nix commands'
         if test (count $argv) -ge 1
@@ -5,7 +8,7 @@ if exists nix
                 # Common actions
                 case search
                     nix-env -qaP $argv[2..-1]
-                case preview
+                case try
                     nix-shell -p $argv[2..-1]
                 ## No args
                 case clean
