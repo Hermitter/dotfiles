@@ -86,6 +86,9 @@ gsettings set org.gnome.desktop.wm.preferences focus-mode 'click'
 # Resize a window by holding right-click and dragging
 gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true 
 
+# Disable inactivity sleep
+# gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'nothing'
+
 gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll true
 gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing false
 gsettings set org.gnome.desktop.interface show-battery-percentage true
