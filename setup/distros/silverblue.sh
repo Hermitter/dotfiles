@@ -77,7 +77,6 @@ FLATPAK_FLATHUB_PKGS=(
     # Utilities
     com.github.tchx84.Flatseal # Flatpak Permissions Manager
     ch.protonmail.protonmail-bridge
-    org.wireshark.Wireshark
 
     # Audio
     org.pulseaudio.pavucontrol # Volume
