@@ -27,9 +27,10 @@ gsettings set org.gnome.desktop.interface cursor-theme "Adwaita"
 
 
 if exists flatpak; then
-    # Expose user installed themes/icons to all flatpaks
+    # Expose user installed themes/icons/fonts to all flatpaks
     flatpak override --user --filesystem=$HOME/.themes:ro
     flatpak override --user --filesystem=$HOME/.icons/:ro
+    flatpak override --user --filesystem=$HOME/.local/share/fonts:ro
 
     # Set GTK3 theme through env for apps that do not respect our theme.
     flatpak override --user org.gnome.Geary --env=GTK_THEME=adw-gtk3-dark
@@ -38,16 +39,18 @@ if exists flatpak; then
     # Custom flatpak overrides
     flatpak override --user org.gnome.Shotwell --unshare=network
 
-    # Flatpak can't see NixOS system icons so we make a symlink from the nix store installed icons to ~/.icons
-    # This also fixes the tiny mouse cursor/style on some flatpak apps.
     if [[ $OS == 'nixos' ]]; then
-        log_status 'Applying Nixos flatpak theme fixes'
-        
-        flatpak --user override --filesystem=/nix/store:ro
+        log_status 'Applying Nixos flatpak permission fixes'
+
+        flatpak override --user --filesystem=/nix/store:ro
+
+        # Flatpak can't see NixOS system packages so we make symlinks to the relavent nix store package groups
         rm -f -r $HOME/.icons
         ln -s /run/current-system/sw/share/icons/ $HOME/.icons
+        rm -f -r $HOME/.local/share/fonts
+        ln -s /run/current-system/sw/share/X11/fonts ~/.local/share/fonts
 
-        log_success 'Applied Nixos flatpak theme fixes'
+        log_success 'Applied Nixos flatpak permission fixes'
     fi
 fi
 
