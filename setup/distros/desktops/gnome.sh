@@ -5,6 +5,7 @@
 ################################################################################
 
 mkdir -p "$HOME/.themes"
+mkdir -p "$HOME/.icons"
 
 if ! [[ -d "$HOME/.themes/adw-gtk3" ]]; then
     log_status 'Installing Adwaita GTK theme'
@@ -26,15 +27,28 @@ gsettings set org.gnome.desktop.interface cursor-theme "Adwaita"
 
 
 if exists flatpak; then
-    # Expose user installed themes to all flatpaks
-    flatpak override --user --filesystem=$HOME/.themes
+    # Expose user installed themes/icons to all flatpaks
+    flatpak override --user --filesystem=$HOME/.themes:ro
+    flatpak override --user --filesystem=$HOME/.icons/:ro
 
     # Set GTK3 theme through env for apps that do not respect our theme.
     flatpak override --user org.gnome.Geary --env=GTK_THEME=adw-gtk3-dark
     flatpak override --user com.obsproject.Studio --env=GTK_THEME=adw-gtk3-dark
 
     # Custom flatpak overrides
-    flatpak override --user org.gnome.Shotwell --unshare=network 
+    flatpak override --user org.gnome.Shotwell --unshare=network
+
+    # Flatpak can't see NixOS system icons so we make a symlink from the nix store installed icons to ~/.icons
+    # This also fixes the tiny mouse cursor/style on some flatpak apps.
+    if [[ $OS == 'nixos' ]]; then
+        log_status 'Applying Nixos flatpak theme fixes'
+        
+        flatpak --user override --filesystem=/nix/store:ro
+        rm -f -r $HOME/.icons
+        ln -s /run/current-system/sw/share/icons/ $HOME/.icons
+
+        log_success 'Applied Nixos flatpak theme fixes'
+    fi
 fi
 
 ################################################################################
@@ -61,15 +75,19 @@ gsettings set org.gnome.shell disable-user-extensions false
 # gnome-extensions enable appindicatorsupport@rgcjonas.gmail.com
 
 # disable Fedora desktop watermark (idk why they insist on having this)
-gnome-extensions disable background-logo@fedorahosted.org
 
+if [[ $OS == 'fedora' ]]; then
+    gnome-extensions disable background-logo@fedorahosted.org
+fi
 
 ################################################################################
 # Desktop Behavior
 ################################################################################
 
 # Enable fractional Scaling
-gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
+if [[ $OS == 'fedora' ]]; then
+    gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
+fi
 
 # Disable ambient light sensor
 gsettings set org.gnome.settings-daemon.plugins.power ambient-enabled false
