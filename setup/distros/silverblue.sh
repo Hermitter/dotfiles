@@ -72,7 +72,6 @@ FLATPAK_FLATHUB_PKGS=(
     com.slack.Slack
     com.nextcloud.desktopclient.nextcloud
     md.obsidian.Obsidian
-    org.gnome.Boxes
 
     # Utilities
     com.github.tchx84.Flatseal # Flatpak Permissions Manager
