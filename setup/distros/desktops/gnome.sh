@@ -60,7 +60,7 @@ fi
 
 gsettings set org.gnome.desktop.interface cursor-size 32
 
-gsettings set org.gnome.desktop.interface font-name 'Roboto 11'
+gsettings set org.gnome.desktop.interface font-name 'Roboto Medium 11'
 gsettings set org.gnome.desktop.interface document-font-name 'Roboto 11'
 gsettings set org.gnome.desktop.interface monospace-font-name 'Source Code Pro Regular 10'
 gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Roboto Bold 11'
