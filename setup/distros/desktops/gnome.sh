@@ -7,17 +7,20 @@
 mkdir -p "$HOME/.themes"
 mkdir -p "$HOME/.icons"
 
-if ! [[ -d "$HOME/.themes/adw-gtk3" ]]; then
-    log_status 'Installing Adwaita GTK theme'
 
-    ADW_TMP=$(mktemp -d)
-    ADW_TAR='adw-gtk3v4-1.tar.xz'
-    wget -P "$ADW_TMP" "https://github.com/lassekongo83/adw-gtk3/releases/download/v4.1/$ADW_TAR"
-    tar -C "$HOME/.themes" -xvf "$ADW_TMP/$ADW_TAR" adw-gtk3 adw-gtk3-dark
+if [[ $OS == 'fedora' ]]; then
+    if ! [[ -d "$HOME/.themes/adw-gtk3" ]]; then
+        log_status 'Installing Adwaita GTK theme'
 
-    log_success 'Installed Adwaita GTK theme'
-else
-    log_skip "Installing Adwaita GTK3 theme: '$HOME/.themes/adw-gtk3' exists"
+        ADW_TMP=$(mktemp -d)
+        ADW_TAR='adw-gtk3v4-1.tar.xz'
+        wget -P "$ADW_TMP" "https://github.com/lassekongo83/adw-gtk3/releases/download/v4.1/$ADW_TAR"
+        tar -C "$HOME/.themes" -xvf "$ADW_TMP/$ADW_TAR" adw-gtk3 adw-gtk3-dark
+
+        log_success 'Installed Adwaita GTK theme'
+    else
+        log_skip "Installing Adwaita GTK3 theme: '$HOME/.themes/adw-gtk3' exists"
+    fi
 fi
 
 gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
@@ -47,8 +50,12 @@ if exists flatpak; then
         # Flatpak can't see NixOS system packages so we make symlinks to the relavent nix store package groups
         rm -f -r $HOME/.icons
         ln -s /run/current-system/sw/share/icons/ $HOME/.icons
+        
         rm -f -r $HOME/.local/share/fonts
         ln -s /run/current-system/sw/share/X11/fonts ~/.local/share/fonts
+        
+        rm -f -r $HOME/.themes
+        ln -s /run/current-system/sw/share/themes/ $HOME/.themes
 
         log_success 'Applied Nixos flatpak permission fixes'
     fi
