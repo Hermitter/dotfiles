@@ -7,7 +7,6 @@
 mkdir -p "$HOME/.themes"
 mkdir -p "$HOME/.icons"
 
-
 if [[ $OS == 'fedora' ]]; then
     if ! [[ -d "$HOME/.themes/adw-gtk3" ]]; then
         log_status 'Installing Adwaita GTK theme'
