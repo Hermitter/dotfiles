@@ -17,6 +17,8 @@ if exists nix
                     nix repl
                 case packages
                     xdg-open 'https://search.nixos.org'
+                case config
+                    xdg-open 'https://www.mankier.com/5/configuration.nix'  # man configuration.nix
                 # Nix sub-commands
                 case shell
                     nix-shell $argv[2..-1]
