@@ -1,5 +1,5 @@
 # Update packages
-nix-channel --update
+sudo nix-channel --update
 
 # Get configs
 mkdir -p "$HOME/.config"
