@@ -305,8 +305,6 @@ for_window [app_id="^.*"] inhibit_idle fullscreen
 # Apps to start on boot (process_name:run_command)
 # exec_always {} can be used instead to start these apps on sway reloads
 exec $HOME/.config/sway/scripts/start_on_boot.sh \
-    "dropbox":"flatpak run com.dropbox.Client" \
-    "telegram-deskto":"flatpak run org.telegram.desktop -startintray" \
     "signal-desktop":"flatpak run org.signal.Signal --start-in-tray"
 
 #-------------------------------------------------------------------------------
