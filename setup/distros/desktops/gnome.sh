@@ -96,6 +96,8 @@ fi
 # Enable fractional Scaling
 if [[ $OS == 'fedora' ]]; then
     gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
+elif [[ $OS == 'nixos' ]]; then
+    dconf write /org/gnome/mutter/experimental-features "['scale-monitor-framebuffer']"
 fi
 
 # Disable ambient light sensor
