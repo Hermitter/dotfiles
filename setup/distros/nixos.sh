@@ -26,7 +26,6 @@ FLATPAK_FLATHUB_PKGS=(
     com.spotify.Client
     org.signal.Signal
     com.discordapp.Discord
-    com.nextcloud.desktopclient.nextcloud
     md.obsidian.Obsidian
 
     # Utilities
