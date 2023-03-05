@@ -11,7 +11,7 @@ if exists nix
                 case try
                     nix-shell -p $argv[2..-1]
                 ## No args
-                case upgrade 
+                case update 
                     sudo nix-channel --update --verbose
                 case clean
                     nix-collect-garbage -d
