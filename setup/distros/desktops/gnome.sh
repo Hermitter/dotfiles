@@ -49,6 +49,9 @@ if exists flatpak; then
         # Flatpak can't see NixOS system packages so we make symlinks to the relavent nix store package groups
         rm -f -r $HOME/.icons
         ln -s /run/current-system/sw/share/icons/ $HOME/.icons
+
+        rm -f -r $HOME/.local/share/icons
+        ln -s /run/current-system/sw/share/icons/ $HOME/.local/share/icons
         
         rm -f -r $HOME/.local/share/fonts
         ln -s /run/current-system/sw/share/X11/fonts ~/.local/share/fonts
