@@ -13,6 +13,8 @@ if exists nix
                 ## No args
                 case update 
                     sudo nix-channel --update --verbose
+                case upgrade 
+                    sudo nix-channel --update --verbose
                 case clean
                     nix-collect-garbage -d
                 case repl
@@ -21,6 +23,8 @@ if exists nix
                     xdg-open 'https://search.nixos.org'
                 case config
                     xdg-open 'https://www.mankier.com/5/configuration.nix'  # man configuration.nix
+                case community
+                    xdg-open 'https://discourse.nixos.org/'
                 # Nix sub-commands
                 case shell
                     nix-shell $argv[2..-1]
