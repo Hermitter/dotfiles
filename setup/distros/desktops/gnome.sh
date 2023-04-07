@@ -54,7 +54,7 @@ if exists flatpak; then
         ln -s /run/current-system/sw/share/icons/ $HOME/.local/share/icons
         
         rm -f -r $HOME/.local/share/fonts
-        ln -s /run/current-system/sw/share/X11/fonts ~/.local/share/fonts
+        ln -s /run/current-system/sw/share/X11/fonts $HOME/.local/share/fonts
         
         rm -f -r $HOME/.themes
         ln -s /run/current-system/sw/share/themes/ $HOME/.themes
