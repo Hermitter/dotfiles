@@ -23,6 +23,8 @@ if exists nix
                     xdg-open 'https://search.nixos.org'
                 case config
                     xdg-open 'https://www.mankier.com/5/configuration.nix'  # man configuration.nix
+                case homeman
+                    xdg-open 'https://nix-community.github.io/home-manager/options.html'
                 case community
                     xdg-open 'https://discourse.nixos.org/'
                 # Nix sub-commands
