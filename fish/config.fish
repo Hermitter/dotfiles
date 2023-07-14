@@ -1,6 +1,6 @@
-if test -d ~/.bin
-    fish_add_path -aP ~/.bin
-end
+# if test -d ~/.bin
+#     fish_add_path -aP ~/.bin
+# end
 
 if test -d ~/.cargo
     fish_add_path -aP ~/.cargo/bin
